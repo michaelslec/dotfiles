@@ -399,7 +399,13 @@ endfunction
 " Autocmds
 " ----------------------------------------------------------------------------
 
-autocmd bufenter *.md,*.markdown,*.txt :set formatoptions+=t
+augroup formatting
+  autocmd bufenter *.md,*.markdown,*.txt :set formatoptions+=t
+  autocmd bufenter *.md,*.markdown,*.txt :set spell
+
+  autocmd bufleave *.md,*.markdown,*.txt :set formatoptions-=t
+  autocmd bufleave *.md,*.markdown,*.txt :set nospell
+augroup END
 
 augroup relativenumber
   autocmd InsertEnter,focusLost * :set norelativenumber
