@@ -17,7 +17,7 @@ help.
 
         sudo chmod 744 install.sh zshInstall.sh
 
-4. Finally, run the install script and follow the dialog:
+4. Finally, run the install script and follow the dialog (It is recommended that you say "yes" to all dialogs for first time install):
 
         ./install.sh
 
