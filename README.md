@@ -178,6 +178,13 @@ Lean & mean status/tabline for vim that's light as air.
 A number of themes for some popular text editors that will hopefully be pleasing
 to your eyes and allow you to enjoy the time you spend in front of the screen.
 
+* ###[emmet-vim](http://github.com/mattn/emmet-vim/)
+Provides support for expanding abbreviations similar to emmet.
+
+* ###[html5.vim](http://github.com/othree/html5.vim)
+HTML5 + inline SVG omnicomplete funtion, indent and syntax for Vim.
+Based on the default htmlcomplete.vim.
+
 # Compatibility
 As of right now, this script only works on Linux systems. This has only
 been tested on Ubuntu as it is the current OS I run on my computer. I do
