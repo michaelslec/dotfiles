@@ -94,6 +94,11 @@ are:
 3. Railscast
 4. Twilight
 
+Please do not forget about all of the wonderful color schemes provided
+by Dayle Rees! They're very well designed. To see them, simply type
+'colorscheme' in to the command line in vim and then tab through all the
+options.
+
 ## Plugins
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
 Provides automatic closing of quotes, parenthesis, brackets, etc.
