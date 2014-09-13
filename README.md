@@ -1,9 +1,25 @@
+
 # Dotfiles:
 These are all of my dotfiles I use on my current Ubuntu system. I usually go
 through phases of coding and development and then back to gaming, so updates may
 come infrequently at times. Please submit any issues! I'm always willing to
 help.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+# Contents
+
+- [Dotfiles:](#dotfiles)
+- [Installation:](#installation)
+- [Zsh:](#zsh)
+  - [Color Schemes](#color-schemes)
+  - [Activated Plugins](#activated-plugins)
+- [Vim:](#vim)
+  - [Color Schemes](#color-schemes-1)
+  - [Plugins](#plugins)
+- [A Note to Users](#a-note-to-users)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # Installation:
 1. Run this command in your terminal:
 
