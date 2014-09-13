@@ -79,10 +79,10 @@ This distribution of Vim is packaged with six color schemes. They are:
 
 1. Solarized
 2. Codeschool
-3. lucius
-4. kolor
-5. jellybeans
-6. railcast
+3. Lucius
+4. Kolor
+5. Jellybeans
+6. Railscast
 
 ## Plugins
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
