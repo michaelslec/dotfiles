@@ -11,8 +11,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Adds 256 color terminal support if available
 if [[ "$TERM" = xterm ]]; then
   TERM=xterm-256color
 fi
 
+# Make tmuxinator easier to use
 alias mux=tmuxinator
