@@ -30,7 +30,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'derekwyatt/vim-fswitch'
 
 "Bundles for navigation
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'Shougo/unite.vim'
 
 " Bundles for making stuff look better
 Plugin 'altercation/vim-colors-solarized'
