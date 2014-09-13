@@ -152,6 +152,10 @@ set noshowmode
 " ----------------------------------------------------------------------------
 set backspace=indent,eol,start " Makes backspace behave like most editors
 
+set textwidth=72 " Sets wrapping point at 72 characters
+
+set formatoptions=cqn
+
 if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j          " Delete comment char on second line when
     " Joining two commented lines
