@@ -80,7 +80,7 @@ filetype indent plugin on
 set background=dark " Uses dark version of colorscheme
 
 let g:solarized_termcolors=256 " Adds 256 color in terminal mode (specifically for solarized colorscheme)
-colorscheme solarized " Sets colorscheme
+colorscheme lucius " Sets colorscheme
 
 set cursorline " Highlights current line cursor is on
 
