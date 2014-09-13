@@ -138,3 +138,11 @@ Lean & mean status/tabline for vim that's light as air.
 * ###[colour-schemes](http://github.com/daylerees/colour-schemes)
 A number of themes for some popular text editors that will hopefully be pleasing
 to your eyes and allow you to enjoy the time you spend in front of the screen.
+
+# A Note to Users
+If you are running a text editor or terminal emulator of some kind that,
+for whatever reason, does not support the patched fonts provided by
+Powerline, please use one of the patched fonts provided by my install
+script. Simply change your font to any font that has "for powerline" in the
+name. This should fix the issue. If not, feel free to message me! I'm
+always willing to help. Thank you!
