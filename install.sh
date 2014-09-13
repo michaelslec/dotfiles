@@ -103,20 +103,18 @@ if [[ $installzsh = true ]]; then
   preztoInstall
 fi
 
+mkdir -p ~/.vim
 for folder in $folders; do
   ((cleared++))
 
-  mkdir -p ~/.vim
-  if [[ -d  $folder ]]; then
-    if [[ -L $folder  ]]; then
-      echo -n "Removing $folder because it is a symbolic link... "
-      rm -rf ~/.vim/$folder
-      echo 'Done'
-    else
-      echo -n "Moving $folder from ~/.vim/$folder to $olddir ... "
-      mv ~/.vim/$folder $olddir
-      echo "Done"
-    fi
+  if [[ -d  ~/.vim/$folder && -L ~/.vim/$folder ]]; then
+    echo -n "Removing $folder because it is a symbolic link... "
+    rm -rf ~/.vim/$folder
+    echo 'Done'
+  elif [[ -d ~/.vim/$folder ]]; then
+    echo -n "Moving $folder from ~/.vim/$folder to $olddir ... "
+    mv ~/.vim/$folder $olddir
+    echo "Done"
   fi
 
   echo -n "Creating symlink to $folder in ~/.vim ... "
@@ -127,7 +125,7 @@ for folder in $folders; do
   if [[ $cleared = 2 ]]; then
     echo -n "Clearing out ~/.vim ... "
     cd ~/.vim
-    ls | grep -v -E "colors|syntax|bundle" | xargs rm -rf
+    ls | grep -v -E "colors|bundle" | xargs rm -rf
     echo "Done"
   fi
 done
@@ -145,16 +143,14 @@ if [[ $installzsh = false ]]; then
 fi
 
 for file in $files; do
-  if [[ -f $file ]]; then
-    if [[ -L $file ]]; then
-      echo -n "Removing $file because it is a symbolic link... "
-      rm ~/.$file
-      echo "Done"
-    else
-      echo -n "Moving $file from $HOME to $olddir ... "
-      mv ~/.$file $olddir
-      echo "Done"
-    fi
+  if [[ -f ~/.$file && -L ~/.$file ]]; then
+    echo -n "Removing $file because it is a symbolic link... "
+    rm ~/.$file
+    echo "Done"
+  elif [[ -f ~/.$file ]]; then
+    echo -n "Moving $file from $HOME to $olddir ... "
+    mv ~/.$file $olddir
+    echo "Done"
   fi
 done
 
@@ -179,7 +175,7 @@ source ~/.bashrc
 rm ~/.vimrc
 for file in $files; do
   echo -n "Creating symbolic link to $file in home directory... "
-  ln -s $dir/$file ~/.$file
+  ln -s $dir/files/$file ~/.$file
   echo "Done"
   echo ""
 done
