@@ -29,9 +29,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'derekwyatt/vim-fswitch'
 
-" Bundles for navigation
-" Plugin 'kien/ctrlp.vim'
-
 " Bundles for Unite
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neomru.vim'
@@ -339,16 +336,6 @@ set encoding=utf-8 " C'mon, this is obvious
 " ----------------------------------------------------------------------------
 " Plugin Settings
 " ----------------------------------------------------------------------------
-
-" ctrlp
-let g:ctrlp_cmd = 'CtrlPMixed' " Lets ctrlp search for
-                      " buffers, files, and MRU's
-
-let g:ctrlp_match_window_bottom = 0 " Shows ctrlp window on top
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_height = 10 " Sets max height of ctrlp window
-let g:ctrlp_clear_cache_on_exit = 0 " Keeps cache when exiting
-let g:ctrlp_mruf_max = 250 " Number of recently opened files
 
 " DelimitMate
 let g:delimitMate_expand_cr = 1
