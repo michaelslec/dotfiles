@@ -1,0 +1,43 @@
+" ----------------------------------------------------------------------------
+" Vundle
+" ----------------------------------------------------------------------------
+
+set nocompatible " Be IMproved
+
+set rtp+=~/.vim/bundle/vundle/ " Add vundle to run time path
+call vundle#rc() " Start vundle
+
+" Let Vundle manage Vundle
+Plugin 'gmarik/vundle'
+
+" Bundles for code editing
+Plugin 'Raimondi/delimitMate'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'honza/vim-snippets'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-surround'
+
+" Bundles that make life a HELL OF A LOT easier
+Plugin 'airblade/vim-gitgutter'
+Plugin 'derekwyatt/vim-protodef'
+Plugin 'duff/vim-bufonly'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'derekwyatt/vim-fswitch'
+
+"Bundles for navigation
+Plugin 'kien/ctrlp.vim'
+
+" Bundles for making stuff look better
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'bling/vim-airline'
+
+" All the color schemes in the world!
+Plugin 'daylerees/colour-schemes'
+
+filetype plugin indent on " Required for Vundle
