@@ -6,7 +6,6 @@ help.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-# Contents
 
 - [Installation](#installation)
 - [Zsh](#zsh)
@@ -15,6 +14,7 @@ help.
 - [Vim](#vim)
   - [Color Schemes](#color-schemes-1)
   - [Plugins](#plugins)
+- [Compatibility](#compatibility)
 - [A Note to Users](#a-note-to-users)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -152,6 +152,12 @@ Lean & mean status/tabline for vim that's light as air.
 * ###[colour-schemes](http://github.com/daylerees/colour-schemes)
 A number of themes for some popular text editors that will hopefully be pleasing
 to your eyes and allow you to enjoy the time you spend in front of the screen.
+
+# Compatibility
+As of right now, this script only works on Linux systems. This has only
+been tested on Ubuntu as that is was my current computer runs. I dont
+intend to add support for other flavors of Linux as well as Mac;
+however, I do not for Windows.
 
 # A Note to Users
 If you are running a text editor or terminal emulator of some kind that,
