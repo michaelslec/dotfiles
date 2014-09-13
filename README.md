@@ -1,4 +1,3 @@
-
 # Dotfiles:
 These are all of my dotfiles I use on my current Ubuntu system. I usually go
 through phases of coding and development and then back to gaming, so updates may
@@ -9,7 +8,6 @@ help.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 # Contents
 
-- [Dotfiles:](#dotfiles)
 - [Installation:](#installation)
 - [Zsh:](#zsh)
   - [Color Schemes](#color-schemes)
