@@ -8,11 +8,11 @@ help.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 # Contents
 
-- [Installation:](#installation)
-- [Zsh:](#zsh)
+- [Installation](#installation)
+- [Zsh](#zsh)
   - [Color Schemes](#color-schemes)
   - [Activated Plugins](#activated-plugins)
-- [Vim:](#vim)
+- [Vim](#vim)
   - [Color Schemes](#color-schemes-1)
   - [Plugins](#plugins)
 - [A Note to Users](#a-note-to-users)
