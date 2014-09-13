@@ -304,9 +304,6 @@ endif
 " Runs make
 nnoremap <leader>m :make!<CR>
 
-" Run C++ program
-nnoremap <leader>r :!./bin/
-
 " Runs make, runs program
 nnoremap <leader>mr :make!<CR> :!./bin/
 
