@@ -28,6 +28,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'derekwyatt/vim-fswitch'
+Plugin 'mattn/emmet-vim'
 
 " Bundles for Unite
 Plugin 'Shougo/vimproc.vim'
@@ -371,6 +372,9 @@ let g:unite_winheight = 10
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+
+" Emmet
+let g:user_emmet_leader_key='<C-e>'
 
 " ----------------------------------------------------------------------------
 " various
