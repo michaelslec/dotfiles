@@ -400,8 +400,8 @@ endfunction
 " ----------------------------------------------------------------------------
 
 augroup formatting
-  autocmd bufenter *.md,*.markdown,*.txt setlocal formatoptions+=t
-  autocmd bufenter *.md,*.markdown,*.txt setlocal spell
+  autocmd bufenter *.md,*.markdown,*.txt,gitcommit setlocal formatoptions+=t
+  autocmd bufenter *.md,*.markdown,*.txt,gitcommit setlocal spell
 augroup END
 
 augroup relativenumber
