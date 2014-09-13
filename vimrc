@@ -88,9 +88,9 @@ set cursorline " Highlights current line cursor is on
 
 if has("unix") " Checks to see if OS is mac or linux
   if system('uname') =~ 'Darwin' " If OS is Mac
-    set guifont=Inconsolata\ for\ Powerline\ Medium:h13
+    set guifont=Inconsolata\ for\ Powerline\ Medium:h12
   else " IF OS is Linux
-    set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
+    set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
   endif
 endif
 
