@@ -4,10 +4,10 @@
 ###############
 dir=~/.dotfiles # dotfiles directory
 olddir=~/.dotfiles_old # old dotfiles backup directory
-files="zprofile zshrc zpreztorc vimrc" # list of files to symlink in homedir
+files="tmux.conf zprofile zshrc zpreztorc vimrc" # list of files to symlink in homedir
 folders="colors" # list of folders to symlink in homedir
 
-installzsh=false fontdownload=false installycm=false
+installzsh=false fontdownload=false installycm=false installtmux=false
 cleared=0
 
 ###############
@@ -73,6 +73,15 @@ while true; do
 done
 
 while true; do
+  read -p "Would you like to use my .tmux.conf? (Note: Yours will be backed up to .dotfiles_old; however, it will be deleted after multiple runs of this script): " yn
+  case $yn in
+      [Yy]* ) installtmux=true; break;;
+      [Nn]* ) break;;
+      * ) echo "Please answer yes or no.";;
+  esac
+done
+
+while true; do
   read -p "Would you like to install Zsh and Prezto? (I absolutely recommend this. It's absolutely amazing.): " yn
   case $yn in
       [Yy]* ) installzsh=true; break;;
@@ -129,7 +138,10 @@ if [ ! -d "/home/michael/.vim/bundle/vundle"  ]; then
 fi
 
 if [[ $installzsh = false ]]; then
-  files="vimrc" # list of files to symlink in homedir
+  if [[ $installtmux = false ]]; then
+    files="vimrc" # list of files to symlink in homedir
+  fi
+  files="tmux.conf vimrc" # list of files to symlink in homedir
 fi
 
 for file in $files; do
