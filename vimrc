@@ -257,6 +257,13 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Unite mappings
+nnoremap <C-P> :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
+
+
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
 
@@ -377,24 +384,10 @@ let g:airline_powerline_fonts = 1
 
 " Unite
 let g:unite_source_history_yank_enable = 1
+let g:unite_winheight = 10
+
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-nnoremap <leader>t :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 " ----------------------------------------------------------------------------
 " various
@@ -417,6 +410,10 @@ function! g:UltiSnips_Complete()
       return "\<tab>"
     endif
   endif
+
+  return ""
+endfunction
+
 function! s:unite_settings()
   " Enable navigation with control-j and control-k in insert mode
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
@@ -426,10 +423,6 @@ function! s:unite_settings()
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 
   nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
-
-
-  return ""
 endfunction
 
 " ----------------------------------------------------------------------------
@@ -448,3 +441,6 @@ augroup END
 
 " Better integration between YouCompleteMe and UltiSnips
 autocmd BufEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <c-r>=g:UltiSnips_Complete()<CR>"
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
