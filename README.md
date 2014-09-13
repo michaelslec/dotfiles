@@ -78,13 +78,13 @@ and, if needed, you can reference them in the Vim help.
 ## Color Schemes
 This distribution of Vim is packaged with seven color schemes. They are:
 
-1. Solarized
-2. Codeschool
-3. Lucius
-4. Kolor
-5. Jellybeans
-6. Railscast
-7. Twilight
+1. [Solarized](http://www.ethanschoonover.com/solarized)
+2.  [Codeschool](http://www.astonj.com/tech/vim-for-ruby-rails-and-a-sexy-theme/)
+3.  [Lucius](http://www.vimer.cn/wp-content/uploads/2009/10/2.png)
+4. [Kolor](https://github.com/zeis/vim-kolor#vim-kolor)
+5. [Jellybeans](https://github.com/nanotech/jellybeans.vim#screenshots)
+6. [Railscast](https://github.com/jpo/vim-railscasts-theme#screenshot)
+7. [Twilight](http://leetless.de/vim.html)
 
 Unfortunately, some of these color schemes do not work in terminal
 emulators, including those that support 256 colors. These color schemes
