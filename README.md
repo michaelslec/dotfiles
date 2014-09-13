@@ -75,7 +75,7 @@ categories that are used in the Vim help section. All settings are documented
 and, if needed, you can reference them in the Vim help.
 
 ## Color Schemes
-This distribution of Vim is packaged with six color schemes. They are:
+This distribution of Vim is packaged with seven color schemes. They are:
 
 1. Solarized
 2. Codeschool
@@ -83,6 +83,7 @@ This distribution of Vim is packaged with six color schemes. They are:
 4. Kolor
 5. Jellybeans
 6. Railscast
+7. Twilight
 
 Unfortunately, some of these color schemes do not work in terminal
 emulators, including those that support 256 colors. These color schemes
@@ -91,6 +92,7 @@ are:
 1. Codeschool
 2. Jellybeans
 3. Railscast
+4. Twilight
 
 ## Plugins
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
