@@ -400,11 +400,8 @@ endfunction
 " ----------------------------------------------------------------------------
 
 augroup formatting
-  autocmd bufenter *.md,*.markdown,*.txt :set formatoptions+=t
-  autocmd bufenter *.md,*.markdown,*.txt :set spell
-
-  autocmd bufleave *.md,*.markdown,*.txt :set formatoptions-=t
-  autocmd bufleave *.md,*.markdown,*.txt :set nospell
+  autocmd bufenter *.md,*.markdown,*.txt setlocal formatoptions+=t
+  autocmd bufenter *.md,*.markdown,*.txt setlocal spell
 augroup END
 
 augroup relativenumber
