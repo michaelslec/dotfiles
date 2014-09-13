@@ -84,6 +84,14 @@ This distribution of Vim is packaged with six color schemes. They are:
 5. Jellybeans
 6. Railscast
 
+Unfortunately, some of these color schemes do not work in terminal
+emulators, including those that support 256 colors. These color schemes
+are:
+
+1. Codeschool
+2. Jellybeans
+3. Railscast
+
 ## Plugins
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
 Provides automatic closing of quotes, parenthesis, brackets, etc.
