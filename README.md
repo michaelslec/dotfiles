@@ -71,7 +71,7 @@ I have activated are:
 
 # Vim:
 This vim is written completely from scratch. The vimrc is organized in to the
-categores that are used in the Vim help section. All settings are documented
+categories that are used in the Vim help section. All settings are documented
 and, if needed, you can reference them in the Vim help.
 
 ## Color Schemes
