@@ -260,7 +260,6 @@ nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
 
-
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
 
