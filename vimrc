@@ -225,7 +225,7 @@ nnoremap <leader>l :ls<CR>:b
 nnoremap <leader>w :w<CR>
 
 " Saves file and runs make! test
-nnoremap <leader>wt :w<CR> :make! test<CR>
+nnoremap <leader>t :w<CR> :make! test<CR>
 
 " Delete current buffer
 nnoremap <leader>d :bd %<CR>
