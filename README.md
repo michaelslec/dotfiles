@@ -75,12 +75,14 @@ categores that are used in the Vim help section. All settings are documented
 and, if needed, you can reference them in the Vim help.
 
 ## Color Schemes
-This distribution of Vim is packaged with four color schemes. They are:
+This distribution of Vim is packaged with six color schemes. They are:
 
 1. Solarized
 2. Codeschool
 3. lucius
 4. kolor
+5. jellybeans
+6. railcast
 
 ## Plugins
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
