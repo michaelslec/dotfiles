@@ -39,6 +39,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'bling/vim-airline'
+Plugin 'othree/html5.vim'
 
 " All the color schemes in the world!
 Plugin 'daylerees/colour-schemes'
