@@ -154,8 +154,15 @@ hotkeys.
 This Vim plugin will help switching between companion files (e.g. ".h" and
 ".cpp" files).
 
-* ###[ctrlp](http://github.com/kien/ctrlp.vim)
-Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+* ###[unite.vim](http://github.com/Shougo/unite.vim)
+The unite or unite.vim plug-in can search and display information from
+arbitrary sources like files, buffers, recently used files or registers.
+
+* ###[neomru.vim](http://github.com/Shougo/neomru.vim)
+MRU plugin includes unite.vim MRU sources
+
+* ###[vimproc.vim](http://github.com/Shougo/vimproc.vim)
+Interactive command execution in Vim.
 
 * ###[vim-colors-solarized](http://github.com/altercation/vim-colors-solarized)
 Solarized Colorscheme for Vim.
