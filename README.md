@@ -155,9 +155,11 @@ to your eyes and allow you to enjoy the time you spend in front of the screen.
 
 # Compatibility
 As of right now, this script only works on Linux systems. This has only
-been tested on Ubuntu as that is was my current computer runs. I dont
+been tested on Ubuntu as it is the current OS I run on my computer. I do
 intend to add support for other flavors of Linux as well as Mac;
-however, I do not for Windows.
+however, I do not intend to add support for Windows. It would be too
+time consuming and I don't believe that enough people would gain from it
+to consider it worthwhile.
 
 # A Note to Users
 If you are running a text editor or terminal emulator of some kind that,
