@@ -1,4 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/michaelslec/dotfiles.png?label=ready&title=Ready)](https://waffle.io/michaelslec/dotfiles)
+[![Stories in Ready](https://badge.waffle.io/michaelslec/dotfiles.png?label=ready&title=Ready)](https://waffle.io/michaelslec/dotfiles)  [![Project Status](http://stillmaintained.com/michaelslec/dotfiles.png)](http://stillmaintained.com/michaelslec/dotfiles)
+
 # Dotfiles:
 These are all of my dotfiles I use on my current Ubuntu system. I usually go
 through phases of coding and development and then back to gaming, so updates may
