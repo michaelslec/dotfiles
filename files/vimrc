@@ -220,7 +220,10 @@ nnoremap <leader>fsr :FSSplitRight<CR>
 nnoremap <leader>fsl :FSSplitLeft<CR>
 
 " Open vimrc file in a new tab for editing
-nnoremap <leader>ev :tabe ~/.dotfiles/vimrc<CR>
+nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
+
+" Open current file in Chrome
+nnoremap <leader>o :!google-chrome %<CR>
 
 " Open listing of all buffers
 nnoremap <leader>l :ls<CR>:b
