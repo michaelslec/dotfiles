@@ -180,6 +180,9 @@ for file in $files; do
   echo ""
 done
 
+cd ~/.vim/bundle/vimproc.vim
+make
+cd ~
 
 echo "Congratulations! You've just installed my favorite way to code on your computer ;)"
 sleep 1
