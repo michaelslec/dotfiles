@@ -29,7 +29,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/emmet-vim'
-Plugin 'greyblake/vim-preview'
 
 " Bundles for Unite
 Plugin 'Shougo/vimproc.vim'
