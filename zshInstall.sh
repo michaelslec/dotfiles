@@ -1,4 +1,9 @@
 #!/bin/zsh
+########################################################################
+#                 michaelslec's Vim distribution v1.0                  #
+########################################################################
+
+
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 export SHELL=/bin/zsh
