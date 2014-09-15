@@ -24,7 +24,7 @@ help.
 # Installation:
 1. Run this command in your terminal:
 
-        git pull https://github.com/michaelslec/dotfiles.git ~/.dotfiles
+        git clone https://github.com/michaelslec/dotfiles.git ~/.dotfiles
 
 2. Next, cd in to the ~/.dotfiles directory:
 
