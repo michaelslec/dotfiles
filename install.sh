@@ -1,4 +1,9 @@
 #!/bin/bash
+########################################################################
+#                 michaelslec's Vim distribution v1.0                  #
+########################################################################
+
+
 ###############
 #  Variables  #
 ###############
@@ -8,7 +13,6 @@ files="tmux.conf zprofile zshrc zpreztorc vimrc" # list of files to symlink in h
 folders="colors" # list of folders to symlink in homedir
 
 installzsh=false fontdownload=false installycm=false installtmux=false
-cleared=0
 
 ###############
 #  functions  #
@@ -58,7 +62,7 @@ function backup {
 
 # Installs necessities for Linux systems (mainly Ubuntu)
 if [[ $( uname -s  ) == "Linux" ]]; then
-  sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh
+  sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh tmux -y
 fi
 
 backup
@@ -67,15 +71,6 @@ while true; do
   read -p "Would you like to download the fonts for vim-airline? (Note: If not vim-arline will not look as nice): " yn
   case $yn in
       [Yy]* ) fontdownload=true; break;;
-      [Nn]* ) break;;
-      * ) echo "Please answer yes or no.";;
-  esac
-done
-
-while true; do
-  read -p "Would you like to use my .tmux.conf? (Note: Yours will be backed up to .dotfiles_old; however, it will be deleted after multiple runs of this script): " yn
-  case $yn in
-      [Yy]* ) installtmux=true; break;;
       [Nn]* ) break;;
       * ) echo "Please answer yes or no.";;
   esac
@@ -91,6 +86,15 @@ while true; do
 done
 
 while true; do
+  read -p "Would you like to use my .tmux.conf? (Note: Yours will be backed up to .dotfiles_old; however, it will be deleted after multiple runs of this script): " yn
+  case $yn in
+      [Yy]* ) installtmux=true; break;;
+      [Nn]* ) break;;
+      * ) echo "Please answer yes or no.";;
+  esac
+done
+
+while true; do
   read -p "Would you like to install ycm?: " yn
   case $yn in
       [Yy]* ) installycm=true; break;;
@@ -99,35 +103,28 @@ while true; do
   esac
 done
 
+if [[ $fontdownload = true ]]; then
+  powerlineFonts
+fi
+
 if [[ $installzsh = true ]]; then
   preztoInstall
 fi
 
-mkdir -p ~/.vim
+if [[ -d ~/.vim ]]; then
+  echo -n "Clearing out ~/.vim ... "
+  cd ~/.vim
+  ls | grep -v -E "colors|bundle" | xargs rm -rf
+  echo "Done"
+else
+  mkdir -p ~/.vim
+fi
+
 for folder in $folders; do
-  ((cleared++))
-
-  if [[ -d  ~/.vim/$folder && -L ~/.vim/$folder ]]; then
-    echo -n "Removing $folder because it is a symbolic link... "
-    rm -rf ~/.vim/$folder
-    echo 'Done'
-  elif [[ -d ~/.vim/$folder ]]; then
-    echo -n "Moving $folder from ~/.vim/$folder to $olddir ... "
-    mv ~/.vim/$folder $olddir
-    echo "Done"
-  fi
-
   echo -n "Creating symlink to $folder in ~/.vim ... "
   ln -s $dir/$folder ~/.vim/$folder
   echo "Done"
   echo ""
-
-  if [[ $cleared = 2 ]]; then
-    echo -n "Clearing out ~/.vim ... "
-    cd ~/.vim
-    ls | grep -v -E "colors|bundle" | xargs rm -rf
-    echo "Done"
-  fi
 done
 
 # Download vundle
@@ -135,15 +132,16 @@ if [ ! -d "/home/michael/.vim/bundle/vundle"  ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi
 
-if [[ $installzsh = false ]]; then
-  if [[ $installtmux = false ]]; then
-    files="vimrc" # list of files to symlink in homedir
-  fi
+if [[ $installzsh = false && $installtmux = false ]]; then
+  files="vimrc" # list of files to symlink in homedir
+elif [[ $installzsh = false && $installtmux = true ]]; then
   files="tmux.conf vimrc" # list of files to symlink in homedir
+elif [[ $installzsh = true && $installtmux = false ]]; then
+  files="zprofile zshrc zpreztorc vimrc" # list of files to symlink in homedir
 fi
 
 for file in $files; do
-  if [[ -f ~/.$file && -L ~/.$file ]]; then
+  if [[ -L ~/.$file ]]; then
     echo -n "Removing $file because it is a symbolic link... "
     rm ~/.$file
     echo "Done"
@@ -155,22 +153,15 @@ for file in $files; do
 done
 
 echo -n "Adding temp vimrc to \$HOME directory... "
-ln -s $dir/vimrc.temp ~/.vimrc
+ln -s $dir/files/vimrc.temp ~/.vimrc
 echo "Done"
 
 sudo vim +BundleClean +qall!
 sudo vim +BundleInstall +qall!
 
-if [[ $fontdownload = true ]]; then
-  powerlineFonts
-fi
-
 if [[ $installycm = true ]]; then
   ycmInstall
 fi
-
-sudo chown -Rf $USER /home/$USER/.vim /home/$USER/.wakatime.*
-source ~/.bashrc
 
 rm ~/.vimrc
 for file in $files; do
@@ -181,8 +172,8 @@ for file in $files; do
 done
 
 cd ~/.vim/bundle/vimproc.vim
-make
-cd ~
+sudo make
+cd $dir
 
 echo "Congratulations! You've just installed my favorite way to code on your computer ;)"
 sleep 1
