@@ -144,7 +144,7 @@ fi
 if [[ -d ~/.vim ]]; then
   echo -n "Clearing out ~/.vim ... "
   cd ~/.vim
-  rm -rf ~/.vim/*
+  sudo rm -rf ~/.vim/*
   echo "Done"
 else
   mkdir -p ~/.vim
