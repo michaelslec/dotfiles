@@ -12,7 +12,7 @@ olddir=~/.dotfiles_old # old dotfiles backup directory
 files="tmux.conf zprofile zshrc zpreztorc vimrc" # list of files to symlink in homedir
 folders="colors" # list of folders to symlink in homedir
 
-installzsh=false fontdownload=false installycm=false installtmux=false
+installHomebrew=false installzsh=false fontdownload=false installycm=false installtmux=false
 
 ###############
 #  functions  #
@@ -25,15 +25,22 @@ function preztoInstall {
 
 # Installs Powerline fonts for vim-airline
 function powerlineFonts {
-wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
-mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+if [[ $( uname -s  ) == "Linux" ]]; then
+  wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+  mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+  mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
-git clone https://github.com/Lokaltog/powerline-fonts.git patchedFonts
-rm patchedFonts/README.rst
-mv patchedFonts/* ~/.fonts/
-fc-cache -vf ~/.fonts
-rm -rf patchedFonts
+  git clone https://github.com/Lokaltog/powerline-fonts.git patchedFonts
+  rm patchedFonts/README.rst
+  mv patchedFonts/* ~/.fonts/
+  fc-cache -vf ~/.fonts
+  rm -rf patchedFonts
+elif [[ $( uname -s ) == "Darwin" ]]; then
+  git clone https://github.com/Lokaltog/powerline-fonts.git patchedFonts
+  rm patchedFonts/README.rst
+  mv patchedFonts/* ~/Library/Fonts
+  rm -rf patchedFonts
+fi
 }
 
 # Installs YouCompleteMe
@@ -63,6 +70,26 @@ function backup {
 # Installs necessities for Linux systems (mainly Ubuntu)
 if [[ $( uname -s  ) == "Linux" ]]; then
   sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh tmux -y
+elif [[ $( uname -s ) == "Darwin" ]]; then
+  if which brew 2> /dev/null; then
+    brew install macvim --override-system-vim
+    brew install wget make zsh tmux python
+  else
+    while true; do
+      read -p "Do you mind if I install Homebrew. I need it for installing dependencies for this Vim distribution: " yn
+      case $yn in
+          [Yy]* ) installHomebrew=true; break;;
+          [Nn]* ) break;;
+          * ) echo "Please answer yes or no.";;
+      esac
+    done
+
+    if [[ $installHomebrew = true ]]; then
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      brew install macvim --override-system-vim
+      brew install wget make zsh tmux 
+    fi
+  fi
 fi
 
 backup
@@ -114,7 +141,7 @@ fi
 if [[ -d ~/.vim ]]; then
   echo -n "Clearing out ~/.vim ... "
   cd ~/.vim
-  ls | grep -v -E "colors|bundle" | xargs rm -rf
+  rm -rf ~/.vim/*
   echo "Done"
 else
   mkdir -p ~/.vim
