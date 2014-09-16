@@ -1,6 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/michaelslec/dotfiles.png?label=ready&title=Ready)](https://waffle.io/michaelslec/dotfiles)  [![Project Status](http://stillmaintained.com/michaelslec/dotfiles.png)](http://stillmaintained.com/michaelslec/dotfiles)
 
-# Dotfiles:
+# Dotfiles
 These are all of my dotfiles I use on my current Ubuntu system. I usually go
 through phases of coding and development and then back to gaming, so updates may
 come infrequently at times. Please submit any issues! I'm always willing to
@@ -8,7 +8,7 @@ help.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-# Contents:
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Installation](#installation)
 - [Zsh](#zsh)
@@ -21,7 +21,7 @@ help.
 - [A Note to Users](#a-note-to-users)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-# Installation:
+# Installation
 1. Run this command in your terminal:
 
         git clone https://github.com/michaelslec/dotfiles.git ~/.dotfiles
@@ -38,7 +38,7 @@ help.
 
         ./install.sh
 
-# Zsh:
+# Zsh
 This Zsh is almost completely the doing of
 [Prezto](http://github.com/sorin-ionescu/prezto). I have only modified a few
 things in the zpreztorc and the .zshrc.
@@ -72,7 +72,7 @@ I have activated are:
 14. [history-substring-search](https://github.com/sorin-ionescu/prezto/tree/master/modules/history-substring-search)
 15. [prompt](https://github.com/sorin-ionescu/prezto/tree/master/modules/prompt)
 
-# Vim:
+# Vim
 This vim is written completely from scratch. The vimrc is organized in to the
 categories that are used in the Vim help section. All settings are documented
 and, if needed, you can reference them in the Vim help.
