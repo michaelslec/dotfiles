@@ -85,9 +85,12 @@ elif [[ $( uname -s ) == "Darwin" ]]; then
     done
 
     if [[ $installHomebrew = true ]]; then
+      echo "Installing Homebrew ... "
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       brew install macvim --override-system-vim
       brew install wget make zsh tmux 
+      echo "Done"
+      echo""
     fi
   fi
 fi
