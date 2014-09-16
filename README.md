@@ -11,6 +11,8 @@ help.
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Installation](#installation)
+  - [Ubuntu](#ubuntu)
+  - [Mac OS X](#mac-os-x)
 - [Zsh](#zsh)
   - [Color Schemes](#color-schemes)
   - [Activated Plugins](#activated-plugins)
@@ -22,6 +24,8 @@ help.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # Installation
+
+## Ubuntu
 1. Run this command in your terminal:
 
         git clone https://github.com/michaelslec/dotfiles.git ~/.dotfiles
@@ -37,6 +41,11 @@ help.
 4. Finally, run the install script and follow the dialog (It is recommended that you say "yes" to all dialogs for first time install):
 
         ./install.sh
+
+## Mac OS X
+1. Follow Ubuntu install
+2. Change both your ASCII and non-ASCII fonts in your terminal to a font
+   that has 'Powerline' in the title.
 
 # Zsh
 This Zsh is almost completely the doing of
