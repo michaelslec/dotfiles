@@ -144,7 +144,7 @@ fi
 if [[ -d ~/.vim ]]; then
   echo -n "Clearing out ~/.vim ... "
   cd ~/.vim
-  sudo rm -rf ~/.vim/*
+  ls | grep -v bundle | xargs rm -rf
   echo "Done"
 else
   mkdir -p ~/.vim
