@@ -8,7 +8,7 @@
 #  Variables  #
 ###############
 dir=~/.dotfiles # dotfiles directory
-olddir=~/.dotfiles_old # old dotfiles backup directory
+olddir="/home/$USER/.dotfiles_old/backup_$(date +%m-%d-%y-%R)" # old dotfiles backup directory
 files="tmux.conf zprofile zshrc zpreztorc vimrc" # list of files to symlink in homedir
 folders="colors" # list of folders to symlink in homedir
 
@@ -142,9 +142,12 @@ if [[ $installzsh = true ]]; then
 fi
 
 if [[ -d ~/.vim ]]; then
+  echo -n "Backing up ~/.vim ... "
+  cp -R ~/.vim $olddir/vim
+  echo "Done"
   echo -n "Clearing out ~/.vim ... "
   cd ~/.vim
-  ls | grep -v bundle | xargs rm -rf
+  ls | grep -v bundle | grep -v UltiSnips | xargs rm -rf
   echo "Done"
 else
   mkdir -p ~/.vim
