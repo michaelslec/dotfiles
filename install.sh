@@ -46,7 +46,7 @@ fi
 # Installs YouCompleteMe
 function ycmInstall {
   cd ~/.vim/bundle/YouCompleteMe
-  sudo ./install.sh --clang-completer
+  ./install.sh --clang-completer
 }
 
 function backup {
@@ -193,8 +193,8 @@ echo -n "Adding temp vimrc to \$HOME directory... "
 ln -s $dir/files/vimrc.temp ~/.vimrc
 echo "Done"
 
-sudo vim +BundleClean +qall!
-sudo vim +BundleInstall +qall!
+vim +BundleClean +qall!
+vim +BundleInstall +qall!
 
 if [[ $installycm = true ]]; then
   ycmInstall
@@ -209,7 +209,7 @@ for file in $files; do
 done
 
 cd ~/.vim/bundle/vimproc.vim
-sudo make
+make
 cd $dir
 
 echo "Congratulations! You've just installed my favorite way to code on your computer ;)"
