@@ -4,8 +4,10 @@
 
 set nocompatible " Be IMproved
 
-set rtp+=~/.vim/bundle/vundle/ " Add vundle to run time path
-call vundle#rc() " Start vundle
+set rtp+=~/.vim/bundle/Vundle.vim " Add vundle to run time path
+call vundle#begin() " Start vundle
+
+filetype off
 
 " Let Vundle manage Vundle
 Plugin 'gmarik/vundle'
@@ -44,4 +46,5 @@ Plugin 'othree/html5.vim'
 " All the color schemes in the world!
 Plugin 'daylerees/colour-schemes'
 
-filetype plugin indent on " Required for Vundle
+call vundle#end()            " required
+filetype plugin indent on    " required
