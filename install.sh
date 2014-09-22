@@ -64,7 +64,7 @@ function backup {
 # Installs necessities for Linux systems (mainly Ubuntu)
 if [[ $( uname -s  ) == "Linux" ]]; then
   if which pacman 2> /dev/null; then
-    sudo pacman -S gvim make ctags python cmake python-pip zsh tmux --needed
+    sudo pacman -S gvim make ctags python cmake python-pip zsh tmux wget --needed
   elif which apt-get 2> /dev/null; then
     sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh tmux -y
   fi
