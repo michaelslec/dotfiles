@@ -198,12 +198,11 @@ HTML5 + inline SVG omnicomplete funtion, indent and syntax for Vim.
 Based on the default htmlcomplete.vim.
 
 # Compatibility
-As of right now, this script only works on Linux systems. This has only
-been tested on Ubuntu as it is the current OS I run on my computer. I do
-intend to add support for other flavors of Linux as well as Mac;
-however, I do not intend to add support for Windows. It would be too
-time consuming and I don't believe that enough people would gain from it
-to consider it worthwhile.
+Currently, this Vim distribution supports Mac OS X, Ubuntu (well, Debian
+systems in general), and Arch Linux (Pacman package manager). I do not
+plan on adding support for Windows, however, as I don't believe it will
+be worth the time and effort. If you want to help add support for other
+OS's, that would be greatly appreciated!
 
 # A Note to Users
 If you are running a text editor or terminal emulator of some kind that,
