@@ -112,6 +112,8 @@ by Dayle Rees! They're very well designed. To see them, simply type
 'colorscheme' in to the command line in vim and then tab through all the
 options.
 
+Currently, the default enabled color scheme is Bubblegum.
+
 ## Plugins
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
 Provides automatic closing of quotes, parenthesis, brackets, etc.
