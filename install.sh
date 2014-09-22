@@ -180,8 +180,8 @@ echo -n "Adding temp vimrc to \$HOME directory... "
 ln -s $dir/files/vimrc.temp ~/.vimrc
 echo "Done"
 
-vim +BundleClean +qall!
-vim +BundleInstall +qall!
+vim +PlugClean +qall!
+vim +PlugUpdate! +qall!
 
 if [[ $installycm = true ]]; then
   ycmInstall
