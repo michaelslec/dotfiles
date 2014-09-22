@@ -9,7 +9,7 @@ call plug#begin('~/.vim/bundle')
 " Bundles for code editing
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install --clang-completer' }
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
@@ -27,7 +27,7 @@ Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
 
 " Bundles for Unite
-Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
 
