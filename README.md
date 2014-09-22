@@ -11,6 +11,7 @@ help.
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Installation](#installation)
+- [A Quick Note](#a-quick-note)
   - [Ubuntu](#ubuntu)
   - [Mac OS X](#mac-os-x)
 - [Zsh](#zsh)
@@ -24,6 +25,12 @@ help.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # Installation
+
+# A Quick Note
+As this is a Vim distribution, I highly recommend using the dev branch.
+Due to the topic of this repo, instability is not really an issue. You
+are welcome to use the Master branch, however. I just recommend using
+the dev branch in order to stay the most up-to-date in the Vim world.
 
 ## Ubuntu
 1. Run this command in your terminal:
