@@ -43,12 +43,6 @@ elif [[ $( uname -s ) == "Darwin" ]]; then
 fi
 }
 
-# Installs YouCompleteMe
-function ycmInstall {
-  cd ~/.vim/bundle/YouCompleteMe
-  ./install.sh --clang-completer
-}
-
 function backup {
   # create dotfiles_old in homedir
   echo -n "Creating $olddir for backup of any existing dotfiles in $HOME ... "
@@ -128,15 +122,6 @@ while true; do
   esac
 done
 
-while true; do
-  read -p "Would you like to install ycm?: " yn
-  case $yn in
-      [Yy]* ) installycm=true; break;;
-      [Nn]* ) break;;
-      * ) echo "Please answer yes or no.";;
-  esac
-done
-
 if [[ $fontdownload = true ]]; then
   powerlineFonts
 fi
@@ -209,10 +194,6 @@ for file in $files; do
   echo "Done"
   echo ""
 done
-
-cd ~/.vim/bundle/vimproc.vim
-make
-cd $dir
 
 echo "Congratulations! You've just installed my favorite way to code on your computer ;)"
 sleep 1
