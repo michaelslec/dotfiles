@@ -11,6 +11,7 @@ help.
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Installation](#installation)
+- [A Quick Note](#a-quick-note)
   - [Ubuntu](#ubuntu)
   - [Mac OS X](#mac-os-x)
 - [Zsh](#zsh)
@@ -24,6 +25,12 @@ help.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # Installation
+
+# A Quick Note
+As this is a Vim distribution, I highly recommend using the dev branch.
+Due to the topic of this repo, instability is not really an issue. You
+are welcome to use the Master branch, however. I just recommend using
+the dev branch in order to stay the most up-to-date in the Vim world.
 
 ## Ubuntu
 1. Run this command in your terminal:
@@ -112,7 +119,12 @@ by Dayle Rees! They're very well designed. To see them, simply type
 'colorscheme' in to the command line in vim and then tab through all the
 options.
 
+Currently, the default enabled color scheme is Bubblegum.
+
 ## Plugins
+* ###[vim-plug](http://github.com/junegunn/vim-plug)
+Minimalist Vim Plugin Manager
+
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
 Provides automatic closing of quotes, parenthesis, brackets, etc.
 
@@ -198,12 +210,11 @@ HTML5 + inline SVG omnicomplete funtion, indent and syntax for Vim.
 Based on the default htmlcomplete.vim.
 
 # Compatibility
-As of right now, this script only works on Linux systems. This has only
-been tested on Ubuntu as it is the current OS I run on my computer. I do
-intend to add support for other flavors of Linux as well as Mac;
-however, I do not intend to add support for Windows. It would be too
-time consuming and I don't believe that enough people would gain from it
-to consider it worthwhile.
+Currently, this Vim distribution supports Mac OS X, Ubuntu (well, Debian
+systems in general), and Arch Linux (Pacman package manager). I do not
+plan on adding support for Windows, however, as I don't believe it will
+be worth the time and effort. If you want to help add support for other
+OS's, that would be greatly appreciated!
 
 # A Note to Users
 If you are running a text editor or terminal emulator of some kind that,
