@@ -181,7 +181,7 @@ ln -s $dir/files/vimrc.temp ~/.vimrc
 echo "Done"
 
 vim +PlugClean +qall!
-vim +PlugUpdate! +qall!
+vim +PlugUpdate +qall!
 
 if [[ $installycm = true ]]; then
   ycmInstall
