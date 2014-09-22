@@ -43,12 +43,6 @@ elif [[ $( uname -s ) == "Darwin" ]]; then
 fi
 }
 
-# Installs YouCompleteMe
-function ycmInstall {
-  cd ~/.vim/bundle/YouCompleteMe
-  ./install.sh --clang-completer
-}
-
 function backup {
   # create dotfiles_old in homedir
   echo -n "Creating $olddir for backup of any existing dotfiles in $HOME ... "
@@ -70,7 +64,7 @@ function backup {
 # Installs necessities for Linux systems (mainly Ubuntu)
 if [[ $( uname -s  ) == "Linux" ]]; then
   if which pacman 2> /dev/null; then
-    sudo pacman -S gvim make ctags python cmake python-pip zsh tmux --needed
+    sudo pacman -S gvim make ctags python cmake python-pip zsh tmux wget --needed
   elif which apt-get 2> /dev/null; then
     sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh tmux -y
   fi
@@ -128,15 +122,6 @@ while true; do
   esac
 done
 
-while true; do
-  read -p "Would you like to install ycm?: " yn
-  case $yn in
-      [Yy]* ) installycm=true; break;;
-      [Nn]* ) break;;
-      * ) echo "Please answer yes or no.";;
-  esac
-done
-
 if [[ $fontdownload = true ]]; then
   powerlineFonts
 fi
@@ -164,9 +149,11 @@ for folder in $folders; do
   echo ""
 done
 
-# Download vundle
-if [ ! -d "/home/michael/.vim/bundle/Vundle.vim"  ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Download vim-plug
+if [ ! -d "/home/michael/.vim/autoload/plug.vim"  ]; then
+  mkdir -p ~/.vim/autoload
+  curl -fLo ~/.vim/autoload/plug.vim \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 if [[ $installzsh = false && $installtmux = false ]]; then
@@ -193,8 +180,8 @@ echo -n "Adding temp vimrc to \$HOME directory... "
 ln -s $dir/files/vimrc.temp ~/.vimrc
 echo "Done"
 
-vim +BundleClean +qall!
-vim +BundleInstall +qall!
+vim +PlugClean +qall!
+vim +PlugUpdate +qall!
 
 if [[ $installycm = true ]]; then
   ycmInstall
@@ -207,10 +194,6 @@ for file in $files; do
   echo "Done"
   echo ""
 done
-
-cd ~/.vim/bundle/vimproc.vim
-make
-cd $dir
 
 echo "Congratulations! You've just installed my favorite way to code on your computer ;)"
 sleep 1

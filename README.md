@@ -122,6 +122,9 @@ options.
 Currently, the default enabled color scheme is Bubblegum.
 
 ## Plugins
+* ###[vim-plug](http://github.com/junegunn/vim-plug)
+Minimalist Vim Plugin Manager
+
 * ###[DelimitMate](http://github.com/Raimondi/delimitMate)
 Provides automatic closing of quotes, parenthesis, brackets, etc.
 

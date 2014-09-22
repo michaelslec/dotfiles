@@ -4,50 +4,43 @@
 
 set nocompatible " Be IMproved
 
-set rtp+=~/.vim/bundle/Vundle.vim " Add vundle to run time path
-call vundle#begin() " Start vundle
-
-filetype off
-
-" Let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+call plug#begin('~/.vim/bundle')
 
 " Bundles for code editing
-Plugin 'Raimondi/delimitMate'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-surround'
 
 " Bundles that make life a HELL OF A LOT easier
-Plugin 'airblade/vim-gitgutter'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'duff/vim-bufonly'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'tpope/vim-fugitive'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'mattn/emmet-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c'] }
+Plug 'duff/vim-bufonly'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
 
 " Bundles for Unite
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/unite.vim'
 
 " Bundles for making stuff look better
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'bling/vim-airline'
-Plugin 'othree/html5.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'bling/vim-airline'
+Plug 'othree/html5.vim', { 'for': 'html' }
 
 " All the color schemes in the world!
-Plugin 'daylerees/colour-schemes'
+Plug 'daylerees/colour-schemes'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Auto-loads matchit assuming user has not installed a newer version
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -156,6 +149,8 @@ set noshowmode
 " ----------------------------------------------------------------------------
 " editing text
 " ----------------------------------------------------------------------------
+filetype plugin indent on
+
 set backspace=indent,eol,start " Makes backspace behave like most editors
 
 set textwidth=72 " Sets wrapping point at 72 characters
