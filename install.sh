@@ -164,9 +164,11 @@ for folder in $folders; do
   echo ""
 done
 
-# Download vundle
-if [ ! -d "/home/michael/.vim/bundle/Vundle.vim"  ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Download vim-plug
+if [ ! -d "/home/michael/.vim/autoload/plug.vim"  ]; then
+  mkdir -p ~/.vim/autoload
+  curl -fLo ~/.vim/autoload/plug.vim \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 if [[ $installzsh = false && $installtmux = false ]]; then
