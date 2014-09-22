@@ -225,7 +225,7 @@ nnoremap <leader>fsl :FSSplitLeft<CR>
 nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
 
 " Open current file in Chrome
-nnoremap <leader>o :!google-chrome %<CR>
+nnoremap <leader>o :!google-chrome-beta %<CR>
 
 " Open listing of all buffers
 nnoremap <leader>l :ls<CR>:b
