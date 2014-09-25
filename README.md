@@ -6,6 +6,11 @@ through phases of coding and development and then back to gaming, so updates may
 come infrequently at times. Please submit any issues! I'm always willing to
 help.
 
+As this is a Vim distribution, I highly recommend using the dev branch.
+Due to the topic of this repo, instability is not really an issue. You
+are welcome to use the Master branch, however. I just recommend using
+the dev branch in order to stay the most up-to-date in the Vim world.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
@@ -24,13 +29,14 @@ help.
 - [A Note to Users](#a-note-to-users)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+# A Note to Users
+If you are running a text editor or terminal emulator of some kind that,
+for whatever reason, does not support the patched fonts provided by
+Powerline, please use one of the patched fonts provided by my install
+script. Simply change your font to any font that has "for powerline" in the
+name. This should fix the issue. If not, feel free to message me! I'm
+always willing to help. Thank you!
 # Installation
-
-# A Quick Note
-As this is a Vim distribution, I highly recommend using the dev branch.
-Due to the topic of this repo, instability is not really an issue. You
-are welcome to use the Master branch, however. I just recommend using
-the dev branch in order to stay the most up-to-date in the Vim world.
 
 ## Ubuntu
 1. Run this command in your terminal:
@@ -215,11 +221,3 @@ systems in general), and Arch Linux (Pacman package manager). I do not
 plan on adding support for Windows, however, as I don't believe it will
 be worth the time and effort. If you want to help add support for other
 OS's, that would be greatly appreciated!
-
-# A Note to Users
-If you are running a text editor or terminal emulator of some kind that,
-for whatever reason, does not support the patched fonts provided by
-Powerline, please use one of the patched fonts provided by my install
-script. Simply change your font to any font that has "for powerline" in the
-name. This should fix the issue. If not, feel free to message me! I'm
-always willing to help. Thank you!
