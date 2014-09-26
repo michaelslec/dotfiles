@@ -15,6 +15,7 @@ Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
+Plug 'lervag/vim-latex'
 
 " Bundles that make life a HELL OF A LOT easier
 Plug 'airblade/vim-gitgutter'
@@ -54,6 +55,7 @@ endif
 set incsearch " Highlight pattern matches as you type
 set ignorecase " Ignore case when using a search pattern
 set smartcase " Override 'ignorecase' when pattern has upper case character
+
 " ----------------------------------------------------------------------------
 " tags
 " ----------------------------------------------------------------------------
