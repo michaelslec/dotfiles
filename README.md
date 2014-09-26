@@ -15,8 +15,8 @@ the dev branch in order to stay the most up-to-date in the Vim world.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
+- [A Note to Users](#a-note-to-users)
 - [Installation](#installation)
-- [A Quick Note](#a-quick-note)
   - [Ubuntu](#ubuntu)
   - [Mac OS X](#mac-os-x)
 - [Zsh](#zsh)
@@ -26,7 +26,6 @@ the dev branch in order to stay the most up-to-date in the Vim world.
   - [Color Schemes](#color-schemes-1)
   - [Plugins](#plugins)
 - [Compatibility](#compatibility)
-- [A Note to Users](#a-note-to-users)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # A Note to Users
