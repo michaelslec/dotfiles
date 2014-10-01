@@ -16,6 +16,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'xuhdev/vim-latex-live-preview'
 
 " Bundles that make life a HELL OF A LOT easier
 Plug 'airblade/vim-gitgutter'
