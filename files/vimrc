@@ -218,6 +218,11 @@ nnoremap <leader>fs :FSHere<CR>
 nnoremap <leader>fsr :FSSplitRight<CR>
 nnoremap <leader>fsl :FSSplitLeft<CR>
 
+" Latex mappings
+nnoremap <leader>lb :!rubber --pdf %<CR> :!rubber --clean %<CR>
+nnoremap <leader>lv :!evince %:r.pdf<CR>
+nnoremap <leader>lbv :!rubber --pdf %<CR> :!rubber --clean %<CR> :!evince %:r.pdf<CR>
+
 " Open vimrc file in a new tab for editing
 nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
 
