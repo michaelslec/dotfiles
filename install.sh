@@ -64,14 +64,15 @@ function backup {
 # Installs necessities for Linux systems (mainly Ubuntu)
 if [[ $( uname -s  ) == "Linux" ]]; then
   if which pacman 2> /dev/null; then
-    sudo pacman -S gvim make ctags python cmake python-pip zsh tmux wget --needed
+    sudo pacman -S gvim make ctags python cmake python-pip zsh tmux wget clang --needed
   elif which apt-get 2> /dev/null; then
-    sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh tmux -y
+    sudo apt-get install vim vim-gnome make exuberant-ctags python-dev build-essential cmake python-pip zsh tmux libclang-dev -y
   fi
 elif [[ $( uname -s ) == "Darwin" ]]; then
   if which brew 2> /dev/null; then
     brew install macvim --override-system-vim
     brew install wget make zsh tmux python
+    brew install llvm --with-clang --with-asan --HEAD
   else
     while true; do
       read -p "Do you mind if I install Homebrew. I need it for installing dependencies for this Vim distribution: " yn
