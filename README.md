@@ -1,5 +1,9 @@
 [![Stories in Ready](https://badge.waffle.io/michaelslec/dotfiles.png?label=ready&title=Ready)](https://waffle.io/michaelslec/dotfiles)  [![Project Status](http://stillmaintained.com/michaelslec/dotfiles.png)](http://stillmaintained.com/michaelslec/dotfiles)
 
+This branch has custom configurations for my own Vim. You may use this
+branch; however, I recommend using the dev branch and customising it to
+your own needs. It's mappings are less specific
+
 # Dotfiles
 These are all of my dotfiles I use on my current Ubuntu system. I usually go
 through phases of coding and development and then back to gaming, so updates may
