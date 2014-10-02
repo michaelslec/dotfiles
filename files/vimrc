@@ -9,7 +9,7 @@ call plug#begin('~/.vim/bundle')
 " Bundles for code editing
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
