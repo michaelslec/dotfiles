@@ -15,7 +15,6 @@ Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'xuhdev/vim-latex-live-preview'
 
 " Bundles that make life a HELL OF A LOT easier
@@ -218,6 +217,11 @@ nnoremap <silent> <leader>gp :Git push origin
 nnoremap <leader>fs :FSHere<CR>
 nnoremap <leader>fsr :FSSplitRight<CR>
 nnoremap <leader>fsl :FSSplitLeft<CR>
+
+" Latex mappings
+nnoremap <leader>lb :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR>
+nnoremap <leader>lv :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
+nnoremap <leader>lbv :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR> :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
 
 " Open vimrc file in a new tab for editing
 nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
