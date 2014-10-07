@@ -211,7 +211,7 @@ nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push origin
+nnoremap <silent> <leader>gp :Git push -u origin
 
 " Fswitch mappings
 nnoremap <leader>fs :FSHere<CR>
