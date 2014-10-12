@@ -20,7 +20,4 @@ fi
 # Make tmuxinator easier to use
 alias mux=tmuxinator
 
-# For custom key mappings
-xmodmap ~/.Xmodmap
-
 PATH=/usr/bin:$PATH:~/scripts
