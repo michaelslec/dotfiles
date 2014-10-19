@@ -26,6 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
+Plug 'tpope/vim-dispatch'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
