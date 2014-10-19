@@ -354,6 +354,7 @@ let g:ycm_min_num_of_chars_for_completion = 1
 " Ultisnips
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsListSnippets="<c-e>"
 
 " Syntastic
