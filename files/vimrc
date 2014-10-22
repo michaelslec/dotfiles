@@ -430,8 +430,8 @@ endfunction
 
 augroup formatting
   autocmd!
-  autocmd bufenter *.md,*.markdown,*.txt,COMMIT_EDITMSG,*.tex setlocal formatoptions+=ta
-  autocmd bufenter *.md,*.markdown,*.txt,COMMIT_EDITMSG,*.tex setlocal spell
+  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=ta
+  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal spell
 augroup END
 
 augroup relativenumber
