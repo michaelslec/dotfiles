@@ -67,6 +67,8 @@ set smartcase " Override 'ignorecase' when pattern has upper case character
 
 set linebreak " For lines longer than the window, wrap intelligently
 
+set colorcolumn=72 " Sets a colored column on column 72
+
 set number " Precedes each line with a line number
 set relativenumber " Fixes bug with relativenumber/number switch
 
