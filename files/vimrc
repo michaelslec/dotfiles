@@ -429,11 +429,13 @@ endfunction
 " ----------------------------------------------------------------------------
 
 augroup formatting
+  autocmd!
   autocmd bufenter *.md,*.markdown,*.txt,COMMIT_EDITMSG,*.tex setlocal formatoptions+=ta
   autocmd bufenter *.md,*.markdown,*.txt,COMMIT_EDITMSG,*.tex setlocal spell
 augroup END
 
 augroup relativenumber
+  autocmd!
   autocmd InsertEnter,focusLost * :set norelativenumber
   autocmd InsertLeave,focusGained * :set relativenumber
 augroup END
