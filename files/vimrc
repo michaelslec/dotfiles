@@ -430,7 +430,7 @@ endfunction
 
 augroup formatting
   autocmd!
-  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=ta
+  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=t
   autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal spell
 augroup END
 
