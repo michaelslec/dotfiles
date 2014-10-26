@@ -223,6 +223,10 @@ Provides a live preview of the output PDF of your LaTeX file.
 * ### [vim-dispatch](https://github.com/tpope/vim-dispatch)
 Asynchronous build and test dispatcher
 
+* ### [vim-abolish](https://github.com/tpope/vim-abolish)
+Easily search for, substitute, and abbreviate multiple variants of a
+word
+
 # Compatibility
 Currently, this Vim distribution supports Mac OS X, Ubuntu (well, Debian
 systems in general), and Arch Linux (Pacman package manager). I do not
