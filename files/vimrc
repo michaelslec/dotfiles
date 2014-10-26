@@ -368,7 +368,6 @@ let g:syntastic_check_on_open=1
 let g:netrw_preview=1
 let g:netrw_special_syntax=1
 let g:netrw_banner=0
-let g:netrw_localrmdir='rm -rf'
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
