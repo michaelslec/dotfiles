@@ -1,6 +1,6 @@
 #!/bin/bash
 ########################################################################
-#                 michaelslec's Vim distribution v1.2                  #
+#                 michaelslec's Vim distribution v1.5                  #
 ########################################################################
 
 
@@ -47,7 +47,6 @@ function backup {
   # create dotfiles_old in homedir
   echo -n "Creating $olddir for backup of any existing dotfiles in $HOME ... "
   mkdir -p $olddir
-  rm -rf $olddir/*
   echo "Done"
 
   # change to the dotfiles directory
