@@ -15,16 +15,21 @@ Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
+Plug 'xuhdev/vim-latex-live-preview'
 
 " Bundles that make life a HELL OF A LOT easier
 Plug 'airblade/vim-gitgutter'
-Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c'] }
+Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c', 'h','hpp'] }
 Plug 'duff/vim-bufonly'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c'] }
+Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c', 'h', 'hpp'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
+Plug 'tpope/vim-abolish'
+Plug 'mhinz/vim-startify'
+Plug 'zhaocai/GoldenView.Vim', {'on': '<Plug>ToggleGoldenViewAutoResize'}
+Plug 'oblitum/rainbow'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -54,6 +59,8 @@ endif
 set incsearch " Highlight pattern matches as you type
 set ignorecase " Ignore case when using a search pattern
 set smartcase " Override 'ignorecase' when pattern has upper case character
+set gdefault " Defaults global argument in substitution command
+
 " ----------------------------------------------------------------------------
 " tags
 " ----------------------------------------------------------------------------
@@ -63,7 +70,8 @@ set smartcase " Override 'ignorecase' when pattern has upper case character
 " ----------------------------------------------------------------------------
 
 set linebreak " For lines longer than the window, wrap intelligently
-set showbreak=↪\  " String to put at the start of lines that have been wrapped
+
+set colorcolumn=72 " Sets a colored column on column 72
 
 set number " Precedes each line with a line number
 set relativenumber " Fixes bug with relativenumber/number switch
@@ -86,7 +94,7 @@ set cursorline " Highlights current line cursor is on
 if has("unix") " Checks to see if OS is mac or linux
   if system('uname') =~ 'Darwin' " If OS is Mac
     set guifont=Inconsolata\ for\ Powerline:h16
-  else " IF OS is Linux
+  else " If OS is Linux
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
   endif
 endif
@@ -100,11 +108,6 @@ set laststatus=2 " Last window will always have a status line
 set hidden " Allows switching buffers without saving
 set splitright " Defaults splitting windows the right
 set splitbelow " Default's splitting windows below
-
-set winwidth=130
-set winheight=5
-set winminheight=5
-set winheight=999
 
 " ----------------------------------------------------------------------------
 " multiple tab pages
@@ -203,18 +206,8 @@ let mapleader = ","
 " netrw
 nnoremap <leader>n :e .<CR>
 
-" Fugitive mappings
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gc :Gcommit
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push origin
-
-" Fswitch mappings
-nnoremap <leader>fs :FSHere<CR>
-nnoremap <leader>fsr :FSSplitRight<CR>
-nnoremap <leader>fsl :FSSplitLeft<CR>
+vnoremap > >gv
+vnoremap < <gv
 
 " Open vimrc file in a new tab for editing
 nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
@@ -222,14 +215,8 @@ nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
 " Open current file in Chrome
 nnoremap <leader>o :!google-chrome-beta %<CR>
 
-" Open listing of all buffers
-nnoremap <leader>l :ls<CR>:b
-
 " Save file
 nnoremap <leader>w :w<CR>
-
-" Saves file and runs make! test
-" nnoremap <leader>t :w<CR> :make! test<CR>
 
 " Delete current buffer
 nnoremap <leader>d :bd %<CR>
@@ -247,23 +234,45 @@ inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
 
-" Delete all buffers except for current
-nnoremap <leader>da :BufOnly<CR>
-
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Unite mappings
-nnoremap <C-p> :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
-
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
+
+" BufOnly mappings
+nnoremap <leader>da :BufOnly<CR>
+"
+" Fugitive mappings
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+
+" Fswitch mappings
+nnoremap <leader>fs :FSHere<CR>
+nnoremap <leader>fsr :FSSplitRight<CR>
+nnoremap <leader>fsl :FSSplitLeft<CR>
+
+" Latex mappings
+nnoremap <leader>lb :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR>
+nnoremap <leader>lv :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
+nnoremap <leader>lbv :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR> :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
+
+" Unite mappings
+nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<CR>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file<CR>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<CR>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<CR>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<CR>
+
+" GoldenView.vim mappings
+nmap <F4> <Plug>ToggleGoldenViewAutoResize
 
 " ----------------------------------------------------------------------------
 " reading and writing files
@@ -349,6 +358,7 @@ let g:ycm_min_num_of_chars_for_completion = 1
 " Ultisnips
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsListSnippets="<c-e>"
 
 " Syntastic
@@ -361,15 +371,20 @@ let g:syntastic_check_on_open=1
 let g:netrw_preview=1
 let g:netrw_special_syntax=1
 let g:netrw_banner=0
-let g:netrw_localrmdir='rm -rf'
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " Unite
-let g:unite_source_history_yank_enable = 1
+let g:unite_enable_start_insert = 1
+let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
+
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ ], '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -377,13 +392,20 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 " Emmet
 let g:user_emmet_leader_key='<C-e>'
 
+" vim-startify
+let g:startify_session_dir = '~/.vim/.cache/sessions'
+let g:startify_change_to_vcs_root = 1
+let g:startify_show_sessions = 1
+
+" GoldenView.vim
+let g:goldenview__enable_default_mapping=0
+
+" Rainbow
+au FileType c,cpp,objc,objcpp,python,javascript call rainbow#load()
+
 " ----------------------------------------------------------------------------
 " various
 " ---------------------------------------------------------------------------
-
-set gdefault " Defaults global argument in substitution command
-vnoremap > >gv
-vnoremap < <gv
 
 " ----------------------------------------------------------------------------
 " Functions
@@ -403,7 +425,6 @@ function! g:UltiSnips_Complete()
 endfunction
 
 function! s:unite_settings()
-  " Enable navigation with control-j and control-k in insert mode
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
   imap <silent><buffer><expr> <C-x> unite#do_action('split')
@@ -418,11 +439,13 @@ endfunction
 " ----------------------------------------------------------------------------
 
 augroup formatting
-  autocmd bufenter *.md,*.markdown,*.txt,gitcommit setlocal formatoptions+=t
-  autocmd bufenter *.md,*.markdown,*.txt,gitcommit setlocal spell
+  autocmd!
+  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=t
+  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal spell
 augroup END
 
 augroup relativenumber
+  autocmd!
   autocmd InsertEnter,focusLost * :set norelativenumber
   autocmd InsertLeave,focusGained * :set relativenumber
 augroup END

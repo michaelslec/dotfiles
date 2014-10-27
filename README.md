@@ -214,6 +214,25 @@ Provides support for expanding abbreviations similar to emmet.
 HTML5 + inline SVG omnicomplete funtion, indent and syntax for Vim.
 Based on the default htmlcomplete.vim.
 
+* ###[LaTeX-Box](http://github.com/LaTeX-Box-Team/LaTeX-Box)
+Lightweight Toolbox for LaTeX.
+
+* ### [vim-latex-live-preview](http://github.com/xuhdev/vim-latex-live-preview)
+Provides a live preview of the output PDF of your LaTeX file.
+
+* ### [vim-abolish](https://github.com/tpope/vim-abolish)
+Easily search for, substitute, and abbreviate multiple variants of a
+word.
+
+* ### [vim-startify](https://github.com/mhinz/vim-startify)
+A fancy start screen for Vim.
+
+* ### [GoldenView.vim](https://github.com/zhaocai/GoldenView.Vim)
+Smooth automatic window resizing in Vim.
+
+* ### [vim-rainbow](https://github.com/oblitum/rainbow)
+Rainbow parentheses improved.
+
 # Compatibility
 Currently, this Vim distribution supports Mac OS X, Ubuntu (well, Debian
 systems in general), and Arch Linux (Pacman package manager). I do not
