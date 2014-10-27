@@ -29,6 +29,7 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee']
 Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'oblitum/rainbow'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -251,14 +252,17 @@ inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
 
-" Delete all buffers except for current
-nnoremap <leader>da :BufOnly<CR>
-
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Forgot to sudo? No problem ;)
+cmap w!! w !sudo tee % >/dev/null
+
+" BufOnly mappings
+nnoremap <leader>da :BufOnly<CR>
 
 " Unite mappings
 nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<CR>
@@ -267,8 +271,8 @@ nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<CR>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<CR>
 
-" Forgot to sudo? No problem ;)
-cmap w!! w !sudo tee % >/dev/null
+" GoldenView.vim mappings
+nmap <F4> <Plug>ToggleGoldenViewAutoResize
 
 " ----------------------------------------------------------------------------
 " reading and writing files
@@ -395,6 +399,9 @@ let g:startify_show_sessions = 1
 
 " GoldenView.vim
 let g:goldenview__enable_default_mapping=0
+
+" Rainbow
+au FileType c,cpp,objc,objcpp,python,javascript call rainbow#load()
 
 " ----------------------------------------------------------------------------
 " various

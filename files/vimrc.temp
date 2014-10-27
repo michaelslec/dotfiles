@@ -29,6 +29,7 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee']
 Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'oblitum/rainbow'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
