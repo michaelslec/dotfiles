@@ -19,14 +19,15 @@ Plug 'xuhdev/vim-latex-live-preview'
 
 " Bundles that make life a HELL OF A LOT easier
 Plug 'airblade/vim-gitgutter'
-Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c'] }
+Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c', 'h','hpp'] }
 Plug 'duff/vim-bufonly'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c'] }
+Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c', 'h', 'hpp'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-abolish'
+Plug 'mhinz/vim-startify'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
