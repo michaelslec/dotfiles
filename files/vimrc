@@ -266,7 +266,7 @@ map <C-l> <C-w>l
 
 " Unite mappings
 nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<CR>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file/async<CR>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file<CR>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<CR>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<CR>
