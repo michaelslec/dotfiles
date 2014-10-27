@@ -19,15 +19,15 @@ Plug 'xuhdev/vim-latex-live-preview'
 
 " Bundles that make life a HELL OF A LOT easier
 Plug 'airblade/vim-gitgutter'
-Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c'] }
+Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c', 'h','hpp'] }
 Plug 'duff/vim-bufonly'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c'] }
+Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c', 'h', 'hpp'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-abolish'
+Plug 'mhinz/vim-startify'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -57,6 +57,7 @@ endif
 set incsearch " Highlight pattern matches as you type
 set ignorecase " Ignore case when using a search pattern
 set smartcase " Override 'ignorecase' when pattern has upper case character
+set gdefault " Defaults global argument in substitution command
 
 " ----------------------------------------------------------------------------
 " tags
@@ -91,7 +92,7 @@ set cursorline " Highlights current line cursor is on
 if has("unix") " Checks to see if OS is mac or linux
   if system('uname') =~ 'Darwin' " If OS is Mac
     set guifont=Inconsolata\ for\ Powerline:h16
-  else " IF OS is Linux
+  else " If OS is Linux
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
   endif
 endif
@@ -208,13 +209,16 @@ let mapleader = ","
 " netrw
 nnoremap <leader>n :e .<CR>
 
+vnoremap > >gv
+vnoremap < <gv
+
 " Fugitive mappings
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push
+nnoremap <silent> <leader>gp :Git push<CR>
 
 " Fswitch mappings
 nnoremap <leader>fs :FSHere<CR>
@@ -234,9 +238,6 @@ nnoremap <leader>o :!google-chrome-beta %<CR>
 
 " Save file
 nnoremap <leader>w :w<CR>
-
-" Saves file and runs make! test
-" nnoremap <leader>t :w<CR> :make! test<CR>
 
 " Delete current buffer
 nnoremap <leader>d :bd %<CR>
@@ -264,11 +265,11 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Unite mappings
-nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file/async<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<CR>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file/async<CR>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<CR>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<CR>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<CR>
 
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
@@ -391,13 +392,14 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 " Emmet
 let g:user_emmet_leader_key='<C-e>'
 
+" vim-startify
+let g:startify_session_dir = '~/.vim/.cache/sessions'
+let g:startify_change_to_vcs_root = 1
+let g:startify_show_sessions = 1
+
 " ----------------------------------------------------------------------------
 " various
 " ---------------------------------------------------------------------------
-
-set gdefault " Defaults global argument in substitution command
-vnoremap > >gv
-vnoremap < <gv
 
 " ----------------------------------------------------------------------------
 " Functions
