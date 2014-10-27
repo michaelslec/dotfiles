@@ -28,6 +28,7 @@ Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c', 'h', 'hpp'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
 Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
+Plug 'zhaocai/GoldenView.Vim'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -106,11 +107,6 @@ set laststatus=2 " Last window will always have a status line
 set hidden " Allows switching buffers without saving
 set splitright " Defaults splitting windows the right
 set splitbelow " Default's splitting windows below
-
-set winwidth=130
-set winheight=5
-set winminheight=5
-set winheight=999
 
 " ----------------------------------------------------------------------------
 " multiple tab pages
@@ -396,6 +392,9 @@ let g:user_emmet_leader_key='<C-e>'
 let g:startify_session_dir = '~/.vim/.cache/sessions'
 let g:startify_change_to_vcs_root = 1
 let g:startify_show_sessions = 1
+
+" GoldenView.vim
+let g:goldenview__enable_default_mapping=0
 
 " ----------------------------------------------------------------------------
 " various

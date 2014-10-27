@@ -28,6 +28,7 @@ Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c', 'h', 'hpp'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
 Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
+Plug 'zhaocai/GoldenView.Vim'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
