@@ -264,9 +264,11 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Unite mappings
-nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_mru file_rec/async:!<cr>
+nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file/async<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
 
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
