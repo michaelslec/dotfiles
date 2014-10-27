@@ -230,6 +230,9 @@ A fancy start screen for Vim.
 * ### [GoldenView.vim](https://github.com/zhaocai/GoldenView.Vim)
 Smooth automatic window resizing in Vim.
 
+* ### [rainbow](https://github.com/oblitum/rainbow)
+Rainbow parentheses improved.
+
 # Compatibility
 Currently, this Vim distribution supports Mac OS X, Ubuntu (well, Debian
 systems in general), and Arch Linux (Pacman package manager). I do not
