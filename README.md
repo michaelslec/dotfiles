@@ -237,6 +237,9 @@ Smooth automatic window resizing in Vim.
 * ### [vim-rainbow](https://github.com/oblitum/rainbow)
 Rainbow parentheses improved.
 
+* ### [Gmail.vim](https://github.com/yuratomo/gmail.vim)
+A Gmail viewer for Vim.
+
 # Compatibility
 Currently, this Vim distribution supports Mac OS X, Ubuntu (well, Debian
 systems in general), and Arch Linux (Pacman package manager). I do not

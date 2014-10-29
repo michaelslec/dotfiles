@@ -1,4 +1,4 @@
-" ----------------------------------------------------------------------
+" ----------------------------------------------------------------------D
 " Vundle
 " ----------------------------------------------------------------------
 
@@ -30,6 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim', {'on': '<Plug>ToggleGoldenViewAutoResize'}
 Plug 'oblitum/rainbow'
+Plug 'yuratomo/gmail.vim'
 Plug 'junegunn/goyo.vim'
 
 " Bundles for Unite
@@ -409,6 +410,11 @@ let g:goldenview__enable_default_mapping=0
 
 " Rainbow
 au FileType c,cpp,objc,objcpp,python,javascript call rainbow#load()
+
+" Gmail.vim
+let g:gmail_imap = 'imap.gmail.com:993'
+let g:gmail_smtp = 'smtp.gmail.com:465'
+let g:gmail_user_name = 'michaelslec98@gmail.com'
 
 " ----------------------------------------------------------------------
 " various

@@ -30,6 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim', {'on': '<Plug>ToggleGoldenViewAutoResize'}
 Plug 'oblitum/rainbow'
+Plug 'yuratomo/gmail.vim'
 
 " Bundles for Unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
