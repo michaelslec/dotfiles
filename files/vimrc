@@ -228,7 +228,7 @@ nnoremap ; :
 nnoremap <silent> <leader>W :call <SID>StripTrailingWhitespaces()<CR>
 
 " Thank god, no more ESC key
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 " Better line navigation
 nnoremap j gj
