@@ -276,7 +276,7 @@ nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<CR>
 nmap <F4> <Plug>ToggleGoldenViewAutoResize
 
 " Goyo.vim
-nnoremap <leader>G :Goyo<CR>
+nnoremap <leader>g :Goyo<CR>
 
 " ----------------------------------------------------------------------
 " reading and writing files
