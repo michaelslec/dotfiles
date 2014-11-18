@@ -446,7 +446,7 @@ augroup formatting
   autocmd!
   autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=t
   autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal spell
-  autocmd FileType markdown,mkd,txt,gitcommit,tex :Goyo
+  autocmd FileType markdown,mkd,txt,tex :Goyo
 augroup END
 
 augroup relativenumber
