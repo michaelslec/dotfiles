@@ -243,6 +243,9 @@ map <C-l> <C-w>l
 
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
+"
+" YouCompleteMe
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " BufOnly mappings
 nnoremap <leader>da :BufOnly<CR>
@@ -353,8 +356,6 @@ let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 
 " YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion = 1
