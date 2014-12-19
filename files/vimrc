@@ -243,7 +243,13 @@ map <C-l> <C-w>l
 
 " Forgot to sudo? No problem ;)
 cmap w!! w !sudo tee % >/dev/null
-"
+
+" Run C++ skeleton compile
+noremap <leader>c !./compile
+
+" Run C++ skeleton compile and test
+noremap <leader>ct !./run_tests
+
 " YouCompleteMe
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -317,25 +323,6 @@ endif
 " ----------------------------------------------------------------------
 " running make and jumping to errors
 " ----------------------------------------------------------------------
-
-" Runs make
-nnoremap <leader>m :make!<CR>
-
-" Runs make, runs program
-nnoremap <leader>mr :make!<CR> :!./bin/
-
-" Runs make test
-nnoremap <leader>mt :make! test<CR>
-
-" Arduino compile and upload
-nnoremap <leader>mu :make! upload<CR>
-
-" Arduino  monitor
-nnoremap <leader>mm :make! monitor<CR>
-
-" Arduino compile upload and monitor
-nnoremap <leader>mum :make! upload<CR> :make! monitor<CR>
-
 
 " ----------------------------------------------------------------------
 " language specific
