@@ -1,4 +1,4 @@
-" ----------------------------------------------------------------------
+" ----------------------------------------------------------------------D
 " Vundle
 " ----------------------------------------------------------------------
 
@@ -30,6 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim', {'on': '<Plug>ToggleGoldenViewAutoResize'}
 Plug 'oblitum/rainbow'
+Plug 'yuratomo/gmail.vim'
 Plug 'junegunn/goyo.vim'
 
 " Bundles for Unite
@@ -183,6 +184,7 @@ endfunction
 
 set tabstop=2 " Tab=2 spaces
 set shiftwidth=2 " Auto-indents 2 spaces
+set softtabstop=2 " insert/delete 4 spaces when hitting TAB/BACKSPACE
 set smarttab " Tab in front of a line inserts 'shiftwidth' spaces
 set shiftround " Round to 'shiftwidth' for << and >>
 set expandtab " Tabs insert 'tabstop' spaces instead of one tab
@@ -396,6 +398,11 @@ let g:goldenview__enable_default_mapping=0
 " Rainbow
 au FileType c,cpp,objc,objcpp,python,javascript call rainbow#load()
 
+" Gmail.vim
+let g:gmail_imap = 'imap.gmail.com:993'
+let g:gmail_smtp = 'smtp.gmail.com:465'
+let g:gmail_user_name = 'michaelslec98@gmail.com'
+
 " ----------------------------------------------------------------------
 " various
 " ----------------------------------------------------------------------
@@ -436,6 +443,13 @@ augroup formatting
   autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=t
   autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal spell
   autocmd FileType markdown,mkd,txt,tex :Goyo
+augroup END
+
+augroup python
+  autocmd!
+  autocmd FileType python setlocal shiftwidth=4
+  autocmd FileType python setlocal tabstop=4
+  autocmd FileType python setlocal softtabstop=4
 augroup END
 
 augroup relativenumber
