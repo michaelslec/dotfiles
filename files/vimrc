@@ -85,10 +85,10 @@ set cmdheight=2 " Helps avoid 'Press ENTER...' prompts
 
 syntax on " Enables Vim to show parts of the text in another font or color
 
-set background=dark " Uses dark version of colorscheme
+set background=light " Uses dark version of colorscheme
 
 let g:solarized_termcolors=256 " Adds 256 color in terminal mode (specifically for solarized colorscheme)
-colorscheme bubblegum " Sets colorscheme
+colorscheme solarized " Sets colorscheme
 
 set cursorline " Highlights current line cursor is on
 
