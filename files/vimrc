@@ -275,11 +275,12 @@ nnoremap <leader>lv :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
 nnoremap <leader>lbv :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR> :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
 
 " Unite mappings
-nnoremap <C-p>      :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f  :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r  :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>y  :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>ls :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <C-p>      :Unite -buffer-name=files  -auto-preview -start-insert file_rec/async:!<CR>
+nnoremap <leader>f  :Unite -buffer-name=files  -auto-preview -start-insert file<CR>
+nnoremap <leader>r  :Unite -buffer-name=mru    -auto-preview -start-insert file_mru<CR>
+nnoremap <leader>y  :Unite -buffer-name=yank                 history/yank<CR>
+nnoremap <leader>ls :Unite -buffer-name=buffer -quick-match  buffer<CR>
+nnoremap <leader>gr :Unite -buffer-name=search               grep:.<CR>
 
 " GoldenView.vim mappings
 nmap <F4> <Plug>ToggleGoldenViewAutoResize
@@ -374,7 +375,6 @@ let g:airline_powerline_fonts = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 let g:unite_enable_start_insert = 1
-let g:unite_winheight = 10
 let g:unite_source_history_yank_enable=1
 let g:unite_source_history_yank_limit=10000
 
