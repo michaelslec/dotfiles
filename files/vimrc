@@ -1,0 +1,198 @@
+" ----------------------------------------------------------------------
+"  Vim package manager
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Moving around, searching and patterns
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Tags
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Displaying text
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Syntax, highlighting and spelling
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Multiple windows
+" ----------------------------------------------------------------------
+
+set hidden " Unload a buffer when no longer shown in a window.
+
+" ----------------------------------------------------------------------
+"  Multiple tab pages
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Terminal
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Using the mouse
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  GUI
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Printing
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Messages and info
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Selecting text
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Editing text
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Tabs and indenting
+" ----------------------------------------------------------------------
+
+set tabstop=2 " Number of spaces a <Tab> in the text stands for.
+set shiftwidth=2 " Number of spaces used for each step of (auto)indent.
+set softtabstop=2 " If non-zero, number of spaces to insert for a <Tab>.
+set noexpandtab " Do not expand <Tab> to spaces in Insert mode.
+
+command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
+                                   " softtabstop to same value.
+
+" ----------------------------------------------------------------------
+"  Folding
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Diff mode
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Mapping
+" ----------------------------------------------------------------------
+
+let mapleader=','
+
+" Strips trailing whitespace.
+nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<Cr>
+" Formats entire buffer.
+nnoremap _= :call Preserve("normal gg=G")<Cr>
+
+" Makes indenting in Vim easier.
+nnoremap <C-[> <<
+nnoremap <C-]> >>
+vnoremap <C-[> <gv
+vnoremap <C-]> >gv
+
+" Better window navigation.
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" ----------------------------------------------------------------------
+"  Reading and writing files
+" ----------------------------------------------------------------------
+
+set backup " Keep a backup after overwriting a file.
+set writebackup " Write a backup file before overwriting a file.
+set backupdir=~/.vim/.backup// " List of directories to put backup files
+															 " in.
+
+" ----------------------------------------------------------------------
+"  The swap file
+" ----------------------------------------------------------------------
+
+set directory=~/.vim/.swp_files// " Directory to keep .swp files in.
+
+" ----------------------------------------------------------------------
+"  Command line editing
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Executing external commands
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Running make and jumping to errors
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Language specific
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Multi-byte characters
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+"  Various
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+" Autocmds
+" ----------------------------------------------------------------------
+
+if has("autocmd") " If Vim was compiled with autocmd support.
+augroup tabs " Set tab stops based on file type.
+	autocmd!
+	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+augroup end
+
+augroup WritePre " All BufPreWrite autocommands.
+	autocmd!
+	autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+augroup end
+endif
+
+" ----------------------------------------------------------------------
+" Functions
+" ----------------------------------------------------------------------
+
+" Set tabstop, softtabstop and shiftwidth to the same value.
+function! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
