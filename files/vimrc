@@ -169,7 +169,8 @@ augroup end
 
 augroup TextEditing
 	autocmd!
-	autocmd FileType tex,markdown,md,txt setlocal formatoptions+=ta
+	autocmd FileType tex,markdown,md,txt,gitcommit setlocal formatoptions+=ta
+	autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
 augroup end
 endif
 
