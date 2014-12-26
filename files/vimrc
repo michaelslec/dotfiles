@@ -61,6 +61,8 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Editing text
 " ----------------------------------------------------------------------
 
+set formatoptions=cqn
+
 " ----------------------------------------------------------------------
 "  Tabs and indenting
 " ----------------------------------------------------------------------
@@ -155,7 +157,7 @@ set directory=~/.vim/.swp_files// " Directory to keep .swp files in.
 " ----------------------------------------------------------------------
 
 if has("autocmd") " If Vim was compiled with autocmd support.
-augroup tabs " Set tab stops based on file type.
+augroup Tabs " Set tab stops based on file type.
 	autocmd!
 	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 augroup end
@@ -163,6 +165,11 @@ augroup end
 augroup WritePre " All BufPreWrite autocommands.
 	autocmd!
 	autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+augroup end
+
+augroup TextEditing
+	autocmd!
+	autocmd FileType tex,markdown,md,txt setlocal formatoptions+=ta
 augroup end
 endif
 
