@@ -23,6 +23,10 @@ set listchars=tab:▸\ ,eol:¬
 "  Syntax, highlighting and spelling
 " ----------------------------------------------------------------------
 
+set hlsearch " Highlight all matches for the last used search pattern.
+set cursorline " Highlight the screen line of the cursor.
+set colorcolumn=72 " columsn to highlight.
+
 " ----------------------------------------------------------------------
 "  Multiple windows
 " ----------------------------------------------------------------------
@@ -62,6 +66,7 @@ set hidden " Unload a buffer when no longer shown in a window.
 " ----------------------------------------------------------------------
 
 set formatoptions=cqn
+set textwidth=72
 
 " ----------------------------------------------------------------------
 "  Tabs and indenting
@@ -135,6 +140,8 @@ set directory=~/.vim/.swp_files// " Directory to keep .swp files in.
 " ----------------------------------------------------------------------
 "  Executing external commands
 " ----------------------------------------------------------------------
+
+set formatprg=par\ -req" Use par for paragraph formatting.
 
 " ----------------------------------------------------------------------
 "  Running make and jumping to errors
