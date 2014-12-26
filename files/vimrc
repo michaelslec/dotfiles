@@ -3,6 +3,12 @@
 " ----------------------------------------------------------------------
 
 " ----------------------------------------------------------------------
+"  Important
+" ----------------------------------------------------------------------
+
+set nocompatible " Thou shalt not use Vi!
+
+" ----------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ----------------------------------------------------------------------
 
@@ -14,7 +20,7 @@
 "  Displaying text
 " ----------------------------------------------------------------------
 
-set number " Shows line numbers.
+set relativenumber " Shows line numbers relative from cursor position.
 
 set list " Show invisible characters.
 set listchars=tab:▸\ ,eol:¬
@@ -24,8 +30,16 @@ set listchars=tab:▸\ ,eol:¬
 " ----------------------------------------------------------------------
 
 set hlsearch " Highlight all matches for the last used search pattern.
+set incsearch " Show match for partly typed search command.
+set ignorecase " Ignore case when using a search pattern.
+set smartcase " Override 'ignorecase' when pattern has upper case
+							" characters.
+
 set cursorline " Highlight the screen line of the cursor.
-set colorcolumn=72 " columsn to highlight.
+set colorcolumn=72 " Columan to highlight.
+
+set background=dark " Set colorscheme to 'dark' varient if has one.
+colorscheme bubblegum " Set default colorscheme
 
 " ----------------------------------------------------------------------
 "  Multiple windows
@@ -65,7 +79,7 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Editing text
 " ----------------------------------------------------------------------
 
-set formatoptions=cqn
+set formatoptions=cqnjo
 set textwidth=72
 
 " ----------------------------------------------------------------------
@@ -179,6 +193,12 @@ augroup TextEditing
 	autocmd FileType tex,markdown,md,txt,gitcommit setlocal formatoptions+=ta
 	autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
 augroup end
+
+augroup Number
+	autocmd!
+	autocmd InsertEnter * :set number
+	autocmd InsertLeave * :set relativenumber
+augroup end
 endif
 
 " ----------------------------------------------------------------------
@@ -223,3 +243,12 @@ function! Preserve(command)
 	let @/=_s
 	call cursor(l, c)
 endfunction
+
+" Toggle relative numbers
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
