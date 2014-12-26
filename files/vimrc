@@ -2,11 +2,40 @@
 "  Vim package manager
 " ----------------------------------------------------------------------
 
+call plug#begin('~/.vim/plugged')
+
+" ----------------------------------------------------------------------
+"  My Plugins
+" ----------------------------------------------------------------------
+
+" Unite.vim
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/unite.vim'
+
+Plug 'SirVer/ultisnips'
+
 " ----------------------------------------------------------------------
 "  Important
 " ----------------------------------------------------------------------
 
-set nocompatible " Thou shalt not use Vi!
+call plug#end()
+
+set nocompatible
+filetype plugin indent on
+
+set pastetoggle=<F3>
+
+" ----------------------------------------------------------------------
+"  Plugin Settings
+" ----------------------------------------------------------------------
+
+" Unite.vim
+let g:unite_source_history_yank_enable = 1
+let g:unite_enable_start_insert = 1
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -19,17 +48,16 @@ set nocompatible " Thou shalt not use Vi!
 " ----------------------------------------------------------------------
 "  Displaying text
 " ----------------------------------------------------------------------
+"
+set relativenumber " Display line numbers relative to cursor position.
 
-set relativenumber " Shows line numbers relative from cursor position.
-
-set list " Show invisible characters.
+set nolist " Don't show invisible characters.
 set listchars=tab:▸\ ,eol:¬
 
 " ----------------------------------------------------------------------
 "  Syntax, highlighting and spelling
 " ----------------------------------------------------------------------
 
-set hlsearch " Highlight all matches for the last used search pattern.
 set incsearch " Show match for partly typed search command.
 set ignorecase " Ignore case when using a search pattern.
 set smartcase " Override 'ignorecase' when pattern has upper case
@@ -46,6 +74,10 @@ colorscheme bubblegum " Set default colorscheme
 " ----------------------------------------------------------------------
 
 set hidden " Unload a buffer when no longer shown in a window.
+
+" Better window splitting flow.
+set splitbelow
+set splitright
 
 " ----------------------------------------------------------------------
 "  Multiple tab pages
@@ -79,7 +111,7 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Editing text
 " ----------------------------------------------------------------------
 
-set formatoptions=cqnjo
+set formatoptions=cqn
 set textwidth=72
 
 " ----------------------------------------------------------------------
@@ -89,7 +121,11 @@ set textwidth=72
 set tabstop=2 " Number of spaces a <Tab> in the text stands for.
 set shiftwidth=2 " Number of spaces used for each step of (auto)indent.
 set softtabstop=2 " If non-zero, number of spaces to insert for a <Tab>.
+set smarttab " A <Tab> in an indent inserts 'shiftwidth' spaces.
 set noexpandtab " Do not expand <Tab> to spaces in Insert mode.
+
+set autoindent " Automatically set the indent of a new line.
+set copyindent " Copy whitespace for indenting from previous line.
 
 command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
 																	 " softtabstop to same value.
@@ -107,6 +143,18 @@ command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
 " ----------------------------------------------------------------------
 
 let mapleader=','
+
+" Make life easier!
+nnoremap ; :
+
+" No more escape key! Yay!
+inoremap jk <Esc>
+
+" Edit $MYVIMRC in new tab.
+nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<Cr>
+
+" Save current buffer.
+nnoremap <leader>w :w<Cr>
 
 " Strips trailing whitespace.
 nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<Cr>
@@ -126,11 +174,22 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Directory navigation.
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<Cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+
+" If you forgot to sudo Vim
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Unite.vim
+nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	-auto-preview -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files	-auto-preview -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru		-auto-preview -start-insert file_mru<cr>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank		auto-preview history/yank<cr>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -auto-preview buffer<cr>
+nnoremap <leader>g :<C-u>Unite -buffer-name=grep		auto-preview grep:.<cr>
 
 " ----------------------------------------------------------------------
 "  Reading and writing files
@@ -179,26 +238,42 @@ set formatprg=par\ -req" Use par for paragraph formatting.
 
 if has("autocmd") " If Vim was compiled with autocmd support.
 augroup Tabs " Set tab stops based on file type.
-	autocmd!
-	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-augroup end
+		autocmd!
+		autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+	augroup end
 
-augroup WritePre " All BufPreWrite autocommands.
-	autocmd!
-	autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-augroup end
+	augroup WritePre " All BufWritePre autocommands.
+		autocmd!
+		autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+	augroup end
 
-augroup TextEditing
-	autocmd!
-	autocmd FileType tex,markdown,md,txt,gitcommit setlocal formatoptions+=ta
-	autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
-augroup end
+	augroup WritePost " All BufWritePost autocommands.
+		autocmd!
+		autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
+	augroup end
 
-augroup Number
-	autocmd!
-	autocmd InsertEnter * :set number
-	autocmd InsertLeave * :set relativenumber
-augroup end
+	augroup TextEditing
+		autocmd!
+		autocmd FileType tex,markdown,md,txt,gitcommit setlocal formatoptions+=ta
+		autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
+	augroup end
+
+	augroup Number
+		autocmd!
+		autocmd InsertEnter * :set number norelativenumber
+		autocmd InsertLeave * :set relativenumber nonumber
+	augroup end
+
+	augroup Plugins
+		autocmd!
+		autocmd FileType unite imap <buffer> <C-j> <Plug>(unite_select_next_line)
+		autocmd FileType unite imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+		autocmd FileType unite imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+		autocmd FileType unite imap <silent><buffer><expr> <C-x> unite#do_action('split')
+		autocmd FileType unite imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+
+		autocmd Filetype unite nmap <buffer> <Esc> <Plug>(unite_exit)
+	augroup end
 endif
 
 " ----------------------------------------------------------------------
@@ -207,7 +282,7 @@ endif
 
 " Set tabstop, softtabstop and shiftwidth to the same value.
 function! Stab()
-	let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
 	if l:tabstop > 0
 		let &l:sts = l:tabstop
 		let &l:ts = l:tabstop
@@ -246,9 +321,9 @@ endfunction
 
 " Toggle relative numbers
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
+	if(&relativenumber == 1)
+		set number
+	else
+		set relativenumber
+	endif
 endfunc
