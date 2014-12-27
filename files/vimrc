@@ -18,6 +18,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
@@ -63,6 +64,8 @@ let g:airline_powerline_fonts = 1
 " rainbow
 let g:rainbow_active = 1
 
+" auto-pairs
+let g:AutoPairsFlyMode=1
 
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -329,6 +332,7 @@ augroup Tabs " Set tab stops based on file type.
 		autocmd FileType unite imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
 
 		autocmd Filetype unite nmap <buffer> <Esc> <Plug>(unite_exit)
+		autocmd Filetype unite nmap <buffer> <C-c> <Plug>(unite_exit)
 	augroup end
 endif
 
@@ -344,23 +348,6 @@ let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
 		let &l:ts = l:tabstop
 		let &l:sw = l:tabstop
 	endif
-	call SummarizeTabs()
-endfunction
-
-function! SummarizeTabs()
-	try
-		echohl ModeMsg
-		echon 'tabstop='.&l:ts
-		echon ' shiftwidth='.&l:sw
-		echon ' softtabstop='.&l:sts
-		if &l:et
-			echon ' expandtab'
-		else
-			echon ' noexpandtab'
-		endif
-	finally
-		echohl None
-	endtry
 endfunction
 
 function! Preserve(command)
@@ -374,12 +361,3 @@ function! Preserve(command)
 	let @/=_s
 	call cursor(l, c)
 endfunction
-
-" Toggle relative numbers
-function! NumberToggle()
-	if(&relativenumber == 1)
-		set number
-	else
-		set relativenumber
-	endif
-endfunc
