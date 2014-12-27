@@ -234,7 +234,7 @@ nnoremap <leader>gc :Gcommit -aS<Cr>
 nnoremap <leader>gs :Gstatus<Cr>
 nnoremap <leader>gd :Gdiff<Cr>
 nnoremap <leader>gp :Gpull<Cr>
-nnoremap <leader>gb :Gbrowse<Cr>
+nnoremap <leader>gb :Gblame<Cr>
 nnoremap <leader>gw :Gwrite<Cr>
 nnoremap <leader>gr :Gread<Cr>
 
