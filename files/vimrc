@@ -14,9 +14,10 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
 
 Plug 'SirVer/ultisnips'
-Plug 'scrooloose/syntastic'
+Plug 'sCrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
@@ -24,6 +25,7 @@ Plug 'bling/vim-airline'
 Plug 'oblitum/rainbow'
 
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " ----------------------------------------------------------------------
 "  Important
@@ -86,7 +88,7 @@ set ignorecase " Ignore case when using a search pattern.
 set smartcase " Override 'ignorecase' when pattern has upper case
 							" characters.
 
-set cursorline " Highlight the screen line of the cursor.
+set cursorline " Highlight the sCreen line of the cursor.
 set colorcolumn=72 " Columan to highlight.
 
 syntax enable " Turns on syntax highlighting
@@ -217,15 +219,24 @@ map <leader>et :tabe %%
 cnoremap w!! w !sudo tee % >/dev/null
 
 " Unite.vim
-nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	-auto-preview -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files	-auto-preview -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru		-auto-preview -start-insert file_mru<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank		auto-preview history/yank<cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -auto-preview buffer<cr>
-nnoremap <leader>g :<C-u>Unite -buffer-name=grep		auto-preview grep:.<cr>
+nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	-auto-preview -start-insert file_rec/async:!<Cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files	-auto-preview -start-insert file<Cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru		-auto-preview -start-insert file_mru<Cr>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank		auto-preview history/yank<Cr>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -auto-preview buffer<Cr>
+nnoremap <leader>g :<C-u>Unite -buffer-name=grep		auto-preview grep:.<Cr>
 
 " YouCompleteMe
-nnoremap<leader>jd :YcmCompleter GoTo<CR>
+nnoremap<leader>jd :YcmCompleter GoTo<Cr>
+
+" vim-fugitive
+nnoremap <leader>gc :Gcommit -aS<Cr>
+nnoremap <leader>gs :Gstatus<Cr>
+nnoremap <leader>gd :Gdiff<Cr>
+nnoremap <leader>gp :Gpull<Cr>
+nnoremap <leader>gb :Gbrowse<Cr>
+nnoremap <leader>gw :Gwrite<Cr>
+nnoremap <leader>gr :Gread<Cr>
 
 " ----------------------------------------------------------------------
 "  Reading and writing files
