@@ -14,7 +14,7 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
 
 Plug 'SirVer/ultisnips'
-Plug 'sCrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
@@ -26,6 +26,7 @@ Plug 'oblitum/rainbow'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'sjl/gundo.vim'
 
 " ----------------------------------------------------------------------
 "  Important
@@ -61,6 +62,7 @@ let g:airline_powerline_fonts = 1
 
 " rainbow
 let g:rainbow_active = 1
+
 
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -237,6 +239,9 @@ nnoremap <leader>gp :Gpull<Cr>
 nnoremap <leader>gb :Gblame<Cr>
 nnoremap <leader>gw :Gwrite<Cr>
 nnoremap <leader>gr :Gread<Cr>
+
+" gundo.vim
+nnoremap <leader>gu :GundoToggle<Cr>
 
 " ----------------------------------------------------------------------
 "  Reading and writing files
