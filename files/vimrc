@@ -113,10 +113,6 @@ colorscheme solarized " Set default colorscheme
 
 set hidden " Unload a buffer when no longer shown in a window.
 
-" Better window splitting flow.
-set splitbelow
-set splitright
-
 set laststatus=2 " Display vim-airline always.
 
 " ----------------------------------------------------------------------
