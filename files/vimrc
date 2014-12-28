@@ -200,10 +200,10 @@ nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
 nnoremap _= :call Preserve("normal gg=G")<CR>
 
 " Makes indenting in Vim easier.
-nnoremap <C-[> <<
-nnoremap <C-]> >>
-vnoremap <C-[> <gv
-vnoremap <C-]> >gv
+" nnoremap <C-[> <<
+" nnoremap <C-]> >>
+" vnoremap <C-[> <gv
+" vnoremap <C-]> >gv
 
 " Better window navigation.
 noremap <C-h> <C-w>h
@@ -213,10 +213,6 @@ noremap <C-l> <C-w>l
 
 " Directory navigation.
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
 
 " If you forgot to sudo Vim
 cnoremap w!! w !sudo tee % >/dev/null
@@ -295,10 +291,10 @@ set formatprg=par\ -req" Use par for paragraph formatting.
 " ----------------------------------------------------------------------
 
 if has("autocmd") " If Vim was compiled with autocmd support.
-augroup Tabs " Set tab stops based on file type.
-		autocmd!
-		autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-augroup end
+	augroup Tabs " Set tab stops based on file type.
+			autocmd!
+			autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+	augroup end
 
 	augroup WritePre " All BufWritePre autocommands.
 		autocmd!
