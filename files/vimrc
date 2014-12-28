@@ -210,6 +210,10 @@ noremap <C-l> <C-w>l
 
 " Directory navigation.
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
 " If you forgot to sudo Vim
 cnoremap w!! w !sudo tee % >/dev/null
