@@ -229,7 +229,7 @@ nnoremap <leader>g :<C-u>Unite -buffer-name=grep	 grep:.<CR>
 nnoremap<leader>jd :YcmCompleter GoTo<CR>
 
 " vim-fugitive
-nnoremap <leader>gc :Gcommit -aS<CR>
+nnoremap <leader>gc :Gcommit -S
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
