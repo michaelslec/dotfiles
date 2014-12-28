@@ -22,7 +22,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
 
 Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
 Plug 'bling/vim-airline'
 Plug 'oblitum/rainbow'
 
