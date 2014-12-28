@@ -194,16 +194,13 @@ nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<CR>
 " Save current buffer.
 nnoremap <leader>w :w<CR>
 
+" Delete current buffer.
+nnoremap <leader>d :bd %<CR>
+
 " Strips trailing whitespace.
 nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
 " Formats entire buffer.
 nnoremap _= :call Preserve("normal gg=G")<CR>
-
-" Makes indenting in Vim easier.
-" nnoremap <C-[> <<
-" nnoremap <C-]> >>
-" vnoremap <C-[> <gv
-" vnoremap <C-]> >gv
 
 " Better window navigation.
 noremap <C-h> <C-w>h
