@@ -19,6 +19,7 @@ Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tomtom/tcomment_vim'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
@@ -102,7 +103,7 @@ syntax enable " Turns on syntax highlighting
 let g:solarized_termcolors=256 " Use 8 bit colors.
 let g:solarized_visibility="low" " Visibility of invisible characters.
 
-set background=dark " Set colorscheme shade variant
+set background=light " Set colorscheme shade variant
 colorscheme solarized " Set default colorscheme
 
 " ----------------------------------------------------------------------
@@ -183,9 +184,6 @@ command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
 " ----------------------------------------------------------------------
 
 let mapleader=','
-
-" Make life easier!
-nnoremap ; :
 
 " No more escape key! Yay!
 inoremap jk <Esc>
@@ -300,7 +298,7 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 augroup Tabs " Set tab stops based on file type.
 		autocmd!
 		autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-	augroup end
+augroup end
 
 	augroup WritePre " All BufWritePre autocommands.
 		autocmd!
@@ -343,7 +341,7 @@ endif
 
 " Set tabstop, softtabstop and shiftwidth to the same value.
 function! Stab()
-let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+	let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
 	if l:tabstop > 0
 		let &l:sts = l:tabstop
 		let &l:ts = l:tabstop
