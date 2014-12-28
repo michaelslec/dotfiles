@@ -28,6 +28,7 @@ Plug 'oblitum/rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
+Plug 'mhinz/vim-startify'
 
 " ----------------------------------------------------------------------
 "  Important
