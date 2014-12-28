@@ -93,7 +93,7 @@ set ignorecase " Ignore case when using a search pattern.
 set smartcase " Override 'ignorecase' when pattern has upper case
 							" characters.
 
-set cursorline " Highlight the sCreen line of the cursor.
+set cursorline " Highlight the screen line of the cursor.
 set colorcolumn=72 " Columan to highlight.
 
 syntax enable " Turns on syntax highlighting
@@ -191,15 +191,15 @@ nnoremap ; :
 inoremap jk <Esc>
 
 " Edit $MYVIMRC in new tab.
-nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<Cr>
+nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<CR>
 
 " Save current buffer.
-nnoremap <leader>w :w<Cr>
+nnoremap <leader>w :w<CR>
 
 " Strips trailing whitespace.
-nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<Cr>
+nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
 " Formats entire buffer.
-nnoremap _= :call Preserve("normal gg=G")<Cr>
+nnoremap _= :call Preserve("normal gg=G")<CR>
 
 " Makes indenting in Vim easier.
 nnoremap <C-[> <<
@@ -214,7 +214,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Directory navigation.
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<Cr>
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
@@ -224,28 +224,28 @@ map <leader>et :tabe %%
 cnoremap w!! w !sudo tee % >/dev/null
 
 " Unite.vim
-nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	 -auto-preview -start-insert file_rec/async:!<Cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files	 -auto-preview -start-insert file<Cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru		 -auto-preview -start-insert file_mru<Cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank	 history/yank<Cr>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -auto-preview buffer<Cr>
-nnoremap <leader>g :<C-u>Unite -buffer-name=grep	 grep:.<Cr>
+nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	 -auto-preview -start-insert file_rec/async:!<CR>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files	 -auto-preview -start-insert file<CR>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru		 -auto-preview -start-insert file_mru<CR>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank	 history/yank<CR>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -auto-preview buffer<CR>
+nnoremap <leader>g :<C-u>Unite -buffer-name=grep	 grep:.<CR>
 
 " YouCompleteMe
-nnoremap<leader>jd :YcmCompleter GoTo<Cr>
+nnoremap<leader>jd :YcmCompleter GoTo<CR>
 
 " vim-fugitive
-nnoremap <leader>gc :Gcommit -aS<Cr>
-nnoremap <leader>gs :Gstatus<Cr>
-nnoremap <leader>gd :Gdiff<Cr>
-nnoremap <leader>gp :Gpush<Cr>
-nnoremap <leader>gl :Gpull<Cr>
-nnoremap <leader>gb :Gblame<Cr>
-nnoremap <leader>gw :Gwrite<Cr>
-nnoremap <leader>gr :Gread<Cr>
+nnoremap <leader>gc :Gcommit -aS<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gl :Gpull<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gr :Gread<CR>
 
 " gundo.vim
-nnoremap <leader>gu :GundoToggle<Cr>
+nnoremap <leader>gu :GundoToggle<CR>
 
 " ----------------------------------------------------------------------
 "  Reading and writing files
