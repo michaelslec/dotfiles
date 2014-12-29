@@ -37,6 +37,7 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
+Plug 'nelstrom/vim-visual-star-search'
 
 " ----------------------------------------------------------------------
 "  Important
@@ -334,7 +335,7 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 
 	augroup WritePost " All BufWritePost autocommands.
 		autocmd!
-		" autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
+		autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 	augroup end
 
 	augroup TextEditing
