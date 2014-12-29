@@ -389,9 +389,15 @@ function! Preserve(command)
 endfunction
 
 function! AckReplace(...)
-	let search_args = a:000[:-2]
-	let search_pattern = SearchPattern(search_args)
-	let replacement = a:000[-1]
+	if (a:0 > 1)
+		let search_args = a:000[:-2]
+		let search_pattern = SearchPattern(search_args)
+		let replacement = a:000[-1]
+	else
+		let search_args = ['']
+		let search_pattern = @/
+		let replacement = a:1
+	endif
 
 	execute 'Ack ' . search_pattern . ' .'
 	execute 'Qdo %s/' . search_args[0] . '/' . replacement . '/'
