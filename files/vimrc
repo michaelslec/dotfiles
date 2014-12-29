@@ -80,6 +80,10 @@ let g:AutoPairsFlyMode=1
 " GoldenView.vim
 let g:goldenview__enable_default_mapping=0
 
+" Ack.vim
+let g:ack_autofold_results=1
+let g:ackpreview=1
+
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ----------------------------------------------------------------------
@@ -330,7 +334,7 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 
 	augroup WritePost " All BufWritePost autocommands.
 		autocmd!
-		autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
+		" autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 	augroup end
 
 	augroup TextEditing
@@ -384,27 +388,25 @@ function! Preserve(command)
 	call cursor(l, c)
 endfunction
 
-function! AckReplace(search, replace, ...)
-	if(a:0 > 0)
-		let dir = a:1
-		execute 'Ack ' . a:search . ' ' . dir
-	else
-		execute 'Ack ' . a:search . ' .'
-	endif
+function! AckReplace(...)
+	let search_args = a:000[:-2]
+	let search_pattern = SearchPattern(search_args)
+	let replacement = a:000[-1]
 
-	if(a:search == '/')
-		if(a:0 > 1)
-			let opts = a:2
-			execute 'Qdo %s//' . a:replace . '/' . opts
+	execute 'Ack ' . search_pattern . ' .'
+	execute 'Qdo %s/' . search_args[0] . '/' . replacement . '/'
+endfunction
+
+function! SearchPattern(search_args)
+	let search_pattern = ""
+	let j = 0
+	for i in a:search_args
+		if (j)
+			let search_pattern = search_pattern . ' ' . i
 		else
-			execute 'Qdo %s//' . a:replace . '/'
+			let search_pattern = search_pattern . i
 		endif
-	else
-		if(a:0 > 1)
-			let opts = a:2
-			execute 'Qdo %s/' . a:search . '/' . a:replace . '/' . opts
-		else
-			execute 'Qdo %s/' . a:search . '/' . a:replace . '/'
-		endif
-	endif
+		let j+= 1
+	endfor
+	return search_pattern
 endfunction
