@@ -36,6 +36,7 @@ Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
+Plug 'henrik/vim-qargs'
 
 " ----------------------------------------------------------------------
 "  Important
