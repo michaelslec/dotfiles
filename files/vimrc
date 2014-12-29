@@ -333,7 +333,7 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 
 	augroup TextEditing
 		autocmd!
-		autocmd FileType tex,markdown,md,txt,gitcommit setlocal formatoptions+=ta
+		autocmd FileType tex,markdown,md,txt setlocal formatoptions+=ta
 		autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
 	augroup end
 
