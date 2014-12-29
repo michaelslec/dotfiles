@@ -34,6 +34,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'majutsushi/tagbar'
 
 " ----------------------------------------------------------------------
 "  Important
