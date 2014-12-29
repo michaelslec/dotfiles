@@ -178,9 +178,6 @@ set noexpandtab " Do not expand <Tab> to spaces in Insert mode.
 set autoindent " Automatically set the indent of a new line.
 set copyindent " Copy whitespace for indenting from previous line.
 
-command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
-" softtabstop to same value.
-
 " ----------------------------------------------------------------------
 "  Folding
 " ----------------------------------------------------------------------
@@ -284,7 +281,6 @@ set directory=~/.vim/.swp_files// " Directory to keep .swp files in.
 set wildmenu " Command-line completion shows a list of matches.
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 
-
 " ----------------------------------------------------------------------
 "  Executing external commands
 " ----------------------------------------------------------------------
@@ -306,6 +302,10 @@ set formatprg=par\ -req" Use par for paragraph formatting.
 " ----------------------------------------------------------------------
 "  Various
 " ----------------------------------------------------------------------
+
+command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
+" softtabstop to same value.
+command! -nargs=* -complete=file AckReplace call AckReplace(<f-args>) " Sets tabstop, shiftwidth, and
 
 " ----------------------------------------------------------------------
 " Autocmds
@@ -382,4 +382,29 @@ function! Preserve(command)
 	" Clean up: restore previous search history, and cursor position
 	let @/=_s
 	call cursor(l, c)
+endfunction
+
+function! AckReplace(search, replace, ...)
+	if(a:0 > 0)
+		let dir = a:1
+		execute 'Ack ' . a:search . ' ' . dir
+	else
+		execute 'Ack ' . a:search . ' .'
+	endif
+
+	if(a:search == '/')
+		if(a:0 > 1)
+			let opts = a:2
+			execute 'Qdo %s//' . a:replace . '/' . opts
+		else
+			execute 'Qdo %s//' . a:replace . '/'
+		endif
+	else
+		if(a:0 > 1)
+			let opts = a:2
+			execute 'Qdo %s/' . a:search . '/' . a:replace . '/' . opts
+		else
+			execute 'Qdo %s/' . a:search . '/' . a:replace . '/'
+		endif
+	endif
 endfunction
