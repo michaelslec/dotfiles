@@ -318,6 +318,7 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 	augroup VariousFileTypes
 		autocmd!
 		autocmd FileType help nmap <buffer> <C-c> :q<CR>
+		autocmd FileType qf nmap <buffer> <C-c> :q<CR>
 	augroup end
 
 	augroup WritePre " All BufWritePre autocommands.
