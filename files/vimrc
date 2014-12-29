@@ -21,6 +21,9 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
+Plug 'mileszs/ack.vim'
+Plug 'henrik/vim-qargs'
+Plug 'nelstrom/vim-visual-star-search'
 
 " Makes things look better.
 Plug 'altercation/vim-colors-solarized'
@@ -35,9 +38,6 @@ Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
-Plug 'henrik/vim-qargs'
-Plug 'nelstrom/vim-visual-star-search'
 
 " ----------------------------------------------------------------------
 "  Important
