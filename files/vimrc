@@ -13,6 +13,7 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
 
+" Improves editing efficiency.
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
@@ -21,10 +22,12 @@ Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
 
+" Makes things look better.
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'oblitum/rainbow'
 
+" Improves Vim functionality.
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
