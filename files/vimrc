@@ -26,12 +26,14 @@ Plug 'tomtom/tcomment_vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'oblitum/rainbow'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Improves Vim functionality.
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
+Plug 'zhaocai/GoldenView.Vim'
 
 " ----------------------------------------------------------------------
 "  Important
@@ -71,6 +73,9 @@ let g:rainbow_active=1
 
 " auto-pairs
 let g:AutoPairsFlyMode=1
+
+" GoldenView.vim
+let g:goldenview__enable_default_mapping=0
 
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -243,6 +248,11 @@ nnoremap <leader>gr :Gread<CR>
 
 " gundo.vim
 nnoremap <leader>gu :GundoToggle<CR>
+
+" GoldenView.vim
+nmap <silent> <leader>s <Plug>GoldenViewSplit :e .<CR>
+nmap <silent> <F8>      <Plug>GoldenViewSwitchMain
+nmap <silent> <S-F8>    <Plug>GoldenViewSwitchToggle
 
 " ----------------------------------------------------------------------
 "  Reading and writing files
