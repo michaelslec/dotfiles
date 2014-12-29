@@ -255,6 +255,10 @@ nmap <silent> <leader>s <Plug>GoldenViewSplit :e .<CR>
 nmap <silent> <F8>      <Plug>GoldenViewSwitchMain
 nmap <silent> <S-F8>    <Plug>GoldenViewSwitchToggle
 
+" Tagbar
+
+nnoremap <leader>t :TagbarToggle<CR>
+
 " ----------------------------------------------------------------------
 "  Reading and writing files
 " ----------------------------------------------------------------------
