@@ -39,6 +39,10 @@ Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'majutsushi/tagbar'
 
+" God damn you tpope, I don't know here to put this shit.
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+
 " ----------------------------------------------------------------------
 "  Important
 " ----------------------------------------------------------------------
