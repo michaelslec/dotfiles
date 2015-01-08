@@ -370,9 +370,10 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 		autocmd FileType unite imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 		autocmd FileType unite imap <silent><buffer><expr> <C-x> unite#do_action('split')
 		autocmd FileType unite imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
 		autocmd Filetype unite nmap <buffer> <Esc> <Plug>(unite_exit)
 		autocmd Filetype unite nmap <buffer> <C-c> <Plug>(unite_exit)
+
+		autocmd BufEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <c-r>=g:UltiSnips_Complete()<CR>"
 	augroup end
 endif
 
