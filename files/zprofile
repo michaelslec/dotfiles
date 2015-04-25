@@ -76,9 +76,6 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 fi
 
 export WORKON_HOME="$HOME/.virtualenvs"
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=~/.local/bin:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:$PATH:~/Scripts:$GOROOT/bin:$GOPATH/bin
-export K2PDFOPT="-n -dev kpw -col 2 -x -ui-"
+export XDG_CONFIG_HOME="$HOME/.config"
 
-source /usr/local/bin/virtualenvwrapper.sh
+export PATH=$PATH:/home/michael/Scripts
