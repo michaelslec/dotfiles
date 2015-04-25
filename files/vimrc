@@ -28,8 +28,9 @@ Plug 'nelstrom/vim-visual-star-search'
 " Makes things look better.
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'oblitum/rainbow'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'wavded/vim-stylus'
+Plug 'othree/html5.vim'
 
 " Improves Vim functionality.
 Plug 'airblade/vim-gitgutter'
@@ -38,6 +39,7 @@ Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
 
 " God damn you tpope, I don't know here to put this shit.
 Plug 'tpope/vim-abolish'
@@ -97,6 +99,9 @@ let g:goldenview__enable_default_mapping=0
 " Ack.vim
 let g:ack_autofold_results=1
 let g:ackpreview=1
+
+" Emmet.vim
+let g:user_emmet_leader_key='<c-e>'
 
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
