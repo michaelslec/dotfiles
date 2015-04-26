@@ -249,11 +249,11 @@ map <leader>et :tabe %%
 cnoremap w!! w !sudo tee % >/dev/null
 
 " Unite.vim
-nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	 -auto-preview -start-insert file_rec/async:!<CR>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files	 -auto-preview -start-insert file<CR>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru		 -auto-preview -start-insert file_mru<CR>
+nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	 -start-insert file_rec/async:!<CR>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files	 -start-insert file<CR>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru		 -start-insert file_mru<CR>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank	 history/yank<CR>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -auto-preview buffer<CR>
+nnoremap <leader>b :<C-u>Unite -buffer-name=buffer buffer<CR>
 nnoremap <leader>g :<C-u>Unite -buffer-name=grep	 grep:.<CR>
 
 " YouCompleteMe
