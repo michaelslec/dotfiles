@@ -252,7 +252,6 @@ nnoremap <leader>f :<C-u>Unite -buffer-name=files	 -start-insert file<CR>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru		 -start-insert file_mru<CR>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank	 history/yank<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer buffer<CR>
-nnoremap <leader>g :<C-u>Unite -buffer-name=grep	 grep:.<CR>
 
 " YouCompleteMe
 nnoremap<leader>jd :YcmCompleter GoTo<CR>
