@@ -186,6 +186,8 @@ set textwidth=72
 
 set completeopt=menuone,longest,preview
 
+set backspace=2
+
 " ----------------------------------------------------------------------
 "  Tabs and indenting
 " ----------------------------------------------------------------------
