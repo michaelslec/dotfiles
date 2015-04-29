@@ -21,3 +21,6 @@ fi
 alias mux=tmuxinator
 alias vi=nvim
 alias newshosting="~/Apps/newshosting/newshosting.sh"
+
+export NVM_DIR="/home/michael/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
