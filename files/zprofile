@@ -82,6 +82,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH=$PATH:/home/michael/Scripts
 
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
 # NPM withou sudo
 
 NPM_PACKAGES="${HOME}/.npm-packages"
