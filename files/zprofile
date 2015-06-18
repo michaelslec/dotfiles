@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+export VISUAL='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 export PAGER='less'
 
 #

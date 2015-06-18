@@ -132,11 +132,10 @@ set colorcolumn=72 " Columan to highlight.
 syntax enable " Turns on syntax highlighting
 
 " For solarized colorscheme
-let g:solarized_termcolors=256 " Use 8 bit colors.
 let g:solarized_visibility="low" " Visibility of invisible characters.
 
-set background=light " Set colorscheme shade variant
-colorscheme solarized " Set default colorscheme
+set background=dark " Set colorscheme shade variant
+colorscheme  codeschool" Set default colorscheme
 
 " ----------------------------------------------------------------------
 "  Multiple windows
@@ -230,10 +229,10 @@ nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
 nnoremap _= :call Preserve("normal gg=G")<CR>
 
 " Better window navigation.
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Directory navigation.
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
@@ -245,6 +244,9 @@ map <leader>et :tabe %%
 " If you forgot to sudo Vim
 cnoremap w!! w !sudo tee % >/dev/null
 
+" My own version of temporary fullscreen
+nnoremap tt :tab split<CR>
+
 " Unite.vim
 nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	 -start-insert file_rec/async:!<CR>
 nnoremap <leader>f :<C-u>Unite -buffer-name=files	 -start-insert file<CR>
@@ -254,6 +256,12 @@ nnoremap <leader>b :<C-u>Unite -buffer-name=buffer buffer<CR>
 
 " YouCompleteMe
 nnoremap<leader>jd :YcmCompleter GoTo<CR>
+
+" Tabular
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " vim-fugitive
 nnoremap <leader>gb  :Gblame<CR>
@@ -304,8 +312,6 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 "  Executing external commands
 " ----------------------------------------------------------------------
 
-set formatprg=par\ -req" Use par for paragraph formatting.
-
 " ----------------------------------------------------------------------
 "  Running make and jumping to errors
 " ----------------------------------------------------------------------
@@ -354,7 +360,8 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 
 	augroup TextEditing
 		autocmd!
-		autocmd FileType tex,markdown,md,txt setlocal formatoptions+=ta
+		autocmd FileType tex setlocal formatoptions+=t
+		autocmd FileType markdown,md,txt setlocal formatoptions+=ta
 		autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
 	augroup end
 
