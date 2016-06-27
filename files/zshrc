@@ -10,25 +10,14 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# User exports
+# Make life easier to use
+alias vi="nvim"
+alias mux=tmuxinator
+alias transmission="tranmission-cli"
+alias dupback="dupback -c ~/Scripts/duplicity-backup.conf"
+alias beet="beet -v"
 
-# Customize to your needs...
-export TERM=xterm-termite
+eval `dircolors ~/.themes/dircolors-solarized/dircolors.256dark`
 
-export WORKON_HOME="$HOME/.virtualenvs"
-export XDG_CONFIG_HOME="$HOME/.config"
-
-export PATH=$PATH:/home/michael/Scripts
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export NVM_DIR="/home/michael/.nvm"
-
-# NPM without sudo
-NPM_PACKAGES="${HOME}/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

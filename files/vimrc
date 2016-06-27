@@ -1,7 +1,6 @@
 " ----------------------------------------------------------------------
 "  Vim package manager
 " ----------------------------------------------------------------------
-
 call plug#begin('~/.vim/bundle')
 
 " ----------------------------------------------------------------------
@@ -12,39 +11,40 @@ call plug#begin('~/.vim/bundle')
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/neoyank.vim'
 
 " Improves editing efficiency.
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --tern-completer'}
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
-Plug 'mileszs/ack.vim'
-Plug 'henrik/vim-qargs'
 Plug 'nelstrom/vim-visual-star-search'
 
 " Makes things look better.
-Plug 'altercation/vim-colors-solarized'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'wavded/vim-stylus'
-Plug 'othree/html5.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Improves Vim functionality.
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
-Plug 'zhaocai/GoldenView.Vim'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
+Plug 'eugen0329/vim-esearch'
 
-" God damn you tpope, I don't know here to put this shit.
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-repeat'
+" Plug 'zhaocai/GoldenView.Vim'
+" Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
+Plug 'dietsche/vim-lastplace'
+
+" Misc.
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'critiqjo/lldb.nvim'
 
 " ----------------------------------------------------------------------
 "  Important
@@ -52,7 +52,6 @@ Plug 'tpope/vim-repeat'
 
 call plug#end()
 
-set nocompatible
 filetype plugin indent on
 
 set pastetoggle=<F3>
@@ -81,8 +80,16 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsListSnippets="<c-e>"
 
 " syntastic
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-std=c++14'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " vim-airline
 let g:airline_powerline_fonts=1
@@ -94,12 +101,9 @@ let g:AutoPairsFlyMode=1
 " GoldenView.vim
 let g:goldenview__enable_default_mapping=0
 
-" Ack.vim
-let g:ack_autofold_results=1
-let g:ackpreview=1
-
 " Emmet.vim
-let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_install_global=1
 
 " ----------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -136,7 +140,11 @@ syntax enable " Turns on syntax highlighting
 let g:solarized_visibility="low" " Visibility of invisible characters.
 
 set background=dark " Set colorscheme shade variant
-colorscheme  codeschool" Set default colorscheme
+colorscheme solarized " Set default colorscheme
+
+if has("nvim")
+	set termguicolors
+endif
 
 " ----------------------------------------------------------------------
 "  Multiple windows
@@ -222,12 +230,12 @@ nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<CR>
 nnoremap <leader>w :w<CR>
 
 " Delete current buffer.
-nnoremap <leader>d :bd %<CR>
+nnoremap <leader>d :bd! %<CR>
 
 " Strips trailing whitespace.
 nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
-" Formats entire buffer.
-nnoremap _= :call Preserve("normal gg=G")<CR>
+" Formats entire buffeu.
+nnoremap <leader>= :call Preserve("normal gg=G")<CR>
 
 " Better window navigation.
 nnoremap <C-h> <C-w>h
@@ -242,11 +250,26 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
-" If you forgot to sudo Vim
+" I you forgot to sudo Vim
 cnoremap w!! w !sudo tee % >/dev/null
 
 " My own version of temporary fullscreen
 nnoremap tt :tab split<CR>
+
+" Terminal splitting (Neovim ONLY)
+nnoremap <M-h> :leftabove vs +term<CR>
+nnoremap <M-j> :belowright sp +term<CR>
+nnoremap <M-k> :aboveleft sp +term<CR>
+nnoremap <M-l> :rightbelow vs +term<CR>
+
+" Terminal navigation
+tmap <C-h> <C-\><C-n><C-w>h
+tmap <C-j> <C-\><C-n><C-w>j
+tmap <C-k> <C-\><C-n><C-w>k
+tmap <C-l> <C-\><C-n><C-w>l
+
+" Normal mode in termianl
+tnoremap <C-t> <C-\><C-n>
 
 " Unite.vim
 nnoremap <C-p>		 :<C-u>Unite -buffer-name=files	 -start-insert file_rec/async:!<CR>
@@ -256,7 +279,8 @@ nnoremap <leader>y :<C-u>Unite -buffer-name=yank	 history/yank<CR>
 nnoremap <leader>b :<C-u>Unite -buffer-name=buffer buffer<CR>
 
 " YouCompleteMe
-nnoremap<leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jf :YcmCompleter FixIt<CR>
 
 " Tabular
 nmap <Leader>a= :Tabularize /=<CR>
@@ -279,13 +303,21 @@ nnoremap <leader>gw  :Gwrite<CR>
 nnoremap <leader>gu :GundoToggle<CR>
 
 " GoldenView.vim
-nmap <silent> <leader>s <Plug>GoldenViewSplit :e .<CR>
-nmap <silent> <F8>			<Plug>GoldenViewSwitchMain
-nmap <silent> <S-F8>		<Plug>GoldenViewSwitchToggle
+" nmap <silent> <leader>s <Plug>GoldenViewSplit :e .<CR>
+" nmap <silent> <F8>			<Plug>GoldenViewSwitchMain
+" nmap <silent> <S-F8>		<Plug>GoldenViewSwitchToggle
 
 " Tagbar
+" nnoremap <leader>t :TagbarToggle<CR>
 
-nnoremap <leader>t :TagbarToggle<CR>
+" ESearch
+let g:esearch = {
+  \ 'adapter':    'ag',
+  \ 'backend':    'nvim',
+  \ 'out':        'win',
+  \ 'batch_size': 1000,
+  \ 'use':        ['visual', 'hlsearch', 'last'],
+  \}
 
 " ----------------------------------------------------------------------
 "  Reading and writing files
@@ -317,6 +349,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 "  Running make and jumping to errors
 " ----------------------------------------------------------------------
 
+set makeprg=cmake
+
 " ----------------------------------------------------------------------
 "  Language specific
 " ----------------------------------------------------------------------
@@ -328,10 +362,6 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 " ----------------------------------------------------------------------
 "  Various
 " ----------------------------------------------------------------------
-
-command! -nargs=* Stab call Stab() " Sets tabstop, shiftwidth, and
-" softtabstop to same value.
-command! -nargs=* -complete=file AckReplace call AckReplace(<f-args>) " Sets tabstop, shiftwidth, and
 
 " ----------------------------------------------------------------------
 " Autocmds
@@ -347,6 +377,8 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 		autocmd!
 		autocmd FileType help nmap <buffer> <C-c> :q<CR>
 		autocmd FileType qf nmap <buffer> <C-c> :q<CR>
+		autocmd BufWinEnter,WinEnter term://* startinsert
+		autocmd BufLeave term://* stopinsert
 	augroup end
 
 	augroup WritePre " All BufWritePre autocommands.
@@ -356,7 +388,7 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 
 	augroup WritePost " All BufWritePost autocommands.
 		autocmd!
-		autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
+		" autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 	augroup end
 
 	augroup TextEditing
@@ -410,35 +442,6 @@ function! Preserve(command)
 	" Clean up: restore previous search history, and cursor position
 	let @/=_s
 	call cursor(l, c)
-endfunction
-
-function! AckReplace(...)
-	if (a:0 > 1)
-		let search_args = a:000[:-2]
-		let search_pattern = SearchPattern(search_args)
-		let replacement = a:000[-1]
-	else
-		let search_args = ['']
-		let search_pattern = @/
-		let replacement = a:1
-	endif
-
-	execute 'Ack ' . search_pattern . ' .'
-	execute 'Qdo %s/' . search_args[0] . '/' . replacement . '/'
-endfunction
-
-function! SearchPattern(search_args)
-	let search_pattern = ""
-	let j = 0
-	for i in a:search_args
-		if (j)
-			let search_pattern = search_pattern . ' ' . i
-		else
-			let search_pattern = search_pattern . i
-		endif
-		let j+= 1
-	endfor
-	return search_pattern
 endfunction
 
 function! g:UltiSnips_Complete()
