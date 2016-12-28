@@ -15,7 +15,7 @@ alias vi="nvim"
 alias mux=tmuxinator
 alias transmission="tranmission-cli"
 alias dupback="dupback -c ~/Scripts/duplicity-backup.conf"
-alias beet="beet -v"
+# alias beet="beet -v"
 
 eval `dircolors ~/.themes/dircolors-solarized/dircolors.256dark`
 

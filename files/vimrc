@@ -15,6 +15,7 @@ Plug 'Shougo/neoyank.vim'
 
 " Improves editing efficiency.
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --tern-completer'}
 Plug 'tpope/vim-surround'
@@ -31,9 +32,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Improves Vim functionality.
+Plug 'vhdirk/vim-cmake'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
 Plug 'eugen0329/vim-esearch'
 
@@ -140,7 +141,7 @@ syntax enable " Turns on syntax highlighting
 let g:solarized_visibility="low" " Visibility of invisible characters.
 
 set background=dark " Set colorscheme shade variant
-colorscheme solarized " Set default colorscheme
+colorscheme bubblegum " Set default colorscheme
 
 if has("nvim")
 	set termguicolors
@@ -299,9 +300,6 @@ nnoremap <leader>gr  :Gread<CR>
 nnoremap <leader>gs  :Gstatus<CR>
 nnoremap <leader>gw  :Gwrite<CR>
 
-" gundo.vim
-nnoremap <leader>gu :GundoToggle<CR>
-
 " GoldenView.vim
 " nmap <silent> <leader>s <Plug>GoldenViewSplit :e .<CR>
 " nmap <silent> <F8>			<Plug>GoldenViewSwitchMain
@@ -348,8 +346,6 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 " ----------------------------------------------------------------------
 "  Running make and jumping to errors
 " ----------------------------------------------------------------------
-
-set makeprg=cmake
 
 " ----------------------------------------------------------------------
 "  Language specific
