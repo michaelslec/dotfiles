@@ -15,7 +15,7 @@ Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'Rip-Rip/clang_complete', {'for': ['c','cpp']}
+" Plug 'Rip-Rip/clang_complete', {'for': ['c','cpp']}
 Plug 'zchee/deoplete-clang', {'for': ['c','cpp']}
 Plug 'neomake/neomake'
 Plug 'dojoteef/neomake-autolint'
@@ -82,20 +82,21 @@ call denite#custom#var('grep', 'final_opts', [])
 """"""""""""""
 let g:deoplete#enable_at_startup=1
 
-""""""""""""""""""""
-"  clang_complete  "
-""""""""""""""""""""
-let g:clang_library_path='/usr/lib/libclang.so'
-let g:clang_snippets=1
-let g:clang_close_preview=1
-let g:clang_complete_patterns=1
-let g:clang_user_options='-std=c++14'
+" """"""""""""""""""""
+" "  clang_complete  "
+" """"""""""""""""""""
+" let g:clang_library_path='/usr/lib/libclang.so'
+" let g:clang_snippets=1
+" let g:clang_close_preview=1
+" let g:clang_complete_patterns=1
+" let g:clang_user_options='-std=c++14'
 
 """"""""""""""""""""
 "  deoplete-clang  "
 """"""""""""""""""""
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
+" let g:deoplete#sources#clang#clang_complete_database= " For compile_commands.json
 
 """""""""""""""
 "  Ultisnips  "
@@ -324,10 +325,10 @@ cnoremap w!! w !sudo tee % >/dev/null
 nnoremap tt :tab split<CR>
 
 " Terminal splitting (Neovim ONLY)
-nnoremap <leader><S-h> :leftabove vs +term<CR>
-nnoremap <leader><S-j> :belowright sp +term<CR>
-nnoremap <leader><S-k> :aboveleft sp +term<CR>
-nnoremap <leader><S-l> :rightbelow vs +term<CR>
+nnoremap <leader><S-h> :leftabove vs term://<CR>
+nnoremap <leader><S-j> :belowright sp term://<CR>
+nnoremap <leader><S-k> :aboveleft sp term://<CR>
+nnoremap <leader><S-l> :rightbelow vs term://<CR>
 
 " Terminal navigation
 tmap <C-h> <C-\><C-n><C-w>h
@@ -357,7 +358,7 @@ call denite#custom#map(
 nnoremap <C-p> :Denite -buffer-name=files file_rec<CR>
 nnoremap <leader>g :Denite -buffer-name=grep grep<CR>
 nnoremap <leader>r :Denite -buffer-name=recent file_mru<CR>
-nnoremap <leader>y :Denite -buffer-name=yank registere<CR>
+nnoremap <leader>y :Denite -buffer-name=yank register<CR>
 nnoremap <leader>b :Denite -buffer-name=buffers buffer<CR>
 nnoremap <leader>o :Denite -buffer-name=tags outline<CR>
 
@@ -382,8 +383,10 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 "  vim-fugitive  "
 """"""""""""""""""
 nnoremap <leader>gb  :Gblame<CR>
-nnoremap <leader>gc  :Gcommit -S<CR>
-nnoremap <leader>gca :Gcommit -aS<CR>
+" nnoremap <leader>gc  :Gcommit -S<CR>
+" nnoremap <leader>gca :Gcommit -aS<CR>
+nnoremap <leader>gc  :Gcommit<CR>
+nnoremap <leader>gca :Gcommit<CR>
 nnoremap <leader>gd  :Gdiff<CR>
 nnoremap <leader>gl  :Gpull<CR>
 nnoremap <leader>gp  :Gpush<CR>
@@ -475,11 +478,6 @@ if has("autocmd") " If Vim was compiled with autocmd support.
 		autocmd FileType tex setlocal formatoptions+=t
 		autocmd FileType markdown,md,txt setlocal formatoptions+=ta
 		autocmd FileType tex,markdown,md,txt,gitcommit setlocal spell
-	augroup end
-
-	augroup omnifunc
-		autocmd!
-		autocmd FileType c,cpp setlocal omnifunc=ccomplete#Complete
 	augroup end
 
 	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
