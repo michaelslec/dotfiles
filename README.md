@@ -127,94 +127,94 @@ options.
 Currently, the default enabled color scheme is Bubblegum.
 
 ## Plugins
-* ###[vim-plug](http://github.com/junegunn/vim-plug)
+* ### [vim-plug](http://github.com/junegunn/vim-plug)
 Minimalist Vim Plugin Manager
 
-* ###[DelimitMate](http://github.com/Raimondi/delimitMate)
+* ### [DelimitMate](http://github.com/Raimondi/delimitMate)
 Provides automatic closing of quotes, parenthesis, brackets, etc.
 
-* ###[UltiSnips](http://github.com/SirVer/ultisnips)
+* ### [UltiSnips](http://github.com/SirVer/ultisnips)
 Adds snippets to vim.
 
-* ###[YouCompleteMe](http://github.com/Valloric/YouCompleteMe)
+* ### [YouCompleteMe](http://github.com/Valloric/YouCompleteMe)
 A fast, as-you-type, fuzzy-search code completion engine for Vim.
 
-* ###[vim-snippets](http://github.com/honza/vim-snippets)
+* ### [vim-snippets](http://github.com/honza/vim-snippets)
 Default snippets for UltiSnips.
 
-* ###[Syntastic](http://github.com/scrooloose/syntastic)
+* ### [Syntastic](http://github.com/scrooloose/syntastic)
 A syntax checking plugin for Vim that runs files through external syntax
 checkers and displays any resulting errors to the user.
 
-* ###[vim-multiple-cursors](http://github.com/terryma/vim-multiple-cursors)
+* ### [vim-multiple-cursors](http://github.com/terryma/vim-multiple-cursors)
 Adds Sublime Text's multi-cursor functionality to Vim.
 
-* ###[tcomment_vim](http://github.com/tomtom/tcomment_vim)
+* ### [tcomment_vim](http://github.com/tomtom/tcomment_vim)
 tcomment provides easy to use, file-type sensible comments for Vim. It
 can handle embedded syntax.
 
-* ###[vim-surround](http://github.com/tpope/vim-surround)
+* ### [vim-surround](http://github.com/tpope/vim-surround)
 Provides mappings to easily delete, change and add such surroundings in pairs.
 
-* ###[vim-gitgutter](http://github.com/airblade/vim-gitgutter)
+* ### [vim-gitgutter](http://github.com/airblade/vim-gitgutter)
 A Vim plugin which shows a git diff in the 'gutter' (sign column). It shows
 whether each line has been added, modified, and where lines have been removed.
 You can also stage and revert individual hunks.
 
-* ###[vim-protodef](http://github.com/derekwyatt/vim-protodef)
+* ### [vim-protodef](http://github.com/derekwyatt/vim-protodef)
 Pulls C++ ptototypes into the implementation file.
 
-* ###[vim-bufonly](http://github.com/duff/vim-bufonly)
+* ### [vim-bufonly](http://github.com/duff/vim-bufonly)
 Unloads all buffers but the current one.
 
-* ###[vim-easymotion](http://github.com/Lokaltog/vim-easymotion)
+* ### [vim-easymotion](http://github.com/Lokaltog/vim-easymotion)
 Provides a much simpler way to use some motions in vim.
 
-* ###[vim-fugitive](http://github.com/tpope/vim-fugitive)
+* ### [vim-fugitive](http://github.com/tpope/vim-fugitive)
 A Git wrapper for Vim, allowing you to easily access and use Git's features
 within Vim.
 
-* ###[vim-tmux-navigator](http://github.com/christoomey/vim-tmux-navigator)
+* ### [vim-tmux-navigator](http://github.com/christoomey/vim-tmux-navigator)
 When combined with a set of tmux key bindings, the plugin will allow you to
 navigate seamlessly between vim and tmux splits using a consistent set of
 hotkeys.
 
-* ###[vim-fswitch](http://github.com/derekwyatt/vim-fswitch)
+* ### [vim-fswitch](http://github.com/derekwyatt/vim-fswitch)
 This Vim plugin will help switching between companion files (e.g. ".h" and
 ".cpp" files).
 
-* ###[unite.vim](http://github.com/Shougo/unite.vim)
+* ### [unite.vim](http://github.com/Shougo/unite.vim)
 The unite or unite.vim plug-in can search and display information from
 arbitrary sources like files, buffers, recently used files or registers.
 
-* ###[neomru.vim](http://github.com/Shougo/neomru.vim)
+* ### [neomru.vim](http://github.com/Shougo/neomru.vim)
 MRU plugin includes unite.vim MRU sources
 
-* ###[vimproc.vim](http://github.com/Shougo/vimproc.vim)
+* ### [vimproc.vim](http://github.com/Shougo/vimproc.vim)
 Interactive command execution in Vim.
 
-* ###[vim-colors-solarized](http://github.com/altercation/vim-colors-solarized)
+* ### [vim-colors-solarized](http://github.com/altercation/vim-colors-solarized)
 Solarized Colorscheme for Vim.
 
-* ###[vim-cpp-enhanced-highlight](http://github.com/octol/vim-cpp-enhanced-highlight)
+* ### [vim-cpp-enhanced-highlight](http://github.com/octol/vim-cpp-enhanced-highlight)
 Additional syntax highlighting that I use for my C++11/14
 development in Vim.
 
-* ###[vim-airline](http://github.com/bling/vim-airline)
+* ### [vim-airline](http://github.com/bling/vim-airline)
 Lean & mean status/tabline for vim that's light as air.
 
-* ###[colour-schemes](http://github.com/daylerees/colour-schemes)
+* ### [colour-schemes](http://github.com/daylerees/colour-schemes)
 A number of themes for some popular text editors that will hopefully be pleasing
 to your eyes and allow you to enjoy the time you spend in front of the screen.
 
-* ###[emmet-vim](http://github.com/mattn/emmet-vim/)
+* ### [emmet-vim](http://github.com/mattn/emmet-vim/)
 Provides support for expanding abbreviations similar to emmet.
 
-* ###[html5.vim](http://github.com/othree/html5.vim)
+* ### [html5.vim](http://github.com/othree/html5.vim)
 HTML5 + inline SVG omnicomplete funtion, indent and syntax for Vim.
 Based on the default htmlcomplete.vim.
 
-* ###[LaTeX-Box](http://github.com/LaTeX-Box-Team/LaTeX-Box)
+* ### [LaTeX-Box](http://github.com/LaTeX-Box-Team/LaTeX-Box)
 Lightweight Toolbox for LaTeX.
 
 * ### [vim-latex-live-preview](http://github.com/xuhdev/vim-latex-live-preview)
