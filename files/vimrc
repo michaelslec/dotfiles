@@ -111,16 +111,16 @@ let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
 """""""""""""
 "  NeoMake  "
 """""""""""""
-let g:neomake_c_clang_maker = {
-			\ 'args': ['-Wall', '-Wextra', '-pedantic', '-Wno-sign-conversion', '-std=c++14'],
-			\}
+let g:neomake_c_gcc_maker = {
+  \ 'args': ['-Wall', '-Wextra', '-pedantic', '-Wno-sign-conversion', '-std=c++14'],
+  \ }
 
 let g:neomake_cpp_clang_maker = {
-   \ 'exe': 'clang++',
-   \ 'args': ['-Wall', '-Wextra', '-pedantic', '-Wno-sign-conversion', '-std=c++14'],
-   \ }
+  \ 'exe': 'clang++',
+  \ 'args': ['-Wall', '-Wextra', '-pedantic', '-Wno-sign-conversion', '-std=c++14'],
+  \ }
 
-let g:neomake_c_enabled_makers = ['clang']
+let g:neomake_c_enabled_makers = ['gcc']
 let g:neomake_cpp_enabled_makers = ['clang']
 let g:neomake_javascript_enabled_makers = ['eslint']
 
@@ -147,6 +147,7 @@ let g:user_emmet_install_global=1
 "  Supertab  "
 """"""""""""""
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
 
 """"""""""""""
 "  lldb.vim  "
@@ -185,7 +186,7 @@ let g:tern#arguments = ["--persistent"]
 "  Displaying text
 " ------------------------------------------------------------------------------
 "
-set number " Display line numbers relative to cursor position.
+set relativenumber number " Display line numbers relative to cursor position.
 
 set list " Don't show invisible characters.
 set listchars=tab:▸\ ,eol:¬ " Set invisible character repsentations.
@@ -298,6 +299,9 @@ nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<CR>
 
 " Save current buffer.
 nnoremap <leader>w :w<CR>
+
+" Quit current buffer
+nnoremap <leader>q :q<CR>
 
 " Delete current buffer.
 nnoremap <leader>d :bd! %<CR>
