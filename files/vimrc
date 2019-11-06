@@ -470,7 +470,7 @@ set makeprg=make\ %:r
 if has("autocmd") " If Vim was compiled with autocmd support.
     augroup Tabs " Set tab stops based on file type.
         autocmd!
-        autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+        autocmd FileType make setlocal ts=8 sts=8 sw=8 expandtab
     augroup end
 
     augroup VariousFileTypes
