@@ -1,457 +1,511 @@
-" ----------------------------------------------------------------------------
-" Vundle
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+"  Vim package manager
+" ------------------------------------------------------------------------------
+call plug#begin('~/.config/nvim/bundle')
 
-set nocompatible " Be IMproved
+" ------------------------------------------------------------------------------
+"  My Plugins
+" ------------------------------------------------------------------------------
 
-call plug#begin('~/.vim/bundle')
-
-" Bundles for code editing
-Plug 'Raimondi/delimitMate'
-Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-Plug 'honza/vim-snippets'
-Plug 'scrooloose/syntastic'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-Plug 'xuhdev/vim-latex-live-preview'
-
-" Bundles that make life a HELL OF A LOT easier
-Plug 'airblade/vim-gitgutter'
-Plug 'derekwyatt/vim-protodef', { 'for': ['cpp', 'c', 'h','hpp'] }
-Plug 'duff/vim-bufonly'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'tpope/vim-fugitive'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'derekwyatt/vim-fswitch', { 'for': ['cpp', 'c', 'h', 'hpp'] }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'sass', 'js', 'coffee'] }
-Plug 'tpope/vim-abolish'
-Plug 'mhinz/vim-startify'
-Plug 'zhaocai/GoldenView.Vim', {'on': '<Plug>ToggleGoldenViewAutoResize'}
-Plug 'oblitum/rainbow'
-
-" Bundles for Unite
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" denite.vim
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
 
-" Bundles for making stuff look better
-Plug 'altercation/vim-colors-solarized'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'bling/vim-airline'
-Plug 'othree/html5.vim', { 'for': 'html' }
+" Improves editing efficiency.
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" Plug 'Rip-Rip/clang_complete', {'for': ['c','cpp']}
+Plug 'zchee/deoplete-clang', {'for': ['c','cpp']}
+Plug 'neomake/neomake'
+Plug 'zchee/deoplete-jedi', {'for': 'python'}
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'Shougo/neco-vim'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tomtom/tcomment_vim'
+Plug 'vimlab/split-term.vim'
 
-" All the color schemes in the world!
-Plug 'daylerees/colour-schemes'
+" Makes things look better.
+Plug 'iCyMind/NeoSolarized'
+Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Improves Vim functionality.
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'eugen0329/vim-esearch'
+Plug 'ervandew/supertab'
+Plug 'critiqjo/lldb.nvim', {'do': ':UpdateRemotePlugins', 'for': ['c','cpp']}
+Plug 'sheerun/vim-polyglot'
+
+Plug 'mattn/emmet-vim', {'for': ['html','css']}
+Plug 'dietsche/vim-lastplace'
+
+" ------------------------------------------------------------------------------
+"  Important
+" ------------------------------------------------------------------------------
 
 call plug#end()
 
-" Auto-loads matchit assuming user has not installed a newer version
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
-
-" ----------------------------------------------------------------------------
-" moving around, searching and patterns
-" ----------------------------------------------------------------------------
-
-set incsearch " Highlight pattern matches as you type
-set ignorecase " Ignore case when using a search pattern
-set smartcase " Override 'ignorecase' when pattern has upper case character
-set gdefault " Defaults global argument in substitution command
-
-" ----------------------------------------------------------------------------
-" tags
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" displaying text
-" ----------------------------------------------------------------------------
-
-set linebreak " For lines longer than the window, wrap intelligently
-
-set colorcolumn=72 " Sets a colored column on column 72
-
-set number " Precedes each line with a line number
-set relativenumber " Fixes bug with relativenumber/number switch
-
-set cmdheight=2 " Helps avoid 'Press ENTER...' prompts
-
-" ----------------------------------------------------------------------------
-" syntax, highlighting and spelling
-" ----------------------------------------------------------------------------
-
-syntax on " Enables Vim to show parts of the text in another font or color
-
-set background=dark " Uses dark version of colorscheme
-
-let g:solarized_termcolors=256 " Adds 256 color in terminal mode (specifically for solarized colorscheme)
-colorscheme bubblegum " Sets colorscheme
-
-set cursorline " Highlights current line cursor is on
-
-if has("unix") " Checks to see if OS is mac or linux
-  if system('uname') =~ 'Darwin' " If OS is Mac
-    set guifont=Inconsolata\ for\ Powerline:h16
-  else " If OS is Linux
-    set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
-  endif
-endif
-
-" ----------------------------------------------------------------------------
-" multiple windows
-" ----------------------------------------------------------------------------
-
-set laststatus=2 " Last window will always have a status line
-
-set hidden " Allows switching buffers without saving
-set splitright " Defaults splitting windows the right
-set splitbelow " Default's splitting windows below
-
-" ----------------------------------------------------------------------------
-" multiple tab pages
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" terminal
-" ----------------------------------------------------------------------------
-
-" set ttyfast "Faster screen-drawing
-
-" ----------------------------------------------------------------------------
-" using the mouse
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" GUI
-" ----------------------------------------------------------------------------
-
-if has('gui_running')
-  set guioptions-=T
-  set guioptions-=R
-  set guioptions-=r
-  set guioptions-=l
-  set guioptions-=L
-endif
-
-" ----------------------------------------------------------------------------
-" printing
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" messages and info
-" ----------------------------------------------------------------------------
-
-set noshowmode
-
-" ----------------------------------------------------------------------------
-" selecting text
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" editing text
-" ----------------------------------------------------------------------------
 filetype plugin indent on
 
-set backspace=indent,eol,start " Makes backspace behave like most editors
+set pastetoggle=<F3>
 
-set textwidth=72 " Sets wrapping point at 72 characters
+" ------------------------------------------------------------------------------
+"  Plugin Settings
+" ------------------------------------------------------------------------------
+
+" Unite.vim
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
+
+""""""""""""
+"  Denite  "
+""""""""""""
+call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm'])
+call denite#custom#source('_', 'sorters', ['sorter_sublime'])
+
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+""""""""""""""
+"  Deoplete  "
+""""""""""""""
+let g:deoplete#enable_at_startup=1
+
+" """"""""""""""""""""
+" "  clang_complete  "
+" """"""""""""""""""""
+" let g:clang_library_path='/usr/lib/libclang.so'
+" let g:clang_snippets=1
+" let g:clang_close_preview=1
+" let g:clang_complete_patterns=1
+" let g:clang_user_options='-std=c++14'
+
+""""""""""""""""""""
+"  deoplete-clang  "
+""""""""""""""""""""
+let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
+" let g:deoplete#sources#clang#clang_complete_database= " For compile_commands.json
+
+"""""""""""""""
+"  Ultisnips  "
+"""""""""""""""
+let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+" let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+let g:UltiSnipsListSnippets="<c-e>"
+let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
+
+"""""""""""""
+"  NeoMake  "
+"""""""""""""
+let g:neomake_c_gcc_maker = {
+    \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
+    \ '-ggdb3', '-O0', '-std=c11', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
+    \ '-Wshadow', '-pedantic'],
+    \ }
+
+let g:neomake_cpp_gcc_maker = {
+    \ 'exe': 'g++',
+    \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
+    \ '-ggdb3', '-O0', '-std=c++14', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
+    \ '-Wshadow', '-pedantic'],
+    \ }
+
+
+let g:neomake_c_enabled_makers = ['gcc']
+let g:neomake_cpp_enabled_makers = ['gcc']
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+call neomake#configure#automake('nw', 1000)
+
+"""""""""""""""""
+"  vim-airline  "
+"""""""""""""""""
+let g:airline_powerline_fonts=1
+let g:airline_theme='bubblegum'
+
+""""""""""""""""
+"  auto-pairs  "
+""""""""""""""""
+let g:AutoPairsFlyMode=1
+
+"""""""""""""""
+"  Emmet.vim  "
+"""""""""""""""
+let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_install_global=1
+
+""""""""""""""
+"  Supertab  "
+""""""""""""""
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+
+""""""""""""""
+"  lldb.vim  "
+""""""""""""""
+nmap <F2> <Plug>LLBreakSwitch
+vmap <F2> <Plug>LLStdInSelected
+nnoremap <F4> :LLstdin<CR>
+nnoremap <F5> :LLmode debug<CR>
+nnoremap <F17> :LLmode code<CR>
+nnoremap <F8> :LL continue<CR>
+nnoremap <F20> :LL process interrupt<CR>
+nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
+vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
+
+""""""""""""""""""
+"  tern-for-vim  "
+""""""""""""""""""
+let g:tern_show_argument_hints = 'on_hold'
+let g:tern_show_signature_in_pum = 1
+
+"""""""""""""""""""
+"  deoplete-tern  "
+"""""""""""""""""""
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" ------------------------------------------------------------------------------
+"  Moving around, searching and patterns
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Tags
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Displaying text
+" ------------------------------------------------------------------------------
+"
+set relativenumber number " Display line numbers relative to cursor position.
+
+set list " Don't show invisible characters.
+set listchars=tab:▸\ ,eol:¬ " Set invisible character repsentations.
+
+set concealcursor=inv
+set conceallevel=2
+" ------------------------------------------------------------------------------
+"  Syntax, highlighting and spelling
+" ------------------------------------------------------------------------------
+
+set incsearch " Show match for partly typed search command.
+set ignorecase " Ignore case when using a search pattern.
+set smartcase " Override 'ignorecase' when pattern has upper case
+" characters.
+
+set cursorline " Highlight the screen line of the cursor.
+set colorcolumn=80 " Columan to highlight.
+
+syntax enable " Turns on syntax highlighting
+
+" For solarized colorscheme
+let g:neosolarized_visibility = "normal" " Visibility of invisible characters.
+
+set background=dark " Set colorscheme shade variant
+colorscheme NeoSolarized " Set default colorscheme
+
+if has("nvim")
+set termguicolors
+endif
+
+" ------------------------------------------------------------------------------
+"  Multiple windows
+" ------------------------------------------------------------------------------
+
+set hidden " Unload a buffer when no longer shown in a window.
+
+set laststatus=2 " Display vim-airline always.
+
+" ------------------------------------------------------------------------------
+"  Multiple tab pages
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Terminal
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Using the mouse
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  GUI
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Printing
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Messages and info
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Selecting text
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Editing text
+" ------------------------------------------------------------------------------
 
 set formatoptions=cqn
+set textwidth=80
 
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j          " Delete comment char on second line when
-    " Joining two commented lines
-endif
+set completeopt=menu,menuone,preview
 
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and
-  " cursor position
-  call cursor(l, c)
-endfunction
+set backspace=2
 
-" ----------------------------------------------------------------------------
-" tabs and indenting
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+"  Tabs and indenting
+" ------------------------------------------------------------------------------
 
-set tabstop=2 " Tab=2 spaces
-set shiftwidth=2 " Auto-indents 2 spaces
-set smarttab " Tab in front of a line inserts 'shiftwidth' spaces
-set shiftround " Round to 'shiftwidth' for << and >>
-set expandtab " Tabs insert 'tabstop' spaces instead of one tab
-set autoindent " Better indentation
+set tabstop=4 " Number of spaces a <Tab> in the text stands for.
+set shiftwidth=4 " Number of spaces used for each step of (auto)indent.
+set softtabstop=4 " If non-zero, number of spaces to insert for a <Tab>.
+set smarttab " A <Tab> in an indent inserts 'shiftwidth' spaces.
+set expandtab " Do not expand <Tab> to spaces in Insert mode.
 
-set pastetoggle=<F3> " Toggles smart indenting while pasting, A.K.A lifesaver
+set autoindent " Automatically set the indent of a new line.
+set copyindent " Copy whitespace for indenting from previous line.
 
-" ----------------------------------------------------------------------------
-" folding
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+"  Folding
+" ------------------------------------------------------------------------------
 
-" ----------------------------------------------------------------------------
-" diff mode
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+"  Diff mode
+" ------------------------------------------------------------------------------
 
-" ----------------------------------------------------------------------------
-" mapping
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+"  Mapping
+" ------------------------------------------------------------------------------
 
-let mapleader = ","
+let mapleader=','
 
-" netrw
-nnoremap <leader>n :e .<CR>
+" No more escape key! Yay!
+inoremap jk <Esc>
 
-vnoremap > >gv
-vnoremap < <gv
+" Edit $MYVIMRC in new tab.
+nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<CR>
 
-" Open vimrc file in a new tab for editing
-nnoremap <leader>ev :tabe ~/.dotfiles/files/vimrc<CR>
-
-" Open current file in Chrome
-nnoremap <leader>o :!google-chrome-beta %<CR>
-
-" Save file
+" Save current buffer.
 nnoremap <leader>w :w<CR>
 
-" Delete current buffer
-nnoremap <leader>d :bd %<CR>
+" Quit current buffer
+nnoremap <leader>q :q<CR>
 
-" Makes saving a little easier :P
-nnoremap ; :
+" Delete current buffer.
+nnoremap <leader>d :bd! %<CR>
 
-" Trim whitespace, yay!
-nnoremap <silent> <leader>W :call <SID>StripTrailingWhitespaces()<CR>
+" Strips trailing whitespace.
+nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
+" Formats entire buffer.
+nnoremap <leader>= :call Preserve("normal gg=G")<CR>
 
-" Thank god, no more ESC key
-inoremap jj <ESC>
+" Better window navigation.
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" Better line navigation
-nnoremap j gj
-nnoremap k gk
+" Directory navigation.
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
-" Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" If you forgot to sudo Vim
+cnoremap w!! w !sudo tee % >/dev/null
 
-" Forgot to sudo? No problem ;)
-cmap w!! w !sudo tee % >/dev/null
+" My own version of temporary fullscreen
+nnoremap tt :tab split<CR>
 
-" BufOnly mappings
-nnoremap <leader>da :BufOnly<CR>
-"
-" Fugitive mappings
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gc :Gcommit
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push<CR>
+" Terminal splitting (Neovim ONLY)
+nnoremap <leader><S-h> :leftabove VTerm<CR>
+nnoremap <leader><S-j> :belowright Term<CR>
+nnoremap <leader><S-k> :aboveleft Term<CR>
+nnoremap <leader><S-l> :rightbelow VTerm<CR>
+let g:disable_key_mappings = 1
 
-" Fswitch mappings
-nnoremap <leader>fs :FSHere<CR>
-nnoremap <leader>fsr :FSSplitRight<CR>
-nnoremap <leader>fsl :FSSplitLeft<CR>
+" Terminal navigation
+tmap <C-h> <C-\><C-n><C-w>h
+tmap <C-j> <C-\><C-n><C-w>j
+tmap <C-k> <C-\><C-n><C-w>k
+tmap <C-l> <C-\><C-n><C-w>l
 
-" Latex mappings
-nnoremap <leader>lb :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR>
-nnoremap <leader>lv :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
-nnoremap <leader>lbv :!rubber --inplace --pdf %<CR> :!rubber --inplace --clean %<CR> :!evince %:r.pdf > /dev/null 2>&1 &<CR><CR>
+" Normal mode in termianl
+tnoremap <C-t> <C-\><C-n>
 
-" Unite mappings
-nnoremap <C-P> :<C-u>Unite  -buffer-name=files      -start-insert file_rec/async<CR>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file<CR>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<CR>
-nnoremap <leader>b :<C-u>Unite -buffer-name=buffer  buffer<CR>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<CR>
+""""""""""""
+"  Denite  "
+""""""""""""
+call denite#custom#map(
+    \ 'insert',
+    \ '<C-j>',
+    \ '<denite:move_to_next_line>',
+    \ 'noremap'
+    \)
+call denite#custom#map(
+    \ 'insert',
+    \ '<C-k>',
+    \ '<denite:move_to_previous_line>',
+    \ 'noremap'
+    \)
 
-" GoldenView.vim mappings
-nmap <F4> <Plug>ToggleGoldenViewAutoResize
+nnoremap <C-p> :Denite -buffer-name=files file_rec<CR>
+nnoremap <leader>g :Denite -buffer-name=grep grep<CR>
+nnoremap <leader>r :Denite -buffer-name=recent file_mru<CR>
+nnoremap <leader>y :Denite -buffer-name=yank register<CR>
+nnoremap <leader>b :Denite -buffer-name=buffers buffer<CR>
+nnoremap <leader>o :Denite -buffer-name=tags outline<CR>
 
-" ----------------------------------------------------------------------------
-" reading and writing files
-" ----------------------------------------------------------------------------
+"""""""""""""
+"  NeoMake  "
+"""""""""""""
+nmap <Leader><Space>o :lopen<CR>      " open location window
+nmap <Leader><Space>c :lclose<CR>     " close location window
+nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+nmap <Leader><Space>n :lnext<CR>      " next error/warning
+nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
-set autoread "re-reads file changed outside of vim
+"""""""""""""
+"  Tabular  "
+"""""""""""""
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
 
-" ----------------------------------------------------------------------------
-" the swap file
-" ----------------------------------------------------------------------------
+""""""""""""""""""
+"  vim-fugitive  "
+""""""""""""""""""
+nnoremap <leader>gb  :Gblame<CR>
+nnoremap <leader>gc  :Gcommit -S<CR>
+nnoremap <leader>gca :Gcommit -aS<CR>
+nnoremap <leader>gd  :Gdiff<CR>
+nnoremap <leader>gl  :Gpull<CR>
+nnoremap <leader>gp  :Gpush<CR>
+nnoremap <leader>gr  :Gread<CR>
+nnoremap <leader>gs  :Gstatus<CR>
+nnoremap <leader>gw  :Gwrite<CR>
 
-set nobackup
-set noswapfile
+"""""""""""""
+"  ESearch  "
+"""""""""""""
+let g:esearch = {
+  \ 'adapter':    'ag',
+  \ 'backend':    'nvim',
+  \ 'out':        'win',
+  \ 'batch_size': 1000,
+  \ 'use':        ['visual', 'hlsearch', 'last'],
+  \}
 
-" ----------------------------------------------------------------------------
-" command line editing
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
+"  Reading and writing files
+" ------------------------------------------------------------------------------
 
-set history=200 " Save more commands in history
+set backup " Keep a backup after overwriting a file.
+set writebackup " Write a backup file before overwriting a file.
+set backupdir=~/.config/nvim/.backup// " List of directories to put backup files
+" in.
 
-set wildmode=longest,full " see :help wildmode for options
+" ------------------------------------------------------------------------------
+"  The swap file
+" ------------------------------------------------------------------------------
 
-" Makes wild menu ignore these file types
-set wildignore+=*.exe,*.swp,.DS_Store
-set wildmenu
+set directory=~/.config/nvim/.swp// " Directory to keep .swp files in.
 
-if exists('&wildignorecase')
-  set wildignorecase
+" ------------------------------------------------------------------------------
+"  Command line editing
+" ------------------------------------------------------------------------------
+
+set wildmenu " Command-line completion shows a list of matches.
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
+
+" ------------------------------------------------------------------------------
+"  Executing external commands
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Running make and jumping to errors
+" ------------------------------------------------------------------------------
+
+set makeprg=make\ %:r
+
+" ------------------------------------------------------------------------------
+"  Language specific
+" ------------------------------------------------------------------------------
+
+" let g:python_host_prog = '/usr/bin/python3'
+
+" ------------------------------------------------------------------------------
+"  Multi-byte characters
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+"  Various
+" ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+" Autocmds
+" ------------------------------------------------------------------------------
+
+if has("autocmd") " If Vim was compiled with autocmd support.
+    augroup Tabs " Set tab stops based on file type.
+        autocmd!
+        autocmd FileType make setlocal ts=8 sts=8 sw=8 expandtab
+    augroup end
+
+    augroup VariousFileTypes
+        autocmd!
+        autocmd FileType help nmap <buffer> <C-c> :q<CR>
+        autocmd FileType qf nmap <buffer> <C-c> :q<CR>
+        autocmd BufWinEnter,WinEnter term://* startinsert
+        autocmd BufLeave term://* stopinsert
+        " autocmd FileType html,css,stylus,javascript imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+    augroup end
+
+    augroup WritePre " All BufWritePre autocommands.
+        autocmd!
+        autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+    augroup end
+
+    augroup TextEditing
+        autocmd!
+        autocmd FileType tex setlocal formatoptions+=t
+        autocmd FileType markdown,md,text,txt setlocal formatoptions+=ta
+        autocmd FileType tex,markdown,md,text,txt,gitcommit setlocal spell
+    augroup end
+
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
-" ----------------------------------------------------------------------------
-" executing external commands
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" running make and jumping to errors
-" ----------------------------------------------------------------------------
-
-" Runs make
-nnoremap <leader>m :make!<CR>
-
-" Runs make, runs program
-nnoremap <leader>mr :make!<CR> :!./bin/
-
-" Runs make test
-nnoremap <leader>mt :make! test<CR>
-
-" Arduino compile and upload
-nnoremap <leader>mu :make! upload<CR>
-
-" Arduino  monitor
-nnoremap <leader>mm :make! monitor<CR>
-
-" Arduino compile upload and monitor
-nnoremap <leader>mum :make! upload<CR> :make! monitor<CR>
-
-
-" ----------------------------------------------------------------------------
-" language specific
-" ----------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
-" multi-byte characters
-" ----------------------------------------------------------------------------
-
-set encoding=utf-8 " C'mon, this is obvious
-
-" ----------------------------------------------------------------------------
-" Plugin Settings
-" ----------------------------------------------------------------------------
-
-" DelimitMate
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_expand_space = 1
-
-" YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 1
-
-" Ultisnips
-let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-
-" Syntastic
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
-let g:syntastic_php_checkers=['php', 'phpmd']
-let g:syntastic_check_on_open=1
-
-" netrw
-let g:netrw_preview=1
-let g:netrw_special_syntax=1
-let g:netrw_banner=0
-
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" Unite
-let g:unite_enable_start_insert = 1
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ ], '\|'))
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-" Emmet
-let g:user_emmet_leader_key='<C-e>'
-
-" vim-startify
-let g:startify_session_dir = '~/.vim/.cache/sessions'
-let g:startify_change_to_vcs_root = 1
-let g:startify_show_sessions = 1
-
-" GoldenView.vim
-let g:goldenview__enable_default_mapping=0
-
-" Rainbow
-au FileType c,cpp,objc,objcpp,python,javascript call rainbow#load()
-
-" ----------------------------------------------------------------------------
-" various
-" ---------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Functions
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
-function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res == 0
-    if pumvisible()
-      return "\<c-n>"
-    else
-      return "\<tab>"
-    endif
-  endif
-
-  return ""
+function! Preserve(command)
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
-
-function! s:unite_settings()
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  imap <silent><buffer><expr> <C-x> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
-
-" ----------------------------------------------------------------------------
-" Autocmds
-" ----------------------------------------------------------------------------
-
-augroup formatting
-  autocmd!
-  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal formatoptions+=t
-  autocmd FileType markdown,mkd,txt,gitcommit,tex setlocal spell
-augroup END
-
-augroup relativenumber
-  autocmd!
-  autocmd InsertEnter,focusLost * :set norelativenumber
-  autocmd InsertLeave,focusGained * :set relativenumber
-augroup END
-
-" Better integration between YouCompleteMe and UltiSnips
-autocmd BufEnter * exec "inoremap <buffer> <silent> " . g:UltiSnipsExpandTrigger . " <c-r>=g:UltiSnips_Complete()<CR>"
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()

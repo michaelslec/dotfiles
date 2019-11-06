@@ -10,12 +10,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Make life easier to use
+alias vi="nvim"
 
-# Adds 256 color terminal support if available
-if [[ "$TERM" = xterm ]]; then
-  TERM=xterm-256color
-fi
-
-# Make tmuxinator easier to use
-alias mux=tmuxinator
+export NVM_DIR="/home/michael/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
