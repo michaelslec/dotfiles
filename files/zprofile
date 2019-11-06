@@ -78,8 +78,6 @@ fi
 # User exports
 
 # Customize to your needs...
-export TERM=xterm-termite
-
 export WORKON_HOME="$HOME/.virtualenvs"
 export XDG_CONFIG_HOME="$HOME/.config"
 

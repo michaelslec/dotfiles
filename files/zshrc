@@ -12,12 +12,6 @@ fi
 
 # Make life easier to use
 alias vi="nvim"
-alias mux=tmuxinator
-alias transmission="tranmission-cli"
-alias dupback="dupback -c ~/Scripts/duplicity-backup.conf"
-# alias beet="beet -v"
-
-eval `dircolors ~/.themes/dircolors-solarized/dircolors.256dark`
 
 export NVM_DIR="/home/michael/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
