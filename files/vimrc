@@ -112,16 +112,21 @@ let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
 "  NeoMake  "
 """""""""""""
 let g:neomake_c_gcc_maker = {
-  \ 'args': ['-Wall', '-Wextra', '-pedantic', '-Wno-sign-conversion', '-std=c++14'],
-  \ }
+    \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
+    \ '-ggdb3', '-O0', '-std=c11', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
+    \ '-Wshadow', '-pedantic'],
+    \ }
 
-let g:neomake_cpp_clang_maker = {
-  \ 'exe': 'clang++',
-  \ 'args': ['-Wall', '-Wextra', '-pedantic', '-Wno-sign-conversion', '-std=c++14'],
-  \ }
+let g:neomake_cpp_gcc_maker = {
+    \ 'exe': 'g++',
+    \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
+    \ '-ggdb3', '-O0', '-std=c++14', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
+    \ '-Wshadow', '-pedantic'],
+    \ }
+
 
 let g:neomake_c_enabled_makers = ['gcc']
-let g:neomake_cpp_enabled_makers = ['clang']
+let g:neomake_cpp_enabled_makers = ['gcc']
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 call neomake#configure#automake('nw', 1000)
@@ -210,11 +215,11 @@ syntax enable " Turns on syntax highlighting
 " For solarized colorscheme
 let g:neosolarized_visibility = "normal" " Visibility of invisible characters.
 
-set background=light " Set colorscheme shade variant
+set background=dark " Set colorscheme shade variant
 colorscheme NeoSolarized " Set default colorscheme
 
 if has("nvim")
-	set termguicolors
+set termguicolors
 endif
 
 " ------------------------------------------------------------------------------
@@ -258,7 +263,7 @@ set laststatus=2 " Display vim-airline always.
 " ------------------------------------------------------------------------------
 
 set formatoptions=cqn
-set textwidth=72
+set textwidth=80
 
 set completeopt=menu,menuone,preview
 
@@ -268,11 +273,11 @@ set backspace=2
 "  Tabs and indenting
 " ------------------------------------------------------------------------------
 
-set tabstop=2 " Number of spaces a <Tab> in the text stands for.
-set shiftwidth=2 " Number of spaces used for each step of (auto)indent.
-set softtabstop=2 " If non-zero, number of spaces to insert for a <Tab>.
+set tabstop=4 " Number of spaces a <Tab> in the text stands for.
+set shiftwidth=4 " Number of spaces used for each step of (auto)indent.
+set softtabstop=4 " If non-zero, number of spaces to insert for a <Tab>.
 set smarttab " A <Tab> in an indent inserts 'shiftwidth' spaces.
-set noexpandtab " Do not expand <Tab> to spaces in Insert mode.
+set expandtab " Do not expand <Tab> to spaces in Insert mode.
 
 set autoindent " Automatically set the indent of a new line.
 set copyindent " Copy whitespace for indenting from previous line.
@@ -350,17 +355,17 @@ tnoremap <C-t> <C-\><C-n>
 "  Denite  "
 """"""""""""
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-j>',
-			\ '<denite:move_to_next_line>',
-			\ 'noremap'
-			\)
+    \ 'insert',
+    \ '<C-j>',
+    \ '<denite:move_to_next_line>',
+    \ 'noremap'
+    \)
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-k>',
-			\ '<denite:move_to_previous_line>',
-			\ 'noremap'
-			\)
+    \ 'insert',
+    \ '<C-k>',
+    \ '<denite:move_to_previous_line>',
+    \ 'noremap'
+    \)
 
 nnoremap <C-p> :Denite -buffer-name=files file_rec<CR>
 nnoremap <leader>g :Denite -buffer-name=grep grep<CR>
@@ -442,6 +447,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 "  Running make and jumping to errors
 " ------------------------------------------------------------------------------
 
+set makeprg=make\ %:r
+
 " ------------------------------------------------------------------------------
 "  Language specific
 " ------------------------------------------------------------------------------
@@ -461,33 +468,33 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 " ------------------------------------------------------------------------------
 
 if has("autocmd") " If Vim was compiled with autocmd support.
-	augroup Tabs " Set tab stops based on file type.
-		autocmd!
-		autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-	augroup end
+    augroup Tabs " Set tab stops based on file type.
+        autocmd!
+        autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+    augroup end
 
-	augroup VariousFileTypes
-		autocmd!
-		autocmd FileType help nmap <buffer> <C-c> :q<CR>
-		autocmd FileType qf nmap <buffer> <C-c> :q<CR>
-		autocmd BufWinEnter,WinEnter term://* startinsert
-		autocmd BufLeave term://* stopinsert
-		" autocmd FileType html,css,stylus,javascript imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-	augroup end
+    augroup VariousFileTypes
+        autocmd!
+        autocmd FileType help nmap <buffer> <C-c> :q<CR>
+        autocmd FileType qf nmap <buffer> <C-c> :q<CR>
+        autocmd BufWinEnter,WinEnter term://* startinsert
+        autocmd BufLeave term://* stopinsert
+        " autocmd FileType html,css,stylus,javascript imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+    augroup end
 
-	augroup WritePre " All BufWritePre autocommands.
-		autocmd!
-		autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-	augroup end
+    augroup WritePre " All BufWritePre autocommands.
+        autocmd!
+        autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+    augroup end
 
-	augroup TextEditing
-		autocmd!
-		autocmd FileType tex setlocal formatoptions+=t
-		autocmd FileType markdown,md,text,txt setlocal formatoptions+=ta
-		autocmd FileType tex,markdown,md,text,txt,gitcommit setlocal spell
-	augroup end
+    augroup TextEditing
+        autocmd!
+        autocmd FileType tex setlocal formatoptions+=t
+        autocmd FileType markdown,md,text,txt setlocal formatoptions+=ta
+        autocmd FileType tex,markdown,md,text,txt,gitcommit setlocal spell
+    augroup end
 
-	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
 " ------------------------------------------------------------------------------
@@ -495,13 +502,13 @@ endif
 " ------------------------------------------------------------------------------
 
 function! Preserve(command)
-	" Preparation: save last search, and cursor position.
-	let _s=@/
-	let l = line(".")
-	let c = col(".")
-	" Do the business:
-	execute a:command
-	" Clean up: restore previous search history, and cursor position
-	let @/=_s
-	call cursor(l, c)
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
