@@ -33,10 +33,9 @@ Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'nathanaelkane/vim-indent-guides'
 
 " Improves Vim functionality.
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'eugen0329/vim-esearch'
 Plug 'ervandew/supertab'
@@ -395,10 +394,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 "  vim-fugitive  "
 """"""""""""""""""
 nnoremap <leader>gb  :Gblame<CR>
-" nnoremap <leader>gc  :Gcommit -S<CR>
-" nnoremap <leader>gca :Gcommit -aS<CR>
-nnoremap <leader>gc  :Gcommit<CR>
-nnoremap <leader>gca :Gcommit<CR>
+nnoremap <leader>gc  :Gcommit -S<CR>
+nnoremap <leader>gca :Gcommit -aS<CR>
 nnoremap <leader>gd  :Gdiff<CR>
 nnoremap <leader>gl  :Gpull<CR>
 nnoremap <leader>gp  :Gpush<CR>
