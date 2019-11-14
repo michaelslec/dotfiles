@@ -86,6 +86,7 @@ let g:Lf_PreviewInPopup = 1
 
 " Enables default mapping for code-fmt (<leader>=)
 Glaive codefmt plugin[mappings]
+" Changes c/c++ code formatting style
 Glaive codefmt clang_format_style='WebKit'
 
 " ------------------------------------------------------------------------------
@@ -254,7 +255,7 @@ tmap <C-l> <C-\><C-n><C-w>l
 """"""""""""""
 "  Deoplete  "
 """"""""""""""
-" use ctrl +j/k to maneuver
+" use ctrl j/k to maneuver
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
