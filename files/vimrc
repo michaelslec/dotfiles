@@ -7,49 +7,32 @@ call plug#begin('~/.config/nvim/bundle')
 "  My Plugins
 " ------------------------------------------------------------------------------
 
-" denite.vim
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
-
-" Improves editing efficiency.
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-" Plug 'Rip-Rip/clang_complete', {'for': ['c','cpp']}
-Plug 'zchee/deoplete-clang', {'for': ['c','cpp']}
-Plug 'neomake/neomake'
-Plug 'zchee/deoplete-jedi', {'for': 'python'}
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-Plug 'Shougo/neco-vim'
-Plug 'carlitux/deoplete-ternjs'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
-Plug 'vimlab/split-term.vim'
-
-" Makes things look better.
 Plug 'iCyMind/NeoSolarized'
+Plug 'bilalq/lite-dfm'
 Plug 'joshdick/onedark.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Improves Vim functionality.
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'eugen0329/vim-esearch'
-Plug 'ervandew/supertab'
-Plug 'critiqjo/lldb.nvim', {'do': ':UpdateRemotePlugins', 'for': ['c','cpp']}
-Plug 'sheerun/vim-polyglot'
-
-Plug 'mattn/emmet-vim', {'for': ['html','css']}
 Plug 'dietsche/vim-lastplace'
+Plug 'neomake/neomake'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ncm2/float-preview.nvim'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+
 
 " ------------------------------------------------------------------------------
 "  Important
 " ------------------------------------------------------------------------------
 
 call plug#end()
+call glaive#Install()
 
 filetype plugin indent on
 
@@ -59,53 +42,10 @@ set pastetoggle=<F3>
 "  Plugin Settings
 " ------------------------------------------------------------------------------
 
-" Unite.vim
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])
-
-""""""""""""
-"  Denite  "
-""""""""""""
-call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm'])
-call denite#custom#source('_', 'sorters', ['sorter_sublime'])
-
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
 """"""""""""""
 "  Deoplete  "
 """"""""""""""
 let g:deoplete#enable_at_startup=1
-
-" """"""""""""""""""""
-" "  clang_complete  "
-" """"""""""""""""""""
-" let g:clang_library_path='/usr/lib/libclang.so'
-" let g:clang_snippets=1
-" let g:clang_close_preview=1
-" let g:clang_complete_patterns=1
-" let g:clang_user_options='-std=c++14'
-
-""""""""""""""""""""
-"  deoplete-clang  "
-""""""""""""""""""""
-let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
-" let g:deoplete#sources#clang#clang_complete_database= " For compile_commands.json
-
-"""""""""""""""
-"  Ultisnips  "
-"""""""""""""""
-let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsExpandTrigger = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-" let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
-let g:UltiSnipsListSnippets="<c-e>"
-let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
 
 """""""""""""
 "  NeoMake  "
@@ -123,60 +63,30 @@ let g:neomake_cpp_gcc_maker = {
     \ '-Wshadow', '-pedantic'],
     \ }
 
-
 let g:neomake_c_enabled_makers = ['gcc']
 let g:neomake_cpp_enabled_makers = ['gcc']
-let g:neomake_javascript_enabled_makers = ['eslint']
 
-call neomake#configure#automake('nw', 1000)
-
-"""""""""""""""""
-"  vim-airline  "
-"""""""""""""""""
-let g:airline_powerline_fonts=1
-let g:airline_theme='bubblegum'
+call neomake#configure#automake('nw', 750)
 
 """"""""""""""""
 "  auto-pairs  "
 """"""""""""""""
 let g:AutoPairsFlyMode=1
 
-"""""""""""""""
-"  Emmet.vim  "
-"""""""""""""""
-let g:user_emmet_leader_key='<C-e>'
-let g:user_emmet_install_global=1
+"""""""""""""
+"  leaderf  "
+"""""""""""""
+" let g:Lf_WindowPosition = 'fullScreen'
+let g:Lf_FollowLinks = 1
+let g:Lf_PreviewInPopup = 1
 
-""""""""""""""
-"  Supertab  "
-""""""""""""""
-let g:SuperTabDefaultCompletionType = '<C-n>'
+"""""""""""""""""
+"  vim-codefmt  "
+"""""""""""""""""
 
-
-""""""""""""""
-"  lldb.vim  "
-""""""""""""""
-nmap <F2> <Plug>LLBreakSwitch
-vmap <F2> <Plug>LLStdInSelected
-nnoremap <F4> :LLstdin<CR>
-nnoremap <F5> :LLmode debug<CR>
-nnoremap <F17> :LLmode code<CR>
-nnoremap <F8> :LL continue<CR>
-nnoremap <F20> :LL process interrupt<CR>
-nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
-vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
-
-""""""""""""""""""
-"  tern-for-vim  "
-""""""""""""""""""
-let g:tern_show_argument_hints = 'on_hold'
-let g:tern_show_signature_in_pum = 1
-
-"""""""""""""""""""
-"  deoplete-tern  "
-"""""""""""""""""""
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+" Enables default mapping for code-fmt (<leader>=)
+Glaive codefmt plugin[mappings]
+Glaive codefmt clang_format_style='WebKit'
 
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -192,7 +102,7 @@ let g:tern#arguments = ["--persistent"]
 "
 set relativenumber number " Display line numbers relative to cursor position.
 
-set list " Don't show invisible characters.
+set list " Show invisible characters.
 set listchars=tab:▸\ ,eol:¬ " Set invisible character repsentations.
 
 set concealcursor=inv
@@ -201,10 +111,10 @@ set conceallevel=2
 "  Syntax, highlighting and spelling
 " ------------------------------------------------------------------------------
 
-set incsearch " Show match for partly typed search command.
-set ignorecase " Ignore case when using a search pattern.
-set smartcase " Override 'ignorecase' when pattern has upper case
-" characters.
+set incsearch   " Show match for partly typed search command.
+set ignorecase  " Ignore case when using a search pattern.
+set smartcase   " Override 'ignorecase' when pattern has upper case
+                " characters.
 
 set cursorline " Highlight the screen line of the cursor.
 set colorcolumn=80 " Columan to highlight.
@@ -218,7 +128,7 @@ set background=dark " Set colorscheme shade variant
 colorscheme NeoSolarized " Set default colorscheme
 
 if has("nvim")
-set termguicolors
+    set termguicolors
 endif
 
 " ------------------------------------------------------------------------------
@@ -227,7 +137,7 @@ endif
 
 set hidden " Unload a buffer when no longer shown in a window.
 
-set laststatus=2 " Display vim-airline always.
+" set laststatus=2 " Display vim-airline always.
 
 " ------------------------------------------------------------------------------
 "  Multiple tab pages
@@ -261,10 +171,10 @@ set laststatus=2 " Display vim-airline always.
 "  Editing text
 " ------------------------------------------------------------------------------
 
-set formatoptions=cqn
+set formatoptions=cqanj
 set textwidth=80
 
-set completeopt=menu,menuone,preview
+set completeopt=menu,menuone
 
 set backspace=2
 
@@ -272,9 +182,11 @@ set backspace=2
 "  Tabs and indenting
 " ------------------------------------------------------------------------------
 
-set tabstop=4 " Number of spaces a <Tab> in the text stands for.
-set shiftwidth=4 " Number of spaces used for each step of (auto)indent.
-set softtabstop=4 " If non-zero, number of spaces to insert for a <Tab>.
+let tabWidth=4
+
+let &tabstop=tabWidth " Number of spaces a <Tab> in the text stands for.
+let &shiftwidth=tabWidth " Number of spaces used for each step of (auto)indent.
+let &softtabstop=tabWidth " If non-zero, number of spaces to insert for a <Tab>.
 set smarttab " A <Tab> in an indent inserts 'shiftwidth' spaces.
 set expandtab " Do not expand <Tab> to spaces in Insert mode.
 
@@ -309,11 +221,6 @@ nnoremap <leader>q :q<CR>
 
 " Delete current buffer.
 nnoremap <leader>d :bd! %<CR>
-
-" Strips trailing whitespace.
-nnoremap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
-" Formats entire buffer.
-nnoremap <leader>= :call Preserve("normal gg=G")<CR>
 
 " Better window navigation.
 nnoremap <C-h> <C-w>h
@@ -350,28 +257,16 @@ tmap <C-l> <C-\><C-n><C-w>l
 " Normal mode in termianl
 tnoremap <C-t> <C-\><C-n>
 
-""""""""""""
-"  Denite  "
-""""""""""""
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-j>',
-    \ '<denite:move_to_next_line>',
-    \ 'noremap'
-    \)
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-k>',
-    \ '<denite:move_to_previous_line>',
-    \ 'noremap'
-    \)
+""""""""""""""
+"  Deoplete  "
+""""""""""""""
+" use ctrl +j/k to maneuver
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-nnoremap <C-p> :Denite -buffer-name=files file_rec<CR>
-nnoremap <leader>g :Denite -buffer-name=grep grep<CR>
-nnoremap <leader>r :Denite -buffer-name=recent file_mru<CR>
-nnoremap <leader>y :Denite -buffer-name=yank register<CR>
-nnoremap <leader>b :Denite -buffer-name=buffers buffer<CR>
-nnoremap <leader>o :Denite -buffer-name=tags outline<CR>
+" Use tab and shift-tab to maneuver
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 """""""""""""
 "  NeoMake  "
@@ -381,14 +276,6 @@ nmap <Leader><Space>c :lclose<CR>     " close location window
 nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-
-"""""""""""""
-"  Tabular  "
-"""""""""""""
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
 
 """"""""""""""""""
 "  vim-fugitive  "
@@ -403,16 +290,20 @@ nnoremap <leader>gr  :Gread<CR>
 nnoremap <leader>gs  :Gstatus<CR>
 nnoremap <leader>gw  :Gwrite<CR>
 
-"""""""""""""
-"  ESearch  "
-"""""""""""""
-let g:esearch = {
-  \ 'adapter':    'ag',
-  \ 'backend':    'nvim',
-  \ 'out':        'win',
-  \ 'batch_size': 1000,
-  \ 'use':        ['visual', 'hlsearch', 'last'],
-  \}
+""""""""""""""
+"  lite-dfm  "
+""""""""""""""
+
+" toggle Distraction-free editing
+nnoremap <Leader>z :LiteDFMToggle<CR>i<Esc>`^
+
+"""""""""""""""""""
+"  float-preview  "
+"""""""""""""""""""
+" Close on cmd
+let g:float_preview#auto_close = 0
+" change position of window
+" let g:float_preview#docked = 0
 
 " ------------------------------------------------------------------------------
 "  Reading and writing files
@@ -464,48 +355,30 @@ set makeprg=make\ %:r
 " Autocmds
 " ------------------------------------------------------------------------------
 
-if has("autocmd") " If Vim was compiled with autocmd support.
-    augroup Tabs " Set tab stops based on file type.
-        autocmd!
-        autocmd FileType make setlocal ts=8 sts=8 sw=8 expandtab
-    augroup end
+"""""""""""""""""
+"  vim-codefmt  "
+"""""""""""""""""
 
-    augroup VariousFileTypes
-        autocmd!
-        autocmd FileType help nmap <buffer> <C-c> :q<CR>
-        autocmd FileType qf nmap <buffer> <C-c> :q<CR>
-        autocmd BufWinEnter,WinEnter term://* startinsert
-        autocmd BufLeave term://* stopinsert
-        " autocmd FileType html,css,stylus,javascript imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-    augroup end
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType vue AutoFormatBuffer prettier
+augroup END
 
-    augroup WritePre " All BufWritePre autocommands.
-        autocmd!
-        autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-    augroup end
+""""""""""""""
+"  Deoplete  "
+""""""""""""""
 
-    augroup TextEditing
-        autocmd!
-        autocmd FileType tex setlocal formatoptions+=t
-        autocmd FileType markdown,md,text,txt setlocal formatoptions+=ta
-        autocmd FileType tex,markdown,md,text,txt,gitcommit setlocal spell
-    augroup end
-
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-endif
+autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
+            \ | endif
 
 " ------------------------------------------------------------------------------
 " Functions
 " ------------------------------------------------------------------------------
-
-function! Preserve(command)
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    execute a:command
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
