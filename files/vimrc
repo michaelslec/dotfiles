@@ -245,13 +245,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 " My own version of temporary fullscreen
 nnoremap tt :tab split<CR>
 
-" Terminal splitting (Neovim ONLY)
-nnoremap <leader><S-h> :leftabove VTerm<CR>
-nnoremap <leader><S-j> :belowright Term<CR>
-nnoremap <leader><S-k> :aboveleft Term<CR>
-nnoremap <leader><S-l> :rightbelow VTerm<CR>
-" let g:disable_key_mappings = 1
-
 " Terminal navigation
 tmap <C-h> <C-\><C-n><C-w>h
 tmap <C-j> <C-\><C-n><C-w>j
