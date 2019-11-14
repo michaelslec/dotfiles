@@ -147,7 +147,6 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Terminal
 " ------------------------------------------------------------------------------
 
-
 " ------------------------------------------------------------------------------
 "  Using the mouse
 " ------------------------------------------------------------------------------
@@ -380,6 +379,15 @@ augroup END
 
 autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
             \ | endif
+
+""""""""""""""
+"  Terminal  "
+""""""""""""""
+
+augroup terminal_setting
+    autocmd TermOpen * setlocal nonumber norelativenumber nocursorline 
+                \ colorcolumn=0
+augroup END
 
 " ------------------------------------------------------------------------------
 " Functions
