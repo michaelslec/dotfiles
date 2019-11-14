@@ -215,11 +215,14 @@ inoremap jk <Esc>
 " Edit $MYVIMRC in new tab.
 nnoremap <leader>v :tabedit ~/.dotfiles/files/vimrc<CR>
 
-" Save current buffer.
+" Save current buffer
 nnoremap <leader>w :w<CR>
 
 " Quit current buffer
 nnoremap <leader>q :q<CR>
+
+" Write then quit buffer
+nnoremap <leader>x :wq<CR>
 
 " Delete current buffer.
 nnoremap <leader>d :bd! %<CR>
