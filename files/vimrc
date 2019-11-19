@@ -13,7 +13,7 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'tpope/vim-surround'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'iCyMind/NeoSolarized'
 Plug 'bilalq/lite-dfm'
 Plug 'joshdick/onedark.vim'
