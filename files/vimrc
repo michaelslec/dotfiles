@@ -7,15 +7,16 @@ call plug#begin('~/.config/nvim/bundle')
 "  My Plugins
 " ------------------------------------------------------------------------------
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/neoinclude.vim'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete-clangx'
+" Plug 'Shougo/neoinclude.vim'
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'bilalq/lite-dfm'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'iCyMind/NeoSolarized'
-Plug 'bilalq/lite-dfm'
 Plug 'joshdick/onedark.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -46,7 +47,7 @@ set pastetoggle=<F3>
 """"""""""""""
 "  Deoplete  "
 """"""""""""""
-let g:deoplete#enable_at_startup=1
+" let g:deoplete#enable_at_startup=1
 
 """""""""""""
 "  NeoMake  "
@@ -361,7 +362,7 @@ augroup autoformat_settings
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  " autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
@@ -387,3 +388,5 @@ augroup END
 " ------------------------------------------------------------------------------
 " Functions
 " ------------------------------------------------------------------------------
+
+source ~/coc.config
