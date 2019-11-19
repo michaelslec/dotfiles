@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
@@ -101,7 +102,7 @@ Glaive codefmt clang_format_style='WebKit'
 "  Displaying text
 " ------------------------------------------------------------------------------
 "
-set relativenumber number " Display line numbers relative to cursor position.
+set norelativenumber number " Display line numbers relative to cursor position.
 
 set list " Show invisible characters.
 set listchars=tab:▸\ ,eol:¬ " Set invisible character repsentations.
