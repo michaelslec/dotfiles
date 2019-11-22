@@ -18,7 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'dietsche/vim-lastplace'
 Plug 'neomake/neomake'
@@ -91,6 +91,15 @@ Glaive codefmt plugin[mappings]
 " Changes c/c++ code formatting style
 Glaive codefmt clang_format_style='WebKit'
 
+""""""""""""""""
+"  vim-signify "
+""""""""""""""""
+
+" hunk text object
+omap ic <plug>(signify-motion-inner-pending)
+xmap ic <plug>(signify-motion-inner-visual)
+omap ac <plug>(signify-motion-outer-pending)
+xmap ac <plug>(signify-motion-outer-visual)
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ------------------------------------------------------------------------------
@@ -302,6 +311,15 @@ let g:float_preview#auto_close = 0
 " change position of window
 " let g:float_preview#docked = 0
 
+"""""""""""""""
+" vim-signify "
+"""""""""""""""
+
+nnoremap <leader>gd :SignifyDiff<cr>
+nnoremap <leader>gh :SignifyHunkDiff<cr>
+nnoremap <leader>gu :SignifyHunkUndo<cr>
+nnoremap <leader>gf :SignifyFold<cr>
+
 " ------------------------------------------------------------------------------
 "  Reading and writing files
 " ------------------------------------------------------------------------------
@@ -316,6 +334,9 @@ set backupdir=~/.config/nvim/.backup// " List of directories to put backup files
 " ------------------------------------------------------------------------------
 
 set directory=~/.config/nvim/.swp// " Directory to keep .swp files in.
+
+" Apparently helps with async plugins
+set updatetime=100
 
 " ------------------------------------------------------------------------------
 "  Command line editing
