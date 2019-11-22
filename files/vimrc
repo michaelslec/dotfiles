@@ -77,13 +77,6 @@ call neomake#configure#automake('nw', 750)
 """"""""""""""""
 " let g:AutoPairsFlyMode=1
 
-"""""""""""""
-"  leaderf  "
-"""""""""""""
-" let g:Lf_WindowPosition = 'fullScreen'
-let g:Lf_FollowLinks = 1
-let g:Lf_PreviewInPopup = 1
-
 """""""""""""""""
 "  vim-codefmt  "
 """""""""""""""""
