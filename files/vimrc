@@ -14,15 +14,16 @@ call plug#begin('~/.config/nvim/bundle')
 " Plug 'bilalq/lite-dfm'
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } Plug
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-commentary'
 Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'dietsche/vim-lastplace'
 Plug 'neomake/neomake'
 Plug 'jiangmiao/auto-pairs'
@@ -329,7 +330,6 @@ let g:float_preview#auto_close = 0
 " vim-signify "
 """""""""""""""
 
-nnoremap <leader>gd :SignifyDiff<cr>
 nnoremap <leader>gh :SignifyHunkDiff<cr>
 nnoremap <leader>gu :SignifyHunkUndo<cr>
 nnoremap <leader>gf :SignifyFold<cr>
