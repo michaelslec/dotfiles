@@ -387,10 +387,6 @@ set makeprg=make\ %:r
 " Autocmds
 " ------------------------------------------------------------------------------
 
-"""""""""""""""""
-"  vim-codefmt  "
-"""""""""""""""""
-
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
@@ -404,16 +400,10 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
-""""""""""""""
-"  Deoplete  "
-""""""""""""""
-
-autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
-            \ | endif
-
-""""""""""""""
-"  Terminal  "
-""""""""""""""
+augroup deoplete
+    autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
+                \ | endif
+augroup END
 
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
