@@ -54,12 +54,14 @@ filetype plugin indent on
 """""""""""""
 "  NeoMake  "
 """""""""""""
+" For c code
 let g:neomake_c_gcc_maker = {
     \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
     \ '-ggdb3', '-O0', '-std=c11', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
     \ '-Wshadow', '-pedantic'],
     \ }
 
+" For c++ code
 let g:neomake_cpp_gcc_maker = {
     \ 'exe': 'g++',
     \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
@@ -67,9 +69,11 @@ let g:neomake_cpp_gcc_maker = {
     \ '-Wshadow', '-pedantic'],
     \ }
 
+" Enable makers for that code
 let g:neomake_c_enabled_makers = ['gcc']
 let g:neomake_cpp_enabled_makers = ['gcc']
 
+" Run NeoMake 750ms after writing OR entering normal mode
 call neomake#configure#automake('nw', 750)
 
 """"""""""""""""
@@ -90,6 +94,7 @@ Glaive codefmt clang_format_style='WebKit'
 " vim-neomux "
 """"""""""""""
 
+" Disable the weird window counter. it's dumb
 let g:neomux_win_num_status=''
 
 """"""""""""""""
@@ -106,12 +111,17 @@ xmap ac <plug>(signify-motion-outer-visual)
 " vim-airline "
 """""""""""""""
 
+" Display buffers at top
 let g:airline#extensions#tabline#enabled = 1
+" Make this shit real nice
 let g:airline_powerline_fonts = 1
 
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ------------------------------------------------------------------------------
+
+" Search entire directory tree 
+set path+=**
 
 " ------------------------------------------------------------------------------
 "  Tags
@@ -158,8 +168,6 @@ endif
 
 set hidden " Unload a buffer when no longer shown in a window.
 
-" set laststatus=2 " Display vim-airline always.
-
 " ------------------------------------------------------------------------------
 "  Multiple tab pages
 " ------------------------------------------------------------------------------
@@ -192,11 +200,14 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Editing text
 " ------------------------------------------------------------------------------
 
+" see :h fo-table
 set formatoptions=croqj
+"Set text wrapping and color column at 80 chars
 set textwidth=80
 
 set completeopt=menu,menuone
 
+" sane backspace
 set backspace=2
 
 " ------------------------------------------------------------------------------
@@ -314,8 +325,11 @@ let g:float_preview#auto_close = 0
 " vim-signify "
 """""""""""""""
 
+" Show diff in floating window
 nnoremap <leader>gh :SignifyHunkDiff<cr>
+" Undoes current hunk
 nnoremap <leader>gu :SignifyHunkUndo<cr>
+" Displays a single-pane diff with folds
 nnoremap <leader>gf :SignifyFold<cr>
 
 " ------------------------------------------------------------------------------
@@ -384,16 +398,20 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
+
+" Only close preview window after saving or leaving insert
 augroup deoplete
     autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
                 \ | endif
 augroup END
 
+" Immersive term
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
                 \ colorcolumn=0
 augroup END
 
+" Delete all fugitive buffers after leaving
 augroup fugitive
     autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
