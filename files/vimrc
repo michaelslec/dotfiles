@@ -75,7 +75,7 @@ call neomake#configure#automake('nw', 750)
 """"""""""""""""
 "  auto-pairs  "
 """"""""""""""""
-let g:AutoPairsFlyMode=1
+" let g:AutoPairsFlyMode=1
 
 """""""""""""
 "  leaderf  "
