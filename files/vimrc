@@ -15,6 +15,8 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
@@ -89,6 +91,12 @@ Glaive codefmt plugin[mappings]
 " Changes c/c++ code formatting style
 Glaive codefmt clang_format_style='WebKit'
 
+""""""""""""""
+" vim-neomux "
+""""""""""""""
+
+let g:neomux_win_num_status=''
+
 """"""""""""""""
 "  vim-signify "
 """"""""""""""""
@@ -98,6 +106,14 @@ omap ic <plug>(signify-motion-inner-pending)
 xmap ic <plug>(signify-motion-inner-visual)
 omap ac <plug>(signify-motion-outer-pending)
 xmap ac <plug>(signify-motion-outer-visual)
+
+"""""""""""""""
+" vim-airline "
+"""""""""""""""
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ------------------------------------------------------------------------------
