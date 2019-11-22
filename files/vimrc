@@ -181,8 +181,7 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Editing text
 " ------------------------------------------------------------------------------
 
-" set formatoptions=cqanj
-set formatoptions=cqj
+set formatoptions=croqj
 set textwidth=80
 
 set completeopt=menu,menuone
@@ -304,7 +303,7 @@ nnoremap <Leader>z :LiteDFMToggle<CR>i<Esc>`^
 """""""""""""""""""
 "  float-preview  "
 """""""""""""""""""
-" Close on cmd
+" Close on autocmd
 let g:float_preview#auto_close = 0
 " change position of window
 " let g:float_preview#docked = 0
@@ -400,7 +399,7 @@ autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
 """"""""""""""
 
 augroup terminal_setting
-    autocmd TermOpen * setlocal nonumber norelativenumber nocursorline 
+    autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
                 \ colorcolumn=0
 augroup END
 
