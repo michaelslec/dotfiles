@@ -289,15 +289,6 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"""""""""""""
-"  NeoMake  "
-"""""""""""""
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-
 """"""""""""""""""
 "  vim-fugitive  "
 """"""""""""""""""
@@ -408,6 +399,10 @@ augroup END
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
                 \ colorcolumn=0
+augroup END
+
+augroup fugitive
+    autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
 
 " ------------------------------------------------------------------------------
