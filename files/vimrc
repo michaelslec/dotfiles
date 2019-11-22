@@ -12,8 +12,8 @@ call plug#begin('~/.config/nvim/bundle')
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'bilalq/lite-dfm'
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } Plug
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -422,5 +422,3 @@ augroup END
 " ------------------------------------------------------------------------------
 " Functions
 " ------------------------------------------------------------------------------
-
-source ~/coc.config
