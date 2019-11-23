@@ -32,6 +32,7 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'nikvdp/neomux'
+Plug 'lifepillar/vim-mucomplete'
 
 " ------------------------------------------------------------------------------
 "  Important
@@ -116,6 +117,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Make this shit real nice
 let g:airline_powerline_fonts = 1
 
+""""""""""""""""""
+" vim-mucomplete "
+""""""""""""""""""
+
+let g:mucomplete#enable_auto_at_startup = 1
+
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ------------------------------------------------------------------------------
@@ -192,6 +199,9 @@ set hidden " Unload a buffer when no longer shown in a window.
 "  Messages and info
 " ------------------------------------------------------------------------------
 
+" Shut off completion messages
+set shortmess+=c
+
 " ------------------------------------------------------------------------------
 "  Selecting text
 " ------------------------------------------------------------------------------
@@ -205,7 +215,10 @@ set formatoptions=croqj
 "Set text wrapping and color column at 80 chars
 set textwidth=80
 
-set completeopt=menu,menuone
+set completeopt=menu,menuone,noselect
+
+" Default omnifunc setting 
+set omnifunc=syntaxcomplete#Complete
 
 " sane backspace
 set backspace=2
