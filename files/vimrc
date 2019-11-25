@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 "  Vim package manager
 " ------------------------------------------------------------------------------
-call plug#begin('~/.config/nvim/bundle')
+call plug#begin('~/.config/nvim/plugged')
 
 " ------------------------------------------------------------------------------
 "  My Plugins
@@ -299,8 +299,8 @@ tmap <C-l> <C-\><C-n><C-w>l
 "  Deoplete  "
 """"""""""""""
 " use ctrl j/k to maneuver
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+" inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Use tab and shift-tab to maneuver
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -361,7 +361,7 @@ set backupdir=~/.config/nvim/.backup// " List of directories to put backup files
 set directory=~/.config/nvim/.swp// " Directory to keep .swp files in.
 
 " Apparently helps with async plugins
-set updatetime=100
+set updatetime=300
 
 " ------------------------------------------------------------------------------
 "  Command line editing
