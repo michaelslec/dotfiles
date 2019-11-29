@@ -35,7 +35,6 @@ Plug 'ncm2/float-preview.nvim'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-Plug 'nikvdp/neomux'
 Plug 'lifepillar/vim-mucomplete'
 
 " ------------------------------------------------------------------------------
@@ -94,13 +93,6 @@ call neomake#configure#automake('nw', 750)
 Glaive codefmt plugin[mappings]
 " Changes c/c++ code formatting style
 Glaive codefmt clang_format_style='file'
-
-""""""""""""""
-" vim-neomux "
-""""""""""""""
-
-" Disable the weird window counter. it's dumb
-let g:neomux_win_num_status=''
 
 """"""""""""""""
 "  vim-signify "
