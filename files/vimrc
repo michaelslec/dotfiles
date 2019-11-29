@@ -18,6 +18,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -163,7 +166,7 @@ syntax enable " Turns on syntax highlighting
 let g:neosolarized_visibility = "normal" " Visibility of invisible characters.
 
 set background=dark " Set colorscheme shade variant
-colorscheme NeoSolarized " Set default colorscheme
+colorscheme nord " Set default colorscheme
 
 if has("nvim")
     set termguicolors
@@ -211,13 +214,13 @@ set shortmess+=c
 " ------------------------------------------------------------------------------
 
 " see :h fo-table
-set formatoptions=croqj
+set formatoptions=crqj
 "Set text wrapping and color column at 80 chars
 set textwidth=80
 
 set completeopt=menu,menuone,noselect
 
-" Default omnifunc setting 
+" Default omnifunc setting
 set omnifunc=syntaxcomplete#Complete
 
 " sane backspace
