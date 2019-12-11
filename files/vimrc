@@ -16,12 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'iCyMind/NeoSolarized'
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
+Plug 'awesome-vim-colorschemes'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
