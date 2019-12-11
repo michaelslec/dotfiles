@@ -115,6 +115,8 @@ xmap ac <plug>(signify-motion-outer-visual)
 let g:airline#extensions#tabline#enabled = 1
 " Make this shit real nice
 let g:airline_powerline_fonts = 1
+" yee
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 """"""""""""""""""
 " vim-mucomplete "
@@ -170,8 +172,8 @@ syntax enable " Turns on syntax highlighting
 " For solarized colorscheme
 let g:neosolarized_visibility = "normal" " Visibility of invisible characters.
 
-set background=dark " Set colorscheme shade variant
-colorscheme nord " Set default colorscheme
+set background=light " Set colorscheme shade variant
+colorscheme NeoSolarized " Set default colorscheme
 
 if has("nvim")
     set termguicolors
@@ -182,7 +184,6 @@ endif
 " ------------------------------------------------------------------------------
 
 set hidden " Unload a buffer when no longer shown in a window.
-set laststatus=0 " No more shit at the bottom 
 
 " ------------------------------------------------------------------------------
 "  Multiple tab pages
@@ -304,17 +305,17 @@ tmap <C-j> <C-\><C-n><C-w>j
 tmap <C-k> <C-\><C-n><C-w>k
 tmap <C-l> <C-\><C-n><C-w>l
 
-" Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 
 """"""""""""""
 "  Deoplete  "
