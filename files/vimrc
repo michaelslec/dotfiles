@@ -62,7 +62,7 @@ filetype plugin indent on
 let g:neomake_c_gcc_maker = {
     \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
     \ '-ggdb3', '-O0', '-std=c11', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
-    \ '-Wshadow', '-pedantic'],
+    \ '-Wshadow', '-pedantic', '-lm', 'lcs50'],
     \ }
 
 " For c++ code
@@ -70,7 +70,7 @@ let g:neomake_cpp_gcc_maker = {
     \ 'exe': 'g++',
     \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
     \ '-ggdb3', '-O0', '-std=c++14', '-Wall', '-Werror', '-Wextra', '-Wno-sign-compare',
-    \ '-Wshadow', '-pedantic'],
+    \ '-Wshadow', '-pedantic', '-lm', 'lcs50'],
     \ }
 
 " Enable makers for that code
