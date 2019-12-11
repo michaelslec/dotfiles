@@ -182,6 +182,7 @@ endif
 " ------------------------------------------------------------------------------
 
 set hidden " Unload a buffer when no longer shown in a window.
+set laststatus=0 " No more shit at the bottom 
 
 " ------------------------------------------------------------------------------
 "  Multiple tab pages
