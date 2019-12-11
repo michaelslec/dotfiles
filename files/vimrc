@@ -35,6 +35,8 @@ Plug 'ncm2/float-preview.nvim'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'sheerun/vim-polyglot'
+Plug 'bfrg/vim-cpp-modern'
 Plug 'lifepillar/vim-mucomplete'
 
 " ------------------------------------------------------------------------------
