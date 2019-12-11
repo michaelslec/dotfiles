@@ -21,9 +21,10 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
 Plug 'tpope/vim-commentary'
 Plug 'xavierd/clang_complete'
 Plug 'tpope/vim-surround'
