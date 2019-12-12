@@ -7,13 +7,6 @@ call plug#begin('~/.config/nvim/plugged')
 "  My Plugins
 " ------------------------------------------------------------------------------
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/deoplete-clangx'
-" Plug 'Shougo/neoinclude.vim'
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" Plug 'bilalq/lite-dfm'
-" Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } Plug
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rafi/awesome-vim-colorschemes'
@@ -35,6 +28,8 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'lifepillar/vim-mucomplete'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " ------------------------------------------------------------------------------
 "  Important
@@ -137,6 +132,13 @@ let g:signify_sign_change = '▲'
 " let g:signify_sign_change = ' '
 " let g:signify_sign_change = 'Δ'
 
+""""""""""""""""
+" vim-easytags "
+""""""""""""""""
+let g:easytags_async=1
+let g:easytags_dynamic_files = 1
+let g:easytags_by_filetype="~/.local/share/nvim/tags"
+
 """"""""""""""
 " GoldenView "
 """"""""""""""
@@ -164,6 +166,8 @@ set path+=**
 " ------------------------------------------------------------------------------
 "  Tags
 " ------------------------------------------------------------------------------
+
+set tags=./tags;
 
 " ------------------------------------------------------------------------------
 "  Displaying text
