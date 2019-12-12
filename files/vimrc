@@ -16,7 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'awesome-vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
@@ -31,6 +31,7 @@ Plug 'ncm2/float-preview.nvim'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'zhaocai/GoldenView.Vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'lifepillar/vim-mucomplete'
@@ -128,6 +129,31 @@ let g:clang_library_path='/usr/lib/llvm-8/lib'
 " or path directly to the library file
 let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-8.so.1'
 
+"""""""""""""""
+" vim-signify "
+""""""""""""""" 
+
+let g:signify_sign_change = '▲'
+" let g:signify_sign_change = ' '
+" let g:signify_sign_change = 'Δ'
+
+""""""""""""""
+" GoldenView "
+""""""""""""""
+let g:goldenview__enable_default_mapping = 0
+
+" 1. split to tiled windows
+nmap <silent> <C-s>  <Plug>GoldenViewSplit
+
+" 2. quickly switch current window with the main pane
+" and toggle back
+nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
+nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
+
+" 3. jump to next and previous window
+nmap <silent> <C-N>  <Plug>GoldenViewNext
+nmap <silent> <C-P>  <Plug>GoldenViewPrevious
+
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
 " ------------------------------------------------------------------------------
@@ -164,11 +190,13 @@ set colorcolumn=80 " Columan to highlight.
 
 syntax enable " Turns on syntax highlighting
 
-" For solarized colorscheme
-let g:neosolarized_visibility = "normal" " Visibility of invisible characters.
+let ayucolor="light"
+colorscheme ayu " Set default colorscheme
 
-set background=light " Set colorscheme shade variant
-colorscheme NeoSolarized " Set default colorscheme
+" fav colorschemes
+" purify
+" flattened
+" nord
 
 if has("nvim")
     set termguicolors
@@ -216,7 +244,7 @@ set shortmess+=c
 " ------------------------------------------------------------------------------
 
 " see :h fo-table
-set formatoptions=crqj
+set formatoptions=jcrq
 "Set text wrapping and color column at 80 chars
 set textwidth=80
 
@@ -309,8 +337,6 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
 
 """"""""""""""
 "  Deoplete  "
@@ -426,6 +452,9 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
+augroup formatting
+    autocmd FileType * set formatoptions-=o formatoptions-=l
+augroup end
 
 " Only close preview window after saving or leaving insert
 augroup deoplete
@@ -437,6 +466,8 @@ augroup END
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
                 \ colorcolumn=0
+    autocmd TermEnter * setlocal laststatus=0
+    autocmd TermLeave * setlocal laststatus=2
 augroup END
 
 " Delete all fugitive buffers after leaving
