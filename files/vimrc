@@ -77,7 +77,9 @@ call neomake#configure#automake('nw', 750)
 """"""""""""""""
 "  auto-pairs  "
 """"""""""""""""
-" let g:AutoPairsFlyMode=1
+let g:AutoPairsFlyMode=1
+let g:AutoPairsMapCR = 0
+imap <silent><CR> <CR><Plug>AutoPairsReturn
 
 """""""""""""""""
 "  vim-codefmt  "
