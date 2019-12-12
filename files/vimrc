@@ -188,10 +188,12 @@ set smartcase   " Override 'ignorecase' when pattern has upper case
 set cursorline " Highlight the screen line of the cursor.
 set colorcolumn=80 " Columan to highlight.
 
+set spell
+
 syntax enable " Turns on syntax highlighting
 
 let ayucolor="light"
-colorscheme ayu " Set default colorscheme
+colorscheme flattened_dark " Set default colorscheme
 
 " fav colorschemes
 " purify
