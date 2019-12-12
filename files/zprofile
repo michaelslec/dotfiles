@@ -45,8 +45,8 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   $(python3 -c 'import site; print(site.USER_BASE)')/bin
-  $(ruby -e 'print Gem.user_dir')/bin:$PATH
-  $NPM_PACKAGES/bin:$PATH
+  $(ruby -e 'print Gem.user_dir')/bin
+  $NPM_PACKAGES/bin
   $path
 )
 

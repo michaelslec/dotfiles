@@ -30,6 +30,7 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
+Plug 'mattn/emmet-vim'
 
 " ------------------------------------------------------------------------------
 "  Important
@@ -125,6 +126,7 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:clang_library_path='/usr/lib/llvm-8/lib'
 " or path directly to the library file
 let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-8.so.1'
+let g:clang_complete_auto = 1
 
 """""""""""""""
 " vim-signify "
@@ -335,6 +337,7 @@ tmap <C-h> <C-\><C-n><C-w>h
 tmap <C-j> <C-\><C-n><C-w>j
 tmap <C-k> <C-\><C-n><C-w>k
 tmap <C-l> <C-\><C-n><C-w>l
+tmap <C-t> <C-\><C-n>
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -396,6 +399,12 @@ nnoremap <leader>gu :SignifyHunkUndo<cr>
 " Displays a single-pane diff with folds
 nnoremap <leader>gf :SignifyFold<cr>
 
+"""""""""""""
+" vim-emmet "
+"""""""""""""
+
+let g:user_emmet_leader_key='<C-e>'
+
 " ------------------------------------------------------------------------------
 "  Reading and writing files
 " ------------------------------------------------------------------------------
@@ -447,18 +456,18 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 " Autocmds
 " ------------------------------------------------------------------------------
 
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  " autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-  autocmd FileType vue AutoFormatBuffer prettier
-augroup END
+" augroup autoformat_settings
+"   autocmd FileType bzl AutoFormatBuffer buildifier
+"   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+"   autocmd FileType dart AutoFormatBuffer dartfmt
+"   autocmd FileType go AutoFormatBuffer gofmt
+"   autocmd FileType gn AutoFormatBuffer gn
+"   " autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+"   autocmd FileType java AutoFormatBuffer google-java-format
+"   autocmd FileType python AutoFormatBuffer yapf
+"   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+"   autocmd FileType vue AutoFormatBuffer prettier
+" augroup END
 
 augroup formatting
     autocmd FileType * set formatoptions-=o formatoptions-=l
