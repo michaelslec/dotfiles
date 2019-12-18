@@ -47,6 +47,7 @@ path=(
   $(python3 -c 'import site; print(site.USER_BASE)')/bin
   $(ruby -e 'print Gem.user_dir')/bin
   $NPM_PACKAGES/bin
+  $HOME/.rvm/bin
   $path
 )
 
