@@ -14,23 +14,24 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
 Plug 'tomtom/tcomment_vim'
-Plug 'xavierd/clang_complete'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'dietsche/vim-lastplace'
 Plug 'neomake/neomake'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ncm2/float-preview.nvim'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'ncm2/float-preview.nvim'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'bfrg/vim-cpp-modern'
-Plug 'lifepillar/vim-mucomplete'
+Plug 'zxqfl/tabnine-vim'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'mattn/emmet-vim'
+" Plug 'davidhalter/jedi-vim'
 
 " ------------------------------------------------------------------------------
 "  Important
@@ -45,32 +46,10 @@ filetype plugin indent on
 "  Plugin Settings
 " ------------------------------------------------------------------------------
 
-""""""""""""""
-"  Deoplete  "
-""""""""""""""
-" let g:deoplete#enable_at_startup=1
-
 """""""""""""
 "  NeoMake  "
 """""""""""""
-" For c code
-let g:neomake_c_gcc_maker = {
-    \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
-    \ '-ggdb3', '-O0', '-std=c11', '-Wall', '-Werror', '-Wextra',
-    \ '-Wno-sign-compare', '-Wshadow', '-pedantic', '-lm', '-l50'],
-    \ }
-
-" For c++ code
-let g:neomake_cpp_gcc_maker = {
-    \ 'exe': 'g++',
-    \ 'args': ['-fsanitize=signed-integer-overflow', '-fsanitize=undefined',
-    \ '-ggdb3', '-O0', '-std=c++14', '-Wall', '-Werror', '-Wextra',
-    \ '-Wno-sign-compare', '-Wshadow', '-pedantic', '-lm', '-l50'],
-    \ }
-
-" Enable makers for that code
-let g:neomake_c_enabled_makers = ['gcc']
-let g:neomake_cpp_enabled_makers = ['gcc']
+let g:neomake_python_enabled_makers = ['flake8']
 
 " Run NeoMake 750ms after writing OR entering normal mode
 call neomake#configure#automake('nw', 750)
@@ -78,9 +57,9 @@ call neomake#configure#automake('nw', 750)
 """"""""""""""""
 "  auto-pairs  "
 """"""""""""""""
-let g:AutoPairsFlyMode=1
-let g:AutoPairsMapCR = 0
-imap <silent><CR> <CR><Plug>AutoPairsReturn
+" let g:AutoPairsFlyMode=1
+" let g:AutoPairsMapCR = 0
+" imap <silent><CR> <CR><Plug>AutoPairsReturn
 
 """""""""""""""""
 "  vim-codefmt  "
@@ -111,22 +90,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 " yee
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-""""""""""""""""""
-" vim-mucomplete "
-""""""""""""""""""
-
-let g:mucomplete#enable_auto_at_startup = 1
-
-""""""""""""""""""
-" clang_complete "
-""""""""""""""""""
-
-" path to directory where library can be found
-let g:clang_library_path='/usr/lib/llvm-8/lib'
-" or path directly to the library file
-let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-8.so.1'
-let g:clang_complete_auto = 1
 
 """""""""""""""
 " vim-signify "
@@ -258,7 +221,7 @@ set formatoptions=jcrq
 "Set text wrapping and color column at 80 chars
 set textwidth=80
 
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 
 " Default omnifunc setting
 set omnifunc=syntaxcomplete#Complete
@@ -384,7 +347,7 @@ nnoremap <Leader>z :LiteDFMToggle<CR>i<Esc>`^
 "  float-preview  "
 """""""""""""""""""
 " Close on autocmd
-let g:float_preview#auto_close = 0
+" let g:float_preview#auto_close = 0
 " change position of window
 " let g:float_preview#docked = 0
 
@@ -474,11 +437,11 @@ augroup formatting
 augroup end
 
 " Only close preview window after saving or leaving insert
-augroup deoplete
-    autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
-                \ | endif
-augroup END
-
+" augroup deoplete
+"     autocmd BufWrite,InsertLeave * if pumvisible() == 0 | call float_preview#close()
+"                 \ | endif
+" augroup END
+"
 " Immersive term
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
@@ -495,3 +458,5 @@ augroup END
 " ------------------------------------------------------------------------------
 " Functions
 " ------------------------------------------------------------------------------
+" source ~/.config/nvim/coc.vim
+
