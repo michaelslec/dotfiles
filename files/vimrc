@@ -12,33 +12,34 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
+" Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'dietsche/vim-lastplace'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'ncm2/float-preview.nvim'
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
+" Plug 'google/vim-maktaba'
+" Plug 'google/vim-codefmt'
+" Plug 'google/vim-glaive'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'bfrg/vim-cpp-modern'
+" Plug 'bfrg/vim-cpp-modern'
 Plug 'zxqfl/tabnine-vim'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'mattn/emmet-vim'
+" Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-misc'
+" Plug 'mattn/emmet-vim'
 " Plug 'davidhalter/jedi-vim'
+Plug 'tpope/vim-vinegar'
 
 " ------------------------------------------------------------------------------
 "  Important
 " ------------------------------------------------------------------------------
 
 call plug#end()
-call glaive#Install()
+" call glaive#Install()
 
 filetype plugin indent on
 
@@ -52,7 +53,7 @@ filetype plugin indent on
 let g:neomake_python_enabled_makers = ['flake8']
 
 " Run NeoMake 750ms after writing OR entering normal mode
-call neomake#configure#automake('nw', 750)
+" call neomake#configure#automake('nw', 750)
 
 """"""""""""""""
 "  auto-pairs  "
@@ -66,9 +67,9 @@ call neomake#configure#automake('nw', 750)
 """""""""""""""""
 
 " Enables default mapping for code-fmt (<leader>=)
-Glaive codefmt plugin[mappings]
+" Glaive codefmt plugin[mappings]
 " Changes c/c++ code formatting style
-Glaive codefmt clang_format_style='file'
+" Glaive codefmt clang_format_style='file'
 
 """"""""""""""""
 "  vim-signify "
