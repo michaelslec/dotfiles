@@ -349,3 +349,8 @@ exec --no-startup-id /usr/bin/unclutter -b
 
 # Refresh wallpaper on screen resolution change
 exec --no-startup-id /usr/bin/xeventbind resolution /usr/bin/wallpaper-refresh
+
+# All my floating windows baby
+for_window [class="jetbrains-toolbox"] floating enable
+for_window [class="Evolution-alarm-notify"] floating enable
+for_window [class="Gnome-control-center"] floating enable
