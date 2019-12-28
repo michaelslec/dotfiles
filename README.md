@@ -1,8 +1,11 @@
-# Dotfiles
+# Goodbye, vim.
 
-This repo is undergoing a massive reconstruction. I haven't dealt with it in
-year, as from that point lots has changed (Neovim, Neomux, old plugins and new
-plugins, etc).
+After many, many years of configuration, reading, learning, and workflow
+management, I've decided to leave vim. Emacs and Intellij hold my heart now.
+Vim, you've taught me much, and I will certainly use the lessons I've gained
+from here. Goodbye.
 
-If you have any suggestions, or find it useful, message me. I love getting
-feedback.
+# dotfiles
+
+The rest of this repo is dedicated to my old Vim configuration, and my config
+files for xmod, regolith, zsh, and any other tools I use. Thank you.
