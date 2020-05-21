@@ -26,13 +26,20 @@ Plug 'dietsche/vim-lastplace'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'bfrg/vim-cpp-modern'
-Plug 'zxqfl/tabnine-vim'
+" Plug 'zxqfl/tabnine-vim'
+Plug 'mxw/vim-prolog'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " Plug 'xolox/vim-easytags'
 " Plug 'xolox/vim-misc'
 " Plug 'mattn/emmet-vim'
 " Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-vinegar'
+Plug 'bilalq/lite-dfm'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'wlangstroth/vim-racket'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'cdelledonne/vim-cmake'
+Plug 'Floobits/floobits-neovim'
 
 " ------------------------------------------------------------------------------
 "  Important
@@ -94,7 +101,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 """""""""""""""
 " vim-signify "
-""""""""""""""" 
+"""""""""""""""
 
 let g:signify_sign_change = '▲'
 " let g:signify_sign_change = ' '
@@ -164,8 +171,8 @@ set spell
 
 syntax enable " Turns on syntax highlighting
 
-let ayucolor="light"
-colorscheme flattened_dark " Set default colorscheme
+" let ayucolor="light"
+colorscheme nord " Set default colorscheme
 
 " fav colorschemes
 " purify
@@ -218,7 +225,7 @@ set shortmess+=c
 " ------------------------------------------------------------------------------
 
 " see :h fo-table
-set formatoptions=jcrq
+set formatoptions=jcrqt
 "Set text wrapping and color column at 80 chars
 set textwidth=80
 
@@ -297,10 +304,10 @@ cnoremap w!! w !sudo tee % >/dev/null
 nnoremap tt :tab split<CR>
 
 " Terminal navigation
-tmap <C-h> <C-\><C-n><C-w>h
-tmap <C-j> <C-\><C-n><C-w>j
-tmap <C-k> <C-\><C-n><C-w>k
-tmap <C-l> <C-\><C-n><C-w>l
+tmap <C-h> <C-\><C-n><C-w>hi
+tmap <C-j> <C-\><C-n><C-w>ji
+tmap <C-k> <C-\><C-n><C-w>ki
+tmap <C-l> <C-\><C-n><C-w>li
 tmap <C-t> <C-\><C-n>
 
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -382,6 +389,7 @@ set backupdir=~/.config/nvim/.backup// " List of directories to put backup files
 "  The swap file
 " ------------------------------------------------------------------------------
 
+set noswapfile
 set directory=~/.config/nvim/.swp// " Directory to keep .swp files in.
 
 " Apparently helps with async plugins
@@ -435,6 +443,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 
 augroup formatting
     autocmd FileType * set formatoptions-=o formatoptions-=l
+    autocmd FileType markdown set formatoptions+=t
 augroup end
 
 " Only close preview window after saving or leaving insert
@@ -447,8 +456,8 @@ augroup end
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
                 \ colorcolumn=0
-    autocmd TermEnter * setlocal laststatus=0
-    autocmd TermLeave * setlocal laststatus=2
+    " autocmd TermEnter * setlocal laststatus=0
+    " autocmd TermLeave * setlocal laststatus=2
 augroup END
 
 " Delete all fugitive buffers after leaving
@@ -461,3 +470,5 @@ augroup END
 " ------------------------------------------------------------------------------
 " source ~/.config/nvim/coc.vim
 
+" TESTING
+map <F10> :CMakeBuild<CR>
