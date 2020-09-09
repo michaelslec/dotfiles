@@ -7,11 +7,12 @@ call plug#begin('~/.config/nvim/plugged')
 "  My Plugins
 " ------------------------------------------------------------------------------
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
+Plug 'gruvbox-community/gruvbox'
 " Plug 'sakhnik/nvim-gdb', {'do': ':!./install.sh \| UpdateRemotePlugins'}
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
@@ -19,27 +20,39 @@ Plug 'tpope/vim-unimpaired'
 Plug 'dietsche/vim-lastplace'
 " Plug 'neomake/neomake'
 " Plug 'jiangmiao/auto-pairs'
-" Plug 'ncm2/float-preview.nvim'
+Plug 'ncm2/float-preview.nvim'
 " Plug 'google/vim-maktaba'
 " Plug 'google/vim-codefmt'
 " Plug 'google/vim-glaive'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'sheerun/vim-polyglot'
-" Plug 'bfrg/vim-cpp-modern'
+Plug 'bfrg/vim-cpp-modern'
 " Plug 'zxqfl/tabnine-vim'
 Plug 'mxw/vim-prolog'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " Plug 'xolox/vim-easytags'
-" Plug 'xolox/vim-misc'
+Plug 'xolox/vim-misc'
 " Plug 'mattn/emmet-vim'
 " Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-vinegar'
-Plug 'bilalq/lite-dfm'
+" Plug 'bilalq/lite-dfm'
+Plug 'junegunn/goyo.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'wlangstroth/vim-racket'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'cdelledonne/vim-cmake'
 Plug 'Floobits/floobits-neovim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'jsfaint/gen_tags.vim'
+Plug 'wakatime/vim-wakatime'
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+
+nnoremap <C-p> :Files<CR>
+nnoremap <C-t> :Tags<CR>
+nnoremap <M-C-L> :!clang-format -i %<CR><CR>
 
 " ------------------------------------------------------------------------------
 "  Important
@@ -93,11 +106,11 @@ xmap ac <plug>(signify-motion-outer-visual)
 """""""""""""""
 
 " Display buffers at top
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 " Make this shit real nice
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 " yee
-let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 """""""""""""""
 " vim-signify "
@@ -110,9 +123,9 @@ let g:signify_sign_change = '▲'
 """"""""""""""""
 " vim-easytags "
 """"""""""""""""
-let g:easytags_async=1
-let g:easytags_dynamic_files = 1
-let g:easytags_by_filetype="~/.local/share/nvim/tags"
+" let g:easytags_async=1
+" let g:easytags_dynamic_files = 1
+" let g:easytags_by_filetype="~/.local/share/nvim/tags"
 
 """"""""""""""
 " GoldenView "
@@ -128,8 +141,8 @@ nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
 nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
 
 " 3. jump to next and previous window
-nmap <silent> <C-N>  <Plug>GoldenViewNext
-nmap <silent> <C-P>  <Plug>GoldenViewPrevious
+" nmap <silent> <C-N>  <Plug>GoldenViewNext
+" nmap <silent> <C-P>  <Plug>GoldenViewPrevious
 
 " ------------------------------------------------------------------------------
 "  Moving around, searching and patterns
@@ -152,6 +165,8 @@ set norelativenumber number " Display line numbers relative to cursor position.
 
 set list " Show invisible characters.
 set listchars=tab:▸\ ,eol:¬ " Set invisible character repsentations.
+" set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set showbreak=↪\
 
 set concealcursor=inv
 set conceallevel=2
@@ -164,7 +179,7 @@ set ignorecase  " Ignore case when using a search pattern.
 set smartcase   " Override 'ignorecase' when pattern has upper case
                 " characters.
 
-set cursorline " Highlight the screen line of the cursor.
+" set cursorline " Highlight the screen line of the cursor.
 set colorcolumn=80 " Columan to highlight.
 
 set spell
@@ -172,7 +187,10 @@ set spell
 syntax enable " Turns on syntax highlighting
 
 " let ayucolor="light"
-colorscheme purify " Set default colorscheme
+let current_colorscheme = 'nord'
+let term_colorscheme    = 'purify'
+exec 'colorscheme ' current_colorscheme
+set bg=dark
 
 " fav colorschemes
 " purify
@@ -188,6 +206,8 @@ endif
 " ------------------------------------------------------------------------------
 
 set hidden " Unload a buffer when no longer shown in a window.
+set splitbelow
+set splitright
 
 " ------------------------------------------------------------------------------
 "  Multiple tab pages
@@ -215,6 +235,7 @@ set hidden " Unload a buffer when no longer shown in a window.
 
 " Shut off completion messages
 set shortmess+=c
+set noshowmode
 
 " ------------------------------------------------------------------------------
 "  Selecting text
@@ -229,7 +250,7 @@ set formatoptions=jcrqt
 "Set text wrapping and color column at 80 chars
 set textwidth=80
 
-" set completeopt=menu,menuone,noselect
+set completeopt=menu,menuone,noselect
 
 " Default omnifunc setting
 set omnifunc=syntaxcomplete#Complete
@@ -292,10 +313,10 @@ nnoremap <C-l> <C-w>l
 
 " Directory navigation.
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+map <leader>ew :e %%<CR>
+map <leader>es :sp %%<CR>
+map <leader>ev :vsp %%<CR>
+map <leader>et :tabe %%<CR>
 
 " If you forgot to sudo Vim
 cnoremap w!! w !sudo tee % >/dev/null
@@ -304,21 +325,24 @@ cnoremap w!! w !sudo tee % >/dev/null
 nnoremap tt :tab split<CR>
 
 " Terminal navigation
-tmap <C-h> <C-\><C-n><C-w>hi
-tmap <C-j> <C-\><C-n><C-w>ji
-tmap <C-k> <C-\><C-n><C-w>ki
-tmap <C-l> <C-\><C-n><C-w>li
+tmap <C-h> <C-\><C-n><C-w>h
+tmap <C-j> <C-\><C-n><C-w>j
+tmap <C-k> <C-\><C-n><C-w>k
+tmap <C-l> <C-\><C-n><C-w>l
 tmap <C-t> <C-\><C-n>
 
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+nnoremap <F11> :Shell g++ -ggdb % && ./a.out <CR>
+nnoremap <F10> :CMakeBuild<CR>
+
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
 
 """"""""""""""
 "  Deoplete  "
@@ -349,7 +373,14 @@ nnoremap <leader>gw  :Gwrite<CR>
 """"""""""""""
 
 " toggle Distraction-free editing
-nnoremap <Leader>z :LiteDFMToggle<CR>i<Esc>`^
+" nnoremap <Leader>z :LiteDFMToggle<CR>i<Esc>`^
+
+""""""""""""""
+"  goyo.vim  "
+""""""""""""""
+
+let g:goyo_linenr = 1
+nnoremap <Leader>z :Goyo<CR>
 
 """""""""""""""""""
 "  float-preview  "
@@ -357,7 +388,7 @@ nnoremap <Leader>z :LiteDFMToggle<CR>i<Esc>`^
 " Close on autocmd
 " let g:float_preview#auto_close = 0
 " change position of window
-" let g:float_preview#docked = 0
+let g:float_preview#docked = 0
 
 """""""""""""""
 " vim-signify "
@@ -375,6 +406,17 @@ nnoremap <leader>gf :SignifyFold<cr>
 """""""""""""
 
 let g:user_emmet_leader_key='<C-e>'
+
+"""""""""""""""""""""""
+"  Terminal Mappings  "
+"""""""""""""""""""""""
+
+nnoremap <leader>t :term<CR>
+nnoremap <leader><S-t> :tabe<CR>:term<CR>
+nnoremap <leader><S-h> :aboveleft vsp<CR>:term<CR>
+nnoremap <leader><S-j> :sp<CR>:term<CR>
+nnoremap <leader><S-k> :aboveleft sp<CR>:term<CR>
+nnoremap <leader><S-l> :vsp<CR>:term<CR>
 
 " ------------------------------------------------------------------------------
 "  Reading and writing files
@@ -420,6 +462,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/* " Ignore version management.
 "  Multi-byte characters
 " ------------------------------------------------------------------------------
 
+set encoding=utf-8
+
 " ------------------------------------------------------------------------------
 "  Various
 " ------------------------------------------------------------------------------
@@ -455,7 +499,9 @@ augroup end
 " Immersive term
 augroup terminal_setting
     autocmd TermOpen * setlocal nonumber norelativenumber nocursorline
-                \ colorcolumn=0
+                \ colorcolumn=0 nospell
+    " autocmd TermEnter * exec 'colorscheme' term_colorscheme
+    " autocmd TermLeave * exec 'colorscheme' current_colorscheme
     " autocmd TermEnter * setlocal laststatus=0
     " autocmd TermLeave * setlocal laststatus=2
 augroup END
@@ -470,5 +516,23 @@ augroup END
 " ------------------------------------------------------------------------------
 " source ~/.config/nvim/coc.vim
 
-" TESTING
-map <F10> :CMakeBuild<CR>
+" Shell ------------------------------------------------------------------- {{{
+
+function! s:ExecuteInShell(command) " {{{
+    let command = join(map(split(a:command), 'expand(v:val)'))
+    let winnr = bufwinnr('^' . command . '$')
+    silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap nonumber
+    echo 'Execute ' . command . '...'
+    silent! execute 'silent %!'. command
+    silent! redraw
+    silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>:AnsiEsc<CR>'
+    silent! execute 'nnoremap <silent> <buffer> q :q<CR>'
+    silent! execute 'AnsiEsc'
+    echo 'Shell command ' . command . ' executed.'
+endfunction " }}}
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+nnoremap <leader>! :Shell
+
+" }}}

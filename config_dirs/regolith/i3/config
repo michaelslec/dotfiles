@@ -4,7 +4,8 @@
 
 # This defines which key super maps to on your keyboard.
 # Alt key is Mod1, and Windows key is Mod4
-set $mod Mod1
+# set $mod Mod3
+set $mod Mod3
 set $win Mod4
 
 # i3xrocks config file
@@ -95,10 +96,10 @@ bindsym $mod+Shift+plus gaps inner current plus 6
 bindsym $mod+Shift+question exec --no-startup-id /usr/bin/conky-toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+Ctrl+f focus mode_toggle
 #
 # focus the parent container
 bindsym $mod+a focus parent
@@ -349,6 +350,9 @@ exec --no-startup-id /usr/bin/unclutter -b
 
 # Refresh wallpaper on screen resolution change
 exec --no-startup-id /usr/bin/xeventbind resolution /usr/bin/wallpaper-refresh
+
+# test
+exec --no-startup-id /usr/bin/xmodmap /home/michael/.Xmodmap
 
 # All my floating windows baby
 for_window [class="jetbrains-toolbox"] floating enable

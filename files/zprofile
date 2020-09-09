@@ -44,10 +44,6 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  $(python3 -c 'import site; print(site.USER_BASE)')/bin
-  $(ruby -e 'print Gem.user_dir')/bin
-  $NPM_PACKAGES/bin
-  $HOME/.rvm/bin
   $path
 )
 
@@ -80,17 +76,3 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 fi
 
 # User exports
-
-# Customize to your needs...
-export WORKON_HOME="$HOME/.virtualenvs"
-export XDG_CONFIG_HOME="$HOME/.config"
-
-export NVM_DIR="/home/michael/.nvm"
-
-# NPM without sudo
-NPM_PACKAGES="${HOME}/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
