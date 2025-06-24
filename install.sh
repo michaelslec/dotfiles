@@ -5,4 +5,6 @@
 ###########
 
 # Write credentials on load if possible
-ln -s "$(pwd)/nvim" ~/.config/nvim
+ln -sn "$(pwd)/nvim" ~/.config/nvim
+ln -sn "$(pwd)/gitconfig" ~/.gitconfig
+

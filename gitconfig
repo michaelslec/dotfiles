@@ -1,0 +1,35 @@
+[user]
+	name = Michael LeCompte
+	email = michaelslec98@gmail.com
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[core]
+    editor = nvim
+
+[alias]
+lg = log --first-parent --abbrev-commit --pretty=oneline
+hist = log --graph --oneline --abbrev-commit --date=human --decorate
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[init]
+	defaultBranch = master
+
+[rerere]
+	enabled = true
+
+[diff]
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE
