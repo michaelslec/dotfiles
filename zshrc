@@ -17,7 +17,4 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home" # Installed along with Android Studio
 
-export CLAUDE_CODE_USE_BEDROCK=1
-export AWS_PROFILE=dev
-export AWS_REGION=us-west-2
-export ANTHROPIC_MODEL=us.anthropic.claude-sonnet-4-20250514-v1:0
+export PATH="$HOME/.local/bin:$PATH"

@@ -5,14 +5,9 @@
 ###########
 
 # Detect if we're in a codespace environment
-if [[ -n "$CODESPACES" ]] || [[ -n "$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN" ]]; then
-    echo "Detected GitHub Codespace environment"
-    ZSHRC_FILE="bashrc.codespace"
-    cat $ZSHRC_FILE >> ~/.bashrc
-else
+if [[ -z "$CODESPACES" ]] && [[ -z "$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN" ]]; then
     echo "Detected regular environment"
-    ZSHRC_FILE="zshrc"
-    ln -sn "$(pwd)/$ZSHRC_FILE" ~/.zshrc
+    ln -sn "$(pwd)/zshrc" ~/.zshrc
 fi
 
 # Write credentials on load if possible
