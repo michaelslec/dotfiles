@@ -19,6 +19,3 @@ fi
 ln -sn "$(pwd)/nvim" ~/.config/nvim
 ln -sn "$(pwd)/gitconfig" ~/.gitconfig
 
-# Install Claude Code
-npm install -g @anthropic-ai/claude-code
-
