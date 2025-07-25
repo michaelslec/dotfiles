@@ -1,5 +1,6 @@
 alias vi="nvim"
 alias vim="nvim"
+alias dcl="dc logs -f --tail 100"
 
 
 export NVM_DIR="$HOME/.nvm"
